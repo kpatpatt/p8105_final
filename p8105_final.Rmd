@@ -1,0 +1,10 @@
+---
+title: "p8105_final"
+author: "Kevin P. Patterson, Raenita Spriggs, Alana Ferris, Lindsey T. Covell, Gabriela L. Jackson"
+date: "2022-11-09"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
