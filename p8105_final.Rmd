@@ -7,4 +7,50 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#install.packages(c("httr", "jsonlite"))
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(dplyr)
 ```
+
+
+```{r pull data}
+#pull in the data
+res = GET("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=T9pDCJHj7ICjzkZwAAiq7p8HneX1xmsB")
+
+#used to check if the request was successful (comms with the server) should return a 200 (success); 404 (file not found); 403 (permission denied); 500 (generic failure)
+status_code(res) #200
+
+#summary
+#headers(res)
+
+#content()
+content(res, "raw") #"text" alternatively
+res_char = rawToChar(res$content)
+res_JSON = fromJSON(res_char, flatten = TRUE)
+
+df = res_JSON$page
+
+res_JSON$totalElements
+
+#stringi::stri_enc_detect(content(res, "raw"))
+
+#content(res, "text", encoding = "ISO-8859-1")
+
+#write file
+bin <- content(res, "raw")
+writeBin(bin, "myfile.txt")
+str(content(res, "parsed"))
+?content
+df = read_table("myfile.txt")
+data = jsonlite::fromJSON(rawToChar(res$content))
+data2 = jsonlite::prettify(rawToChar(res$content))
+
+resLA = GET("https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=T9pDCJHj7ICjzkZwAAiq7p8HneX1xmsB") %>%
+dataLA = jsonlite::fromJSON(rawToChar(resLA$content))
+
+
+
+```
+
