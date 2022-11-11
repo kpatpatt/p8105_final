@@ -38,7 +38,7 @@ trends of nutritional content of food served across years (2008-2020).
 - [NY U.S. census demographic and housing estimate data](https://data.census.gov/cedsci/table?q=population%20demographics%20&g=0400000US36%248600000&tid=ACSDP5Y2020.DP05)
 
 ## Planned analyses
-- OLS regressions at the zip code level estimating  
+- OLS regressions at the zip code level estimating food quality index based on ~%race, total population, average income, %convenient store, %trans fat/total fat content across all food outlets for a zip code
 
 ## Visualizations
 - Box plot of nutritional content by food category and restaurant type across combined years (2008-2020)
@@ -59,7 +59,6 @@ df_2018 %>%
   select(-c(menu_item_id, year, restaurant, food_category, item_name, item_description, kids_meal, limited_time_offer, regional, shareable)) %>%
 	knitr::kable()
 ```
-- MenuStat dataframe doesn’t have location ID; potentially join dataframe on 
 - Create factor vector that indicates restaurant type: fast food, convenience store, sit-down restaurant
 
 ## Timeline

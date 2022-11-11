@@ -39,10 +39,12 @@ in food
 products.<sup>[10](https://www.ajpmonline.org/article/S0749-3797(08)00838-6/fulltext)</sup>
 We are motivated by these findings to investigate trends in NYC.
 
-Our project seeks to investigate at the zip-code level in New York, NY
-the general spatial distribution of convenience stores in relation to
-demographic composition trends of nutritional content of food served
-across years (2008-2020).
+Our project seeks to investigate at the zip-code level in New York, NY:
+
+1.  The general spatial distribution of convenience stores in relation
+    to demographic composition;
+2.  Trends of nutritional content of food served across years
+    (2008-2020)
 
 ## Intended Final Products
 
@@ -56,12 +58,17 @@ across years (2008-2020).
     database](https://www.menustat.org/data.html)
 -   [NYC DOHMH Restaurant Inspections
     database](https://data.cityofnewyork.us/Health/Restaurants-rolled-up-/59dk-tdhz/data)
--   [NY U.S. census, subsetted for
-    NYC](https://www.nyc.gov/site/doh/data/data-sets/new-york-city-health-and-nutrition-examination-survey-documentation.page)
+-   [NY U.S. census mean income
+    data](https://data.census.gov/cedsci/table?q=population%20demographics%20income&g=0400000US36%248600000&tid=ACSST5Y2020.S1902)
+-   [NY U.S. census demographic and housing estimate
+    data](https://data.census.gov/cedsci/table?q=population%20demographics%20&g=0400000US36%248600000&tid=ACSDP5Y2020.DP05)
 
-## Planned analyses
+## Planned analysis
 
--   OLS regressions at the zip code level estimating
+-   OLS regressions at the zip code level estimating food quality index
+    based on \~%race, total population, average income, %convenient
+    store, %trans fat/total fat content across all food outlets for a
+    zip code
 
 ## Visualizations
 
@@ -87,8 +94,6 @@ across years (2008-2020).
 |-------------:|------------------:|------------------:|-----------------------:|---------:|----------:|--------------:|----------:|------------:|-------:|----------:|--------------:|--------:|------:|--------------:|--------------:|---------------:|-------------------:|---------------:|-----------------:|------------:|---------------:|-------------------:|-------------:|-----------:|-------------------:|--------------:|---------------:|-------------------:|---------------:|-----------------:|------------:|---------------:|-------------------:|-------------:|-----------:|-------------------:|
 |        18237 |             30120 |             18225 |                  22061 |     3496 |      3695 |          3708 |      5147 |        4089 |   3572 |     29682 |          3867 |    3899 |  4080 |          4195 |         18545 |          18675 |              18677 |          19534 |            18739 |       18552 |          29855 |              18721 |        18745 |      18667 |              18786 |         29950 |          30120 |              30120 |          30120 |            29967 |       30120 |          30120 |              29833 |        29933 |      29883 |              29786 |
 
--   MenuStat dataframe doesn’t have location ID; potentially join
-    dataframe on
 -   Create factor vector that indicates restaurant type: fast food,
     convenience store, sit-down restaurant
 
