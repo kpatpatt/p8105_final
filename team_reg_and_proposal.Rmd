@@ -1,0 +1,33 @@
+---
+title: "team_registration_and_proposal"
+author: "Alana Ferris"
+date: "2022-11-10"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Group Members
+
+* Raenita Spriggs (rs4390)
+* Kevin Patterson (kpp2126)
+* Lindsey Covell (ltc2121)
+* Gabriela Jackson (glij2117)
+* Alana Ferris (af3341)
+
+# Tentative Project Title
+
+* Evaluating Nutritional Content of Top National Food Chains in New York City (2017-2018)
+
+## Motivation for the Project
+The vast number of fast-food chains in the United States have helped enter the US into an era of food "convenience". Their presence at this point is ubiquitous; it seems like there is a new chain on every corner of the city. For people and families on the go, fast food chains are a good option for hot and ready food. For those looking for quick and cheap food options, the fast food chains also filled that gap. 
+
+We know better now that the convenience of these food chains comes with a price: high fat, sugar, and salt content. These high levels have been associated with many health outcomes like high cholesterol, obesity, and diabetes (cite?). With that being said, many people continue to eat at these chains, some out of necessity because there are not many
+
+
+
+
+
+
