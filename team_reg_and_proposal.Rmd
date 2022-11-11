@@ -9,7 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Group Members
+## Group Members
 
 * Raenita Spriggs (rs4390)
 * Kevin Patterson (kpp2126)
@@ -55,6 +55,7 @@ df_2018 = readxl::read_excel("data/annual_data2018.xlsx") %>%
 
 df_2018 %>%
 	summarise(across(everything(), ~sum(is.na(.x)))) %>%
+  select(-c(menu_item_id, year, restaurant, food_category, item_name, item_description, kids_meal, limited_time_offer, regional, shareable)) %>%
 	knitr::kable()
 ```
 - MenuStat dataframe doesn’t have location ID; potentially join dataframe on 
