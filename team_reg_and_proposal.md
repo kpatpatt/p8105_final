@@ -1,5 +1,5 @@
 Proposal: Evaluating Nutritional Content of Top National Food Chains in
-New York City (2017-2018)
+New York City (2008-2020)
 ================
 2022-11-10
 
@@ -30,7 +30,7 @@ food chains, which could be the only option for many communities.
 Convenience stores and others alike are known to sell food products high
 in fats, sugars, and
 salts.<sup>[7](https://pubmed.ncbi.nlm.nih.gov/22898159/)</sup> The
-presence of convenience stores has is associated with higher BMI, higher
+presence of convenience stores is associated with higher BMI, higher
 obesity, and increased
 hypertension.<sup>[8](https://pubmed.ncbi.nlm.nih.gov/16530621/),[9](https://pubmed.ncbi.nlm.nih.gov/17884578/)</sup>
 Residents of color living in rural, low-income neighborhoods have
@@ -39,15 +39,15 @@ in food
 products.<sup>[10](https://www.ajpmonline.org/article/S0749-3797(08)00838-6/fulltext)</sup>
 We are motivated by these findings to investigate trends in NYC.
 
-Our project seeks to investigate at the zip-code level in New York, NY:
-General spatial distribution of convenience stores in relation to
-demographic composition Trends of nutritional content of food served
-across years (2008-2020)
+Our project seeks to investigate at the zip-code level in New York, NY
+the general spatial distribution of convenience stores in relation to
+demographic composition trends of nutritional content of food served
+across years (2008-2020).
 
 ## Intended Final Products
 
 -   A report containing the introduction, methods, results, conclusions,
-    and future directions.
+    and future directions
 -   A dashboard showcasing maps for NYC at the zip code level
 
 ## Anticipated data sources
@@ -65,9 +65,10 @@ across years (2008-2020)
 
 ## Visualizations
 
--   Box plot of nutritional content by food category (n=?), and
-    restaurant type (n=?) across combined years (2008-2020)
--   Spaghetti plot of nutritional content by restaurants
+-   Box plot of nutritional content by food category and restaurant type
+    across combined years (2008-2020)
+-   Spaghetti plot of nutritional content by restaurant and coded by
+    restaurant type
 -   Bar plots of top 15 NYC restaurant chains
 -   Maps stratified by restaurant type illustrating restaurants with the
     most/least nutrient-dense menu items according to a national

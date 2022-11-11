@@ -25,7 +25,7 @@ Convenience stores and others alike are known to sell food products high in fats
 
 Our project seeks to investigate at the zip-code level in New York, NY the
 general spatial distribution of convenience stores in relation to demographic composition
-trends of nutritional content of food served across years (2008-2020)
+trends of nutritional content of food served across years (2008-2020).
 
 ## Intended Final Products
 - A report containing the introduction, methods, results, conclusions, and future directions
@@ -34,14 +34,15 @@ trends of nutritional content of food served across years (2008-2020)
 ## Anticipated data sources
 - [NYC DOHMH MenuStat nutritional database](https://www.menustat.org/data.html) 
 - [NYC DOHMH Restaurant Inspections database](https://data.cityofnewyork.us/Health/Restaurants-rolled-up-/59dk-tdhz/data)
-- [NY U.S. census, subsetted for NYC](https://www.nyc.gov/site/doh/data/data-sets/new-york-city-health-and-nutrition-examination-survey-documentation.page)
+- [NY U.S. census mean income data](https://data.census.gov/cedsci/table?q=population%20demographics%20income&g=0400000US36%248600000&tid=ACSST5Y2020.S1902) 
+- [NY U.S. census demographic and housing estimate data](https://data.census.gov/cedsci/table?q=population%20demographics%20&g=0400000US36%248600000&tid=ACSDP5Y2020.DP05)
 
 ## Planned analyses
 - OLS regressions at the zip code level estimating  
 
 ## Visualizations
-- Box plot of nutritional content by food category (n=?), and restaurant type (n=?) across combined years (2008-2020)
-- Spaghetti plot of nutritional content by restaurants
+- Box plot of nutritional content by food category and restaurant type across combined years (2008-2020)
+- Spaghetti plot of nutritional content by restaurant and coded by restaurant type
 - Bar plots of top 15 NYC restaurant chains
 - Maps stratified by restaurant type illustrating restaurants with the most/least nutrient-dense menu items according to a national standard diet for the average adult (CDC MyPlate).
 
