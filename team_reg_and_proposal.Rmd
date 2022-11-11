@@ -1,6 +1,6 @@
 ---
-title: "team_registration_and_proposal"
-author: "Alana Ferris"
+title: "Proposal: Evaluating Nutritional Content of Top National Food Chains in New York City (2017-2018)"
+author: "Alana Ferris (af3341), Raenita Spriggs (rs4390), Kevin Patterson (kpp2126), Lindsey Covell (ltc2121), Gabriela Jackson (glij2117)"
 date: "2022-11-10"
 output: github_document
 ---
@@ -17,17 +17,74 @@ knitr::opts_chunk$set(echo = TRUE)
 * Gabriela Jackson (glij2117)
 * Alana Ferris (af3341)
 
-# Tentative Project Title
-
-* Evaluating Nutritional Content of Top National Food Chains in New York City (2017-2018)
-
 ## Motivation for the Project
-The vast number of fast-food chains in the United States have helped enter the US into an era of food "convenience". Their presence at this point is ubiquitous; it seems like there is a new chain on every corner of the city. For people and families on the go, fast food chains are a good option for hot and ready food. For those looking for quick and cheap food options, the fast food chains also filled that gap. 
 
-We know better now that the convenience of these food chains comes with a price: high fat, sugar, and salt content. These high levels have been associated with many health outcomes like high cholesterol, obesity, and diabetes (cite?). With that being said, many people continue to eat at these chains, some out of necessity because there are not many
+The growing number of fast-food chains in the United States has pushed the US into an era of food "convenience." Since the industry’s inception in 1927, there are approximately 150 thousand convenience stores across the US as of 2020.1–3 Their presence is ubiquitous; however, little is known about the general distribution of fast-food chains in the US. Spatial access to convenience stores from schools in low and high-income neighborhoods, and dietary quality have been explored 4–6 In cities like New York there seems to be a new chain on every corner of the city. They provide quick and cheap food options, along with fast food chains, could be the only option for many communities. 
 
+Convenience stores and others alike are know to sell food products high in fats, sugars, and salts.7 The presence of convenience stores have been associated higher BMI, higher obesity, and increased hypertension.8,9 Residents of color living in rural, low-income neighborhoods have inadequate access to supermarkets, chain grocery stores, and diversity in food products.10 We are motivated by these findings to investigate trends in NYC. 
 
+Our project seeks to investigate at the zip-code level in New York, NY:
+General spatial distribution of convenience stores in relation to demographic composition
+Trends of nutritional content of food served across years (2008-2020)
 
+## Intended Final Products
+- A report that contains the introduction, methods, results, conclusions, and future directions.
+- A dashboard showcasing maps for NYC at the zipcode level
 
+## Anticipated data sources
+- [NYC DOHMH MenuStat nutritional database](https://www.menustat.org/data.html) 
+- [NYC DOHMH Restaurant Inspections database](https://data.cityofnewyork.us/Health/Restaurants-rolled-up-/59dk-tdhz/data)
+- [NY U.S. census, subsetted for NYC](https://www.nyc.gov/site/doh/data/data-sets/new-york-city-health-and-nutrition-examination-survey-documentation.page)
 
+## Methods
+**Planned analyses**
+- OLS regressions at the zipcode level estimating  
+**Visualizations**
+- Boxplot nutritional content by food category (n=?), and restaurant type (n=?) across combined years (2008-2020)
+- Spaghetti plot nutritional content by restaurants
+- Bar plots of top 15 NYC restaurant chains
+- Maps stratified by resturant type, that illustrate restaurants with the most/least nutrient-dense menu items according to a national standard diet for the average adult (CDC MyPlate).
+**coding challenges**
+- Significant missingness for 10 nutritional variables (`Total_fat`, `Saturated_fat`, `Trans_fat`, `Cholesterol`, `Sodium`, `Potassium`, `Carbohydrates`, `Protein`, `Sugar`, `Dietary_fiber`); could be addressed using conditional mean imputation depending on differences in missingness based on food category.
+- An idea of the number of NA’s in 2018 alone:
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+df_2018 = readxl::read_excel("data/annual_data2018.xlsx") %>%
+  janitor::clean_names()
+
+df_2018 %>%
+	summarise(across(everything(), ~sum(is.na(.x)))) %>%
+	knitr::kable()
+```
+- MenuStat dataframe doesn’t have location ID; potentially join dataframe on 
+- Create factor vector that indicates restaurant type: fast food, convenience store, sit-down restaurant
+
+## Timeline
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+tibble(Date = c("Nov 7-10", "Nov 10", "Nov 11", "Nov 14", "Nov 15 - 17", "Nov 15/16", "Nov 18", "Dec 5", "Dec 6", "Dec 10", "Dec 16"),
+       Task = c("Brainstorm", 
+                "Finish draft proposal", 
+                "Submit proposal",
+                "Designate tasks",
+                "Cleaning Data",
+                "Project Review Meeting",
+                "Start Analysis",
+                "Finalize code",
+                "Begin and upload website",
+                "Report, webpage, screencast, peer assessment",
+                "In class discussion"),
+       Due = c("-", 
+                "-", 
+                "Nov 12 by 1:00 pm",
+                "End of day",
+                "Nov 15-17",
+                "Nov 15 or 16",
+                "-",
+                "-",
+                "End of day",
+                "Dec 10 by 11:59 pm",
+                "Dec 15")) %>%
+  knitr::kable()
+```
 
