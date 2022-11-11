@@ -22,13 +22,13 @@ the US as of 2020.1–3 Their presence is ubiquitous; however, little is
 known about the general distribution of fast-food chains in the US.
 Spatial access to convenience stores from schools in low and high-income
 neighborhoods, and dietary quality have been explored 4–6 In cities like
-New York there seems to be a new chain on every corner of the city. They
-provide quick and cheap food options, along with fast food chains, could
-be the only option for many communities.
+New York, there seems to be a new chain on every corner of the city.
+They provide quick and cheap food options, alongside fast food chains,
+which could be the only option for many communities.
 
-Convenience stores and others alike are know to sell food products high
-in fats, sugars, and salts.7 The presence of convenience stores have
-been associated higher BMI, higher obesity, and increased
+Convenience stores and others alike are known to sell food products high
+in fats, sugars, and salts.7 The presence of convenience stores has is
+associated with higher BMI, higher obesity, and increased
 hypertension.8,9 Residents of color living in rural, low-income
 neighborhoods have inadequate access to supermarkets, chain grocery
 stores, and diversity in food products.10 We are motivated by these
@@ -41,9 +41,9 @@ across years (2008-2020)
 
 ## Intended Final Products
 
--   A report that contains the introduction, methods, results,
-    conclusions, and future directions.
--   A dashboard showcasing maps for NYC at the zipcode level
+-   A report containing the introduction, methods, results, conclusions,
+    and future directions.
+-   A dashboard showcasing maps for NYC at the zip code level
 
 ## Anticipated data sources
 
@@ -56,19 +56,20 @@ across years (2008-2020)
 
 ## Methods
 
-**Planned analyses** - OLS regressions at the zipcode level estimating  
-**Visualizations** - Boxplot nutritional content by food category (n=?),
-and restaurant type (n=?) across combined years (2008-2020) - Spaghetti
-plot nutritional content by restaurants - Bar plots of top 15 NYC
-restaurant chains - Maps stratified by resturant type, that illustrate
-restaurants with the most/least nutrient-dense menu items according to a
-national standard diet for the average adult (CDC MyPlate). **coding
-challenges** - Significant missingness for 10 nutritional variables
-(`Total_fat`, `Saturated_fat`, `Trans_fat`, `Cholesterol`, `Sodium`,
-`Potassium`, `Carbohydrates`, `Protein`, `Sugar`, `Dietary_fiber`);
-could be addressed using conditional mean imputation depending on
-differences in missingness based on food category. - An idea of the
-number of NA’s in 2018 alone:
+**Planned analyses** - OLS regressions at the zip code level
+estimating  
+**Visualizations** - Box plot of nutritional content by food category
+(n=?), and restaurant type (n=?) across combined years (2008-2020) -
+Spaghetti plot of nutritional content by restaurants - Bar plots of top
+15 NYC restaurant chains - Maps stratified by restaurant type
+illustrating restaurants with the most/least nutrient-dense menu items
+according to a national standard diet for the average adult (CDC
+MyPlate). **coding challenges** - Significant missingness for 10
+nutritional variables (`Total_fat`, `Saturated_fat`, `Trans_fat`,
+`Cholesterol`, `Sodium`, `Potassium`, `Carbohydrates`, `Protein`,
+`Sugar`, `Dietary_fiber`); could be addressed using conditional mean
+imputation depending on differences in missingness based on food
+category. - An idea of the number of NA’s in 2018 alone:
 
 | menu_item_id | year | restaurant | food_category | item_name | item_description | serving_size | serving_size_text | serving_size_unit | serving_size_household | calories | total_fat | saturated_fat | trans_fat | cholesterol | sodium | potassium | carbohydrates | protein | sugar | dietary_fiber | calories_100g | total_fat_100g | saturated_fat_100g | trans_fat_100g | cholesterol_100g | sodium_100g | potassium_100g | carbohydrates_100g | protein_100g | sugar_100g | dietary_fiber_100g | calories_text | total_fat_text | saturated_fat_text | trans_fat_text | cholesterol_text | sodium_text | potassium_text | carbohydrates_text | protein_text | sugar_text | dietary_fiber_text | kids_meal | limited_time_offer | regional | shareable |
 |-------------:|-----:|-----------:|--------------:|----------:|-----------------:|-------------:|------------------:|------------------:|-----------------------:|---------:|----------:|--------------:|----------:|------------:|-------:|----------:|--------------:|--------:|------:|--------------:|--------------:|---------------:|-------------------:|---------------:|-----------------:|------------:|---------------:|-------------------:|-------------:|-----------:|-------------------:|--------------:|---------------:|-------------------:|---------------:|-----------------:|------------:|---------------:|-------------------:|-------------:|-----------:|-------------------:|----------:|-------------------:|---------:|----------:|
