@@ -23,9 +23,10 @@ The growing number of fast-food chains in the United States has pushed the US in
 
 Convenience stores and others alike are known to sell food products high in fats, sugars, and salts.<sup>[7](https://pubmed.ncbi.nlm.nih.gov/22898159/)</sup> The presence of convenience stores is associated with higher BMI, higher obesity, and increased hypertension.<sup>[8](https://pubmed.ncbi.nlm.nih.gov/16530621/),[9](https://pubmed.ncbi.nlm.nih.gov/17884578/)</sup> Residents of color living in rural, low-income neighborhoods have inadequate access to supermarkets, chain grocery stores, and diversity in food products.<sup>[10](https://www.ajpmonline.org/article/S0749-3797(08)00838-6/fulltext)</sup> We are motivated by these findings to investigate trends in NYC. 
 
-Our project seeks to investigate at the zip-code level in New York, NY the
-general spatial distribution of convenience stores in relation to demographic composition
-trends of nutritional content of food served across years (2008-2020).
+Our project seeks to investigate at the zip-code level in New York, NY:
+
+1. The general spatial distribution of convenience stores in relation to demographic composition;
+2. Trends of nutritional content of food served across years (2008-2020)
 
 ## Intended Final Products
 - A report containing the introduction, methods, results, conclusions, and future directions
@@ -37,7 +38,7 @@ trends of nutritional content of food served across years (2008-2020).
 - [NY U.S. census mean income data](https://data.census.gov/cedsci/table?q=population%20demographics%20income&g=0400000US36%248600000&tid=ACSST5Y2020.S1902) 
 - [NY U.S. census demographic and housing estimate data](https://data.census.gov/cedsci/table?q=population%20demographics%20&g=0400000US36%248600000&tid=ACSDP5Y2020.DP05)
 
-## Planned analyses
+## Planned analysis
 - OLS regressions at the zip code level estimating food quality index based on ~%race, total population, average income, %convenient store, %trans fat/total fat content across all food outlets for a zip code
 
 ## Visualizations
