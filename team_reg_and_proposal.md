@@ -54,22 +54,28 @@ across years (2008-2020)
 -   [NY U.S. census, subsetted for
     NYC](https://www.nyc.gov/site/doh/data/data-sets/new-york-city-health-and-nutrition-examination-survey-documentation.page)
 
-## Methods
+## Planned analyses
 
-**Planned analyses** - OLS regressions at the zip code level
-estimating  
-**Visualizations** - Box plot of nutritional content by food category
-(n=?), and restaurant type (n=?) across combined years (2008-2020) -
-Spaghetti plot of nutritional content by restaurants - Bar plots of top
-15 NYC restaurant chains - Maps stratified by restaurant type
-illustrating restaurants with the most/least nutrient-dense menu items
-according to a national standard diet for the average adult (CDC
-MyPlate). **coding challenges** - Significant missingness for 10
-nutritional variables (`Total_fat`, `Saturated_fat`, `Trans_fat`,
-`Cholesterol`, `Sodium`, `Potassium`, `Carbohydrates`, `Protein`,
-`Sugar`, `Dietary_fiber`); could be addressed using conditional mean
-imputation depending on differences in missingness based on food
-category. - An idea of the number of NA’s in 2018 alone:
+-   OLS regressions at the zip code level estimating
+
+## Visualizations
+
+-   Box plot of nutritional content by food category (n=?), and
+    restaurant type (n=?) across combined years (2008-2020)
+-   Spaghetti plot of nutritional content by restaurants
+-   Bar plots of top 15 NYC restaurant chains
+-   Maps stratified by restaurant type illustrating restaurants with the
+    most/least nutrient-dense menu items according to a national
+    standard diet for the average adult (CDC MyPlate).
+
+## Coding Challenges
+
+-   Significant missingness for 10 nutritional variables (`Total_fat`,
+    `Saturated_fat`, `Trans_fat`, `Cholesterol`, `Sodium`, `Potassium`,
+    `Carbohydrates`, `Protein`, `Sugar`, `Dietary_fiber`); could be
+    addressed using conditional mean imputation depending on differences
+    in missingness based on food category.
+-   An idea of the number of NA’s in 2018 alone:
 
 | menu_item_id | year | restaurant | food_category | item_name | item_description | serving_size | serving_size_text | serving_size_unit | serving_size_household | calories | total_fat | saturated_fat | trans_fat | cholesterol | sodium | potassium | carbohydrates | protein | sugar | dietary_fiber | calories_100g | total_fat_100g | saturated_fat_100g | trans_fat_100g | cholesterol_100g | sodium_100g | potassium_100g | carbohydrates_100g | protein_100g | sugar_100g | dietary_fiber_100g | calories_text | total_fat_text | saturated_fat_text | trans_fat_text | cholesterol_text | sodium_text | potassium_text | carbohydrates_text | protein_text | sugar_text | dietary_fiber_text | kids_meal | limited_time_offer | regional | shareable |
 |-------------:|-----:|-----------:|--------------:|----------:|-----------------:|-------------:|------------------:|------------------:|-----------------------:|---------:|----------:|--------------:|----------:|------------:|-------:|----------:|--------------:|--------:|------:|--------------:|--------------:|---------------:|-------------------:|---------------:|-----------------:|------------:|---------------:|-------------------:|-------------:|-----------:|-------------------:|--------------:|---------------:|-------------------:|---------------:|-----------------:|------------:|---------------:|-------------------:|-------------:|-----------:|-------------------:|----------:|-------------------:|---------:|----------:|

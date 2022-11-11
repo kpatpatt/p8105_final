@@ -36,15 +36,16 @@ Trends of nutritional content of food served across years (2008-2020)
 - [NYC DOHMH Restaurant Inspections database](https://data.cityofnewyork.us/Health/Restaurants-rolled-up-/59dk-tdhz/data)
 - [NY U.S. census, subsetted for NYC](https://www.nyc.gov/site/doh/data/data-sets/new-york-city-health-and-nutrition-examination-survey-documentation.page)
 
-## Methods
-**Planned analyses**
+## Planned analyses
 - OLS regressions at the zip code level estimating  
-**Visualizations**
+
+## Visualizations
 - Box plot of nutritional content by food category (n=?), and restaurant type (n=?) across combined years (2008-2020)
 - Spaghetti plot of nutritional content by restaurants
 - Bar plots of top 15 NYC restaurant chains
 - Maps stratified by restaurant type illustrating restaurants with the most/least nutrient-dense menu items according to a national standard diet for the average adult (CDC MyPlate).
-**coding challenges**
+
+## Coding Challenges
 - Significant missingness for 10 nutritional variables (`Total_fat`, `Saturated_fat`, `Trans_fat`, `Cholesterol`, `Sodium`, `Potassium`, `Carbohydrates`, `Protein`, `Sugar`, `Dietary_fiber`); could be addressed using conditional mean imputation depending on differences in missingness based on food category.
 - An idea of the number of NA’s in 2018 alone:
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
