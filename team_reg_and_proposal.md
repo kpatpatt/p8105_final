@@ -1,8 +1,6 @@
 Proposal: Evaluating Nutritional Content of Top National Food Chains in
 New York City (2017-2018)
 ================
-Alana Ferris (af3341), Raenita Spriggs (rs4390), Kevin Patterson
-(kpp2126), Lindsey Covell (ltc2121), Gabriela Jackson (glij2117)
 2022-11-10
 
 # Group Members
