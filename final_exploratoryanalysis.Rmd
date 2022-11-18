@@ -1,0 +1,49 @@
+---
+title: "final_exploratoryanalysis"
+author: "Kevin P. Patterson"
+date: "2022-11-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(viridis)
+library(ggplot2)
+library(patchwork)
+library(dplyr)
+
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = FALSE,
+	fig.width = 8, 
+  fig.height = 6,
+  out.width = "90%"
+)
+
+```
+
+```{r load data}
+menustat_df = 
+  tibble(
+    files = list.files("data/"), #listing the "./" method due to inability to read with "/data" alone
+    path = str_c("data/", files)
+  ) %>% 
+  mutate(data = purrr::map(path, readxl::read_excel)) %>% 
+  unnest()
+
+library(readxl)
+menustat_df <- list.files(path = "data/", pattern = "*.xlsx", full.names = TRUE) %>% 
+  map_dfr(
+  .x = menustat_df,
+  .f = ~read_excel(.x) %>% mutate(Menu_Item_ID = as.character(Menu_Item_ID))
+  )
+
+
+menustat_df =
+  list.files(path = "data/", pattern = "*.xlsx", full.names = TRUE) %>% 
+  lapply(read_excel)  %>% 
+  plyrr::rbind.fill
+
+```
+
