@@ -12,6 +12,7 @@ library(viridis)
 library(ggplot2)
 library(patchwork)
 library(dplyr)
+library(readxl)
 
 knitr::opts_chunk$set(
 	echo = TRUE,
@@ -24,26 +25,65 @@ knitr::opts_chunk$set(
 ```
 
 ```{r load data}
-menustat_df = 
-  tibble(
-    files = list.files("data/"), #listing the "./" method due to inability to read with "/data" alone
-    path = str_c("data/", files)
-  ) %>% 
-  mutate(data = purrr::map(path, readxl::read_excel)) %>% 
-  unnest()
+data2008 = read_excel((file = "data/annual_data2008.xlsx"), col_types = "text")
+data2010 = read_excel((file = "data/annual_data2010.xlsx"), col_types = "text") 
+data2012 = read_excel((file = "data/annual_data2012.xlsx"), col_types = "text") 
+data2013 = read_excel((file = "data/annual_data2013.xlsx"), col_types = "text") 
+data2014 = read_excel((file = "data/annual_data2014.xlsx"), col_types = "text")
+data2015 = read_excel((file = "data/annual_data2015.xlsx"), col_types = "text") 
+data2016 = read_excel((file = "data/annual_data2016.xlsx"), col_types = "text")
+data2017 = read_excel((file = "data/annual_data2017.xlsx"), col_types = "text") 
+data2018 = read_excel((file = "data/annual_data2018.xlsx"), col_types = "text")
+data2019 = read_excel((file = "data/annual_data2019.xlsx"), col_types = "text")  
+data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")  
+    
+  menustat_df = bind_rows(data2008, data2010, data2012, data2013, data2014, data2015, data2016, data2017, data2018, data2019, data2020) %>% 
+  janitor::clean_names() %>% 
+    mutate( 
+    year = as.numeric(year), 
+    serving_size = as.numeric(serving_size), 
+    calories = as.numeric(calories), 
+    total_fat = as.numeric(total_fat), 
+    saturated_fat = as.numeric(saturated_fat), 
+    trans_fat = as.numeric(trans_fat), 
+    cholesterol = as.numeric(cholesterol),
+    sodium = as.numeric(sodium), 
+    potassium = as.numeric(potassium), 
+    carbohydrates = as.numeric(carbohydrates), 
+    protein = as.numeric(protein), 
+    sugar = as.numeric(sugar),
+    dietary_fiber = as.numeric(dietary_fiber),
+    calories_100g = as.numeric(calories_100g),
+    total_fat_100g = as.numeric(total_fat_100g), 
+    saturated_fat_100g = as.numeric(saturated_fat_100g), 
+    trans_fat_100g = as.numeric(trans_fat_100g), 
+    cholesterol_100g = as.numeric(cholesterol_100g),
+    sodium_100g = as.numeric(sodium_100g), 
+    potassium_100g = as.numeric(potassium_100g), 
+    carbohydrates_100g = as.numeric(carbohydrates_100g), 
+    protein_100g = as.numeric(protein_100g), 
+    sugar_100g = as.numeric(sugar_100g), 
+    dietary_fiber_100g = as.numeric(dietary_fiber_100g)
+      )
 
-library(readxl)
-menustat_df <- list.files(path = "data/", pattern = "*.xlsx", full.names = TRUE) %>% 
-  map_dfr(
-  .x = menustat_df,
-  .f = ~read_excel(.x) %>% mutate(Menu_Item_ID = as.character(Menu_Item_ID))
-  )
+## Kevin's attempts 
+## menustat_df = 
+ # tibble(
+  #  files = list.files("data/"), #listing the "./" method due to inability to read with "/data" alone
+ #   path = str_c("data/", files)
+ # ) %>% 
+ # mutate(data = purrr::map(path, readxl::read_excel)) %>% 
+ # unnest()
 
+#menustat_df <- list.files(path = "data/", pattern = "*.xlsx", full.names = TRUE) %>% 
+ # map_dfr(
+ # .x = menustat_df,
+  #.f = ~read_menu_stat(.x)
+  # )
 
-menustat_df =
-  list.files(path = "data/", pattern = "*.xlsx", full.names = TRUE) %>% 
-  lapply(read_excel)  %>% 
-  plyrr::rbind.fill
-
+#menustat_lapply = 
+#  list.files(path = "data/") %>% 
+ # lapply(read_excel)  %>% 
+ # bind_rows()
 ```
 
