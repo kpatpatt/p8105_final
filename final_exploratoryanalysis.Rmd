@@ -12,6 +12,8 @@ library(viridis)
 library(ggplot2)
 library(patchwork)
 library(dplyr)
+library(tidycensus)
+library(rvest)
 
 knitr::opts_chunk$set(
 	echo = TRUE,
@@ -46,4 +48,53 @@ menustat_df =
   plyrr::rbind.fill
 
 ```
+
+## Census Data 
+
+```{r}
+# Set API key, only need to do this once but 'overwrite' will allow multiple
+census_api_key("0b1055607d9ae137c0e00de8e22ed531d7c91a44", overwrite = TRUE, install = TRUE)
+
+# run to use 
+readRenviron("~/.Renviron")
+#calls API key 
+Sys.getenv("CENSUS_API_KEY")
+
+# Call ist of all variables for ACS
+vars_list = load_variables(year = 2020, 
+                           dataset = "acs5", 
+                           cache = TRUE) %>% 
+            view()
+
+# B19013_001 median household income
+# B01003_001 total population
+# B02001_001 total population (for race)
+# B02001_002 white alone
+# B02001_003 black alone
+# B02001_004 american indian/alaskan native 
+# B02001_005 asian alone
+# B02001_006 native hawaiian and other pacific islander 
+# B02001_007 Some other race alone
+
+# Get data 2016-2020 for NYC by census tract 
+nyc_acs_data <- get_acs(state = "ny",
+               geography = "tract",
+               year = 2020,
+               variables = c(med_income = "B19013_001",
+                             total_pop = "B01003_001", 
+                             race_total = "B02001_001", 
+                             white = "B02001_002", 
+                             black_aa = "B02001_003", 
+                             ai_an = "B02001_004", 
+                             asain = "B02001_005", 
+                             hawaiian_pi = "B02001_006", 
+                             other = "B02001_007" 
+                             ),
+               geometry = TRUE,
+               survey = "acs5") %>% 
+  filter(str_detect(NAME, c("Bronx County", "Kings County", "Richmond County", "Queens County", "New York County"))) 
+
+
+```
+
 
