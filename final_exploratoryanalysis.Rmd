@@ -36,8 +36,8 @@ data2015 = read_excel((file = "data/annual_data2015.xlsx"), col_types = "text")
 data2016 = read_excel((file = "data/annual_data2016.xlsx"), col_types = "text")
 data2017 = read_excel((file = "data/annual_data2017.xlsx"), col_types = "text") 
 data2018 = read_excel((file = "data/annual_data2018.xlsx"), col_types = "text")
-data2019 = read_excel((file = "data/annual_data2019.xlsx"), col_types = "text")  
-data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")  
+data2019 = read_excel((file = "data/annual_data2019.xlsx"), col_types = "text")
+data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
     
   menustat_df = bind_rows(data2008, data2010, data2012, data2013, data2014, data2015, data2016, data2017, data2018, data2019, data2020) %>% 
   janitor::clean_names() %>% 
@@ -66,7 +66,10 @@ data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
     protein_100g = as.numeric(protein_100g), 
     sugar_100g = as.numeric(sugar_100g), 
     dietary_fiber_100g = as.numeric(dietary_fiber_100g)
-      )
+      ) %>% 
+    mutate(rest_type = 
+             case_when(restaurant == "Culver's" | restaurant == "Subway" | restaurant == "Tim Hortons" | restaurant == "Taco Bell" | restaurant == "Arby's" | restaurant == "Whataburger" | restaurant == "White Castle" | restaurant == "Bojangles" | restaurant == "Burger King" | restaurant == "Captain D's" | restaurant == "Chick-Fil-A" | restaurant == "Chipotle" | restaurant == "Church's Chicken" | restaurant == "Ci Ci's Pizza" | restaurant == "Dairy Queen" | restaurant == "Del Taco" | restaurant == "Dominos" | restaurant == "Einstein Bros" | restaurant == "El Pollo Loco" | restaurant == "Hardee's" | restaurant == "In-N-Out Burger" | restaurant == "Jack in the Box" | restaurant == "Jason's Deli" | restaurant == "KFC" | restaurant == "Krystal" | restaurant == "Little Caesars" | restaurant == "Long John Silver's" | restaurant == "McDonald's" | restaurant == "Panda Express" | restaurant == "Panera Bread" | restaurant == "Papa John's" | restaurant == "Papa Murphy's" | restaurant == "Pizza Hut" | restaurant == "Popeyes" | restaurant == "Quiznos" | restaurant == "Sonic" | restaurant == "Wendy's" | restaurant == "Zaxby's" | restaurant == "Checker's Drive-In/Rallys" | restaurant == "Five Guys" | restaurant == "Qdoba" | restaurant == "Sbarro" | restaurant == "Auntie Anne's" | restaurant == "Firehouse Subs" | restaurant == "McAlister's Deli" | restaurant == "Moe's Southwest Grill" | restaurant == "Wingstop" | restaurant == "Frisch's Big Boy" | restaurant == "Potbelly Sandwich Shop" | restaurant == "Freddy's Frozen Custard & Steakburgers" | restaurant == "Raising Cane's Chicken Fingers" | restaurant == "Shake Shack" | restaurant ==  "Jimmy John's" | restaurant == "Jersey Mike's" | restaurant ==  "Noodles & Company" | restaurant == "Portillo's" | restaurant == "Marco's Pizza" ~ "fast food", restaurant == "Friendly's" | restaurant == "Romano's Macaroni Grill" | restaurant == "Applebee's" | restaurant == "Bob Evans" | restaurant == "Boston Market" | restaurant == "Chili's" | restaurant == "Denny's" | restaurant == "Golden Corral" | restaurant == "O'Charley's" | restaurant == "Olive Garden" | restaurant == "PF Chang's" | restaurant == "Red Lobster" | restaurant == "Ruby Tuesday" | restaurant == "Steak 'N Shake" | restaurant == "California Pizza Kitchen" | restaurant == "IHOP" | restaurant == "LongHorn Steakhouse" | restaurant == "Outback Steakhouse" | restaurant == "TGI Friday's" | restaurant == "Carrabba's Italian Grill" | restaurant == "Chuck E. Cheese" | restaurant == "On the Border" | restaurant == "Perkins" | restaurant == "Red Robin" | restaurant == "Bonefish Grill" | restaurant == "Yard House" | restaurant == "Joe's Crab Shack" | restaurant == "BJ's Restaurant & Brewhouse" | restaurant == "Famous Dave's" | restaurant == "Round Table Pizza" | restaurant == "Hooters" | restaurant == "The Capital Grille" | restaurant == "Dickey's Barbeque Pit" | restaurant == "Buffalo Wild Wings" |restaurant == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | restaurant == "Cracker Barrel" | restaurant == "Dave & Buster's" | restaurant == "Logans Roadhouse" | restaurant == "The Cheesecake Factory" | restaurant == "Waffle House" ~ "sit-down", restaurant == "Starbucks" | restaurant == "Baskin Robbins" | restaurant == "Dunkin' Donuts" | restaurant == "Jamba Juice" | restaurant == "Krispy Kreme" ~ "beverages_dessert", restaurant == "7 Eleven" | restaurant == "Casey's General Store" | restaurant == "Sheetz" | restaurant == "Wawa" ~ "convenience"))
+
 
 ## Kevin's attempts 
 ## menustat_df = 
@@ -88,6 +91,14 @@ data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
  # lapply(read_excel)  %>% 
  # bind_rows()
 ```
+
+## Restaurant inspections data
+
+```{r}
+restaurant_address = read_csv('data/Restaurants__rolled_up_.csv') %>% 
+  janitor::clean_names()
+```
+
 
 ## Census Data 
 
