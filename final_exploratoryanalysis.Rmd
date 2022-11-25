@@ -152,6 +152,403 @@ nyc_acs_data <- get_acs(state = "ny",
                geometry = TRUE,
                survey = "acs5") %>% 
   filter(str_detect(NAME, c("Bronx County", "Kings County", "Richmond County", "Queens County", "New York County"))) 
+```
+
+**ACS individual year pull, no function**
+```{r ACS for one year pull}
+library(tidyverse)
+library(tidycensus)
+library(sf)
+library(scales)
+#2016
+acs_ny_2016 <- get_acs(
+  geography = "zcta", 
+  variables = c(med_income = "B19013_001",
+                total_pop = "B01003_001", 
+                race_total = "B02001_001", 
+                white = "B02001_002", 
+                black_aa = "B02001_003", 
+                ai_an = "B02001_004", 
+                asian = "B02001_005", 
+                hawaiian_pi = "B02001_006", 
+                other = "B02001_007"
+                ),
+  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
+  year = 2016
+) %>%
+  filter(str_detect(GEOID, "^36")) %>%
+  tibble::add_column(year = 2016)
+  
+#2017
+acs_ny_2017 <- get_acs(
+  geography = "zcta", 
+  variables = c(med_income = "B19013_001",
+                total_pop = "B01003_001", 
+                race_total = "B02001_001", 
+                white = "B02001_002", 
+                black_aa = "B02001_003", 
+                ai_an = "B02001_004", 
+                asian = "B02001_005", 
+                hawaiian_pi = "B02001_006", 
+                other = "B02001_007"
+                ),
+  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
+  year = 2017
+) %>%
+  filter(str_detect(GEOID, "^36")) %>%
+  tibble::add_column(year = 2017)
+#2018
+acs_ny_2018 <- get_acs(
+  geography = "zcta", 
+  variables = c(med_income = "B19013_001",
+                total_pop = "B01003_001", 
+                race_total = "B02001_001", 
+                white = "B02001_002", 
+                black_aa = "B02001_003", 
+                ai_an = "B02001_004", 
+                asian = "B02001_005", 
+                hawaiian_pi = "B02001_006", 
+                other = "B02001_007"
+                ),
+  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
+  year = 2018
+) %>%
+  filter(str_detect(GEOID, "^36")) %>%
+  tibble::add_column(year = 2018)
+#2019
+acs_ny_2019 <- get_acs(
+  geography = "zcta", 
+  variables = c(med_income = "B19013_001",
+                total_pop = "B01003_001", 
+                race_total = "B02001_001", 
+                white = "B02001_002", 
+                black_aa = "B02001_003", 
+                ai_an = "B02001_004", 
+                asian = "B02001_005", 
+                hawaiian_pi = "B02001_006", 
+                other = "B02001_007"
+                ),
+  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
+  year = 2019
+) %>%
+  filter(str_detect(GEOID, "^36")) %>%
+  tibble::add_column(year = 2019)
+#2020
+acs_ny_2020 <- get_acs(
+  geography = "zcta", 
+  variables = c(med_income = "B19013_001",
+                total_pop = "B01003_001", 
+                race_total = "B02001_001", 
+                white = "B02001_002", 
+                black_aa = "B02001_003", 
+                ai_an = "B02001_004", 
+                asian = "B02001_005", 
+                hawaiian_pi = "B02001_006", 
+                other = "B02001_007"
+                ),
+  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
+  year = 2020
+) %>%
+  filter(str_detect(GEOID, "^36")) %>%
+  tibble::add_column(year = 2020)
+
+acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs_ny_2020) %>% #there are 153 zctas with estimate NA's
+  janitor::clean_names() %>%
+  write_csv("data/acs_ny_combined.csv")
+
+#  drop_na(estimate) #if we want to drop the 153 NA's but check what the mapping looks like
+
+
+#acs_ny_comb %>%
+#  summarise(across(everything(), ~sum(is.na(.x)))) %>%
+#  knitr::kable()
+```
+
+
+**ACS multi year pull through `map_dfr` function**
+```{r}
+#years interested
+years <- lst(2016, 2017, 2018, 2019, 2020) 
+#zctas
+my_zcta <- c("^ZCTA5 36")
+#variables
+my_vars <- c(med_income = "B19013_001",
+             total_pop = "B01003_001", 
+             race_total = "B02001_001", 
+             white = "B02001_002", 
+             black_aa = "B02001_003", 
+             ai_an = "B02001_004", 
+             asian = "B02001_005", 
+             hawaiian_pi = "B02001_006", 
+             other = "B02001_007"
+             )
+
+ny_acs <- map_dfr(
+  years,
+  ~ get_acs(
+      geography = "zcta", #idk why there is an error here after designating state and county as NULL
+      state = NULL,
+      county = NULL,
+      variables = my_vars,
+      zcta = my_zcta,
+      year = .x,
+      survey = "acs5"
+      ),
+  .id = "year"  # when combining results, add id var (name of list item)
+  ) %>%
+  
+  #arrange(variable, NAME) %>% 
+  print()
+```
+
+**function to get around the zcta geography error**
+```{r}
+format_variables_acs <- function(variables) {
+
+  # find code in 'data-raw/no_moe_vars.R' to pull these vars from api
+  no_moes <- c("B19013_001",
+               "B01003_001", 
+               "B02001_001", 
+               "B02001_002", 
+               "B02001_003",
+               "B02001_004",
+               "B02001_005",
+               "B02001_006",
+               "B02001_007")
+
+  # First, remove E or M if user has put it in
+  variables1 <- map_chr(variables, function(x) {
+    if (str_sub(x, -1) %in% c("E", "M")) {
+      x <- str_sub(x, 1, -2)
+    } else {
+      x <- x
+    }
+  })
+
+  # Now, make unique
+  variables2 <- unique(variables1)
+
+  # The comparison profile doesn't have MOEs, so account for that
+  if (!any(grepl("^CP[0-9].", variables2))) {
+
+    # Next, separate into vars with and without MOEs
+    variables2a <- variables2[!variables2 %in% no_moes]
+
+    variables2_nomoe <- variables2[variables2 %in% no_moes]
+
+    # Now, expand with both E and M if MOE is applicable
+    variables3 <- map_chr(variables2a, function(y) paste0(y, c("E", "M"), collapse = ","))
+
+    if (length(variables2_nomoe)) {
+      variables3_nomoe <- paste0(variables2_nomoe, "E")
+
+      variables3 <- c(variables3, variables3_nomoe)
+    }
+  } else {
+    variables3 <- paste0(variables2, "E")
+  }
+
+  # Now, put together all these strings if need be
+  var <- paste0(variables3, collapse = ",")
+
+  return(var)
+
+}
+
+load_data_acs <- function(geography, formatted_variables, key, year, state = NULL,
+                          county = NULL, zcta = NULL, survey, show_call = FALSE) {
+
+  base <- paste("https://api.census.gov/data",
+                  as.character(year), "acs",
+                  survey, sep = "/")
+
+  if (grepl("^DP", formatted_variables)) {
+    message("Using the ACS Data Profile")
+    base <- paste0(base, "/profile")
+  }
+
+  if (grepl("^S[0-9].", formatted_variables)) {
+    message("Using the ACS Subject Tables")
+    base <- paste0(base, "/subject")
+  }
+
+  if (grepl("^CP[0-9].", formatted_variables)) {
+    message("Using the ACS Comparison Profile")
+    base <- paste0(base, "/cprofile")
+  }
+
+  for_area <- paste0(geography, ":*")
+
+  if (!is.null(zcta))  {
+
+    if (is.null(state)) {
+      stop("The `zcta` argument requires specifying a state.", call. = FALSE)
+    }
+
+    if (!is.null(county)) {
+      stop("ZCTAs do not nest within counties, so `county` should not be specified.",
+           call. = FALSE)
+    }
+
+    state <- map_chr(state, function(x) {
+      validate_state(x)
+    })
+
+    for_area <- paste0(zcta, collapse = ",")
+
+    in_area <- paste0("state:", state)
+
+    vars_to_get <- paste0(formatted_variables, ",NAME")
+
+    call <- GET(base, query = list(get = vars_to_get,
+                                   "for" = paste0(geography, ":", for_area),
+                                   "in" = in_area,
+                                   key = key))
+
+  } else if (!is.null(state) && is.null(zcta)) {
+
+    state <- map_chr(state, function(x) {
+      validate_state(x)
+    })
+
+    if (length(state) > 1) {
+      state <- paste0(state, collapse = ",")
+    }
+
+    if (geography == "state") {
+      for_area <- paste0("state:", state)
+    }
+
+    if (!is.null(county)) {
+
+      county <- map_chr(county, function(x) {
+        validate_county(state, x)
+      })
+
+      if (length(county) > 1) {
+        county <- paste0(county, collapse = ",")
+      }
+
+      if (geography == "county") {
+
+        for_area <- paste0("county:", county)
+        in_area <- paste0("state:", state)
+
+      } else {
+
+        in_area <- paste0("state:", state,
+                          "+county:", county)
+
+      }
+
+    } else {
+
+      if (geography == "block group" && is.null(county)) {
+          in_area <- paste0("state:", state,
+                            "&in=county:*")
+      } else {
+        in_area <- paste0("state:", state)
+      }
+
+    }
+
+    vars_to_get <- paste0(formatted_variables, ",NAME")
+
+    if (geography == "state" && !is.null(state)) {
+
+      call <- GET(base, query = list(get = vars_to_get,
+                                     "for" = for_area,
+                                     key = key))
+    } else {
+
+      call <- GET(base, query = list(get = vars_to_get,
+                                     "for" = for_area,
+                                     "in" = in_area,
+                                     key = key))
+    }
+
+
+  } else {
+
+    vars_to_get <- paste0(formatted_variables, ",NAME")
+
+    call <- GET(base, query = list(get = vars_to_get,
+                                   "for" = paste0(geography, ":*"),
+                                   key = key))
+  }
+
+  if (show_call) {
+    call_url <- gsub("&key.*", "", call$url)
+    message(paste("Census API call:", call_url))
+  }
+
+  # Make sure call status returns 200, else, print the error message for the user.
+  if (call$status_code != 200) {
+    msg <- content(call, as = "text")
+
+    if (grepl("The requested resource is not available", msg)) {
+      stop("One or more of your requested variables is likely not available at the requested geography.  Please refine your selection.", call. = FALSE)
+    } else {
+      stop(sprintf("Your API call has errors.  The API message returned is %s.", msg), call. = FALSE)
+    }
+
+  }
+
+  # callStatus <- http_status(call)
+  # if (callStatus$reason != "OK") {
+  #   message(callStatus$category, " ", callStatus$reason, " ", callStatus$message)
+  # } else {
+  #   content <- content(call, as = "text")
+  # }
+  #
+  # validate_call(content = content, geography = geography, year = year,
+  #               dataset = survey)
+
+  content <- content(call, as = "text")
+
+  if (grepl("You included a key with this request", content)) {
+    stop("You have supplied an invalid or inactive API key. To obtain a valid API key, visit https://api.census.gov/data/key_signup.html. To activate your key, be sure to click the link provided to you in the email from the Census Bureau that contained your key.", call. = FALSE)
+  }
+
+  dat <- fromJSON(content)
+
+  colnames(dat) <- dat[1,]
+
+  dat <- as_tibble(dat)
+
+  dat <- dat[-1,]
+
+  var_vector <- unlist(strsplit(formatted_variables, split = ","))
+
+  dat[var_vector] <- lapply(dat[var_vector], as.numeric)
+
+  v2 <- c(var_vector, "NAME")
+
+  # Get the geography ID variables
+  id_vars <- names(dat)[! names(dat) %in% v2]
+
+  # Paste into a GEOID column
+  dat$GEOID <- do.call(paste0, dat[id_vars])
+
+  # Now, remove them
+  dat <- dat[, !(names(dat) %in% id_vars)]
+
+  return(dat)
+
+}
+
+
+load_data_decennial <- function(geography, variables, key, year, sumfile,
+                                state = NULL, county = NULL, show_call = FALSE) {
+
+
+  var <- paste0(variables, collapse = ",")
+
+  if (year == 1990) {
+    vars_to_get <- paste0(var, ",ANPSADPI")
+  } else {
+    vars_to_get <- paste0(var, ",NAME")
+  }
 
 
 ```
