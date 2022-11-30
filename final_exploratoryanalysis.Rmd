@@ -152,6 +152,7 @@ nyc_acs_data <- get_acs(state = "ny",
                geometry = TRUE,
                survey = "acs5") %>% 
   filter(str_detect(NAME, c("Bronx County", "Kings County", "Richmond County", "Queens County", "New York County"))) 
+
 ```
 
 **ACS individual year pull, no function**
@@ -161,7 +162,7 @@ library(tidycensus)
 library(sf)
 library(scales)
 #2016
-acs_ny_2016 <- get_acs(
+acs_ny_2016 <- get_acs( state = "ny",
   geography = "zcta", 
   variables = c(med_income = "B19013_001",
                 total_pop = "B01003_001", 
@@ -172,15 +173,14 @@ acs_ny_2016 <- get_acs(
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
                 other = "B02001_007"
-                ),
-  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
-  year = 2016
-) %>%
-  filter(str_detect(GEOID, "^36")) %>%
+                ),               
+  survey = "acs5", 
+  year = 2016) %>% 
+filter(str_detect(GEOID, "^10|^11")) %>%
   tibble::add_column(year = 2016)
   
 #2017
-acs_ny_2017 <- get_acs(
+acs_ny_2017 <- get_acs( state = "ny",
   geography = "zcta", 
   variables = c(med_income = "B19013_001",
                 total_pop = "B01003_001", 
@@ -191,14 +191,14 @@ acs_ny_2017 <- get_acs(
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
                 other = "B02001_007"
-                ),
-  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
-  year = 2017
-) %>%
-  filter(str_detect(GEOID, "^36")) %>%
+                ),               
+  survey = "acs5", 
+  year = 2017) %>% 
+filter(str_detect(GEOID, "^10|^11")) %>%
   tibble::add_column(year = 2017)
+
 #2018
-acs_ny_2018 <- get_acs(
+acs_ny_2018 <- get_acs( state = "ny",
   geography = "zcta", 
   variables = c(med_income = "B19013_001",
                 total_pop = "B01003_001", 
@@ -209,14 +209,14 @@ acs_ny_2018 <- get_acs(
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
                 other = "B02001_007"
-                ),
-  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
-  year = 2018
-) %>%
-  filter(str_detect(GEOID, "^36")) %>%
+                ),               
+  survey = "acs5", 
+  year = 2018) %>% 
+filter(str_detect(GEOID, "^10|^11")) %>%
   tibble::add_column(year = 2018)
+
 #2019
-acs_ny_2019 <- get_acs(
+acs_ny_2019 <- get_acs( state = "ny",
   geography = "zcta", 
   variables = c(med_income = "B19013_001",
                 total_pop = "B01003_001", 
@@ -227,12 +227,12 @@ acs_ny_2019 <- get_acs(
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
                 other = "B02001_007"
-                ),
-  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
-  year = 2019
-) %>%
-  filter(str_detect(GEOID, "^36")) %>%
+                ),               
+  survey = "acs5", 
+  year = 2019) %>% 
+filter(str_detect(GEOID, "^10|^11")) %>%
   tibble::add_column(year = 2019)
+
 #2020
 acs_ny_2020 <- get_acs(
   geography = "zcta", 
@@ -245,18 +245,17 @@ acs_ny_2020 <- get_acs(
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
                 other = "B02001_007"
-                ),
-  survey = "acs5", #pulls data from 2016-2020 so we have a cross section of 5 years
-  year = 2020
-) %>%
-  filter(str_detect(GEOID, "^36")) %>%
+                ),               
+  survey = "acs5", 
+  year = 2020) %>% 
+filter(str_detect(GEOID, "^10|^11")) %>%
   tibble::add_column(year = 2020)
 
-acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs_ny_2020) %>% #there are 153 zctas with estimate NA's
+acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs_ny_2020) %>% #there are 254 zctas with estimate NA's
   janitor::clean_names() %>%
   write_csv("data/acs_ny_combined.csv")
 
-#  drop_na(estimate) #if we want to drop the 153 NA's but check what the mapping looks like
+ # drop_na(estimate) #if we want to drop the 254 NA's but check what the mapping looks like
 
 
 #acs_ny_comb %>%
