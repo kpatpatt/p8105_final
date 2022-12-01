@@ -25,6 +25,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r load datasets}
+menustat_df = read_csv("data/menustat_combined.csv")
+rest_locations = read_csv("data/restaurant_location.csv") 
+```
+
 # Box plot of nutritional content by restaurant type across combined years (2008-2020)
 
 ```{r}
@@ -390,5 +395,12 @@ menustat_df %>%
     title = "Distribution of Calories By Food Category")
   
 # why are there NAs 
+```
+
+# counts
+```{r}
+menustat_df %>%
+  group_by(rest_type) %>%
+  count()
 ```
 
