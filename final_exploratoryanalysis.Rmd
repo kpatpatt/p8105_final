@@ -1,6 +1,6 @@
 ---
 title: "final_exploratoryanalysis"
-author: "Kevin P. Patterson"
+author: 
 date: "2022-11-13"
 output: html_document
 ---
@@ -23,10 +23,10 @@ knitr::opts_chunk$set(
   fig.height = 6,
   out.width = "90%"
 )
-
 ```
 
-```{r load data}
+```{r load and tidy data}
+#loading in 11 files
 data2008 = read_excel((file = "data/annual_data2008.xlsx"), col_types = "text")
 data2010 = read_excel((file = "data/annual_data2010.xlsx"), col_types = "text") 
 data2012 = read_excel((file = "data/annual_data2012.xlsx"), col_types = "text") 
@@ -38,10 +38,11 @@ data2017 = read_excel((file = "data/annual_data2017.xlsx"), col_types = "text")
 data2018 = read_excel((file = "data/annual_data2018.xlsx"), col_types = "text")
 data2019 = read_excel((file = "data/annual_data2019.xlsx"), col_types = "text")
 data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
-    
-  menustat_df = bind_rows(data2008, data2010, data2012, data2013, data2014, data2015, data2016, data2017, data2018, data2019, data2020) %>% 
+
+#clean and tidy   
+menustat_df = bind_rows(data2008, data2010, data2012, data2013, data2014, data2015, data2016, data2017, data2018, data2019, data2020) %>% 
   janitor::clean_names() %>% 
-    mutate( 
+  mutate(
     year = as.numeric(year), 
     serving_size = as.numeric(serving_size), 
     calories = as.numeric(calories), 
@@ -66,19 +67,26 @@ data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
     protein_100g = as.numeric(protein_100g), 
     sugar_100g = as.numeric(sugar_100g), 
     dietary_fiber_100g = as.numeric(dietary_fiber_100g)
-      ) %>% 
-    mutate(rest_type = 
-             case_when(restaurant == "Culver's" | restaurant == "Subway" | restaurant == "Tim Hortons" | restaurant == "Taco Bell" | restaurant == "Arby's" | restaurant == "Whataburger" | restaurant == "White Castle" | restaurant == "Bojangles" | restaurant == "Burger King" | restaurant == "Captain D's" | restaurant == "Carl's Jr." | restaurant == "Chick-Fil-A" | restaurant == "Chipotle" | restaurant == "Church's Chicken" | restaurant == "Ci Ci's Pizza" | restaurant == "Dairy Queen" | restaurant == "Del Taco" | restaurant == "Dominos" | restaurant == "Einstein Bros" | restaurant == "El Pollo Loco" | restaurant == "Hardee's" | restaurant == "In-N-Out Burger" | restaurant == "Jack in the Box" | restaurant == "Jason's Deli" | restaurant == "KFC" | restaurant == "Krystal" | restaurant == "Little Caesars" | restaurant == "Long John Silver's" | restaurant == "McDonald's" | restaurant == "Panda Express" | restaurant == "Panera Bread" | restaurant == "Papa John's" | restaurant == "Papa Murphy's" | restaurant == "Pizza Hut" | restaurant == "Popeyes" | restaurant == "Quiznos" | restaurant == "Sonic" | restaurant == "Wendy's" | restaurant == "Zaxby's" | restaurant == "Checker's Drive-In/Rallys" | restaurant == "Five Guys" | restaurant == "Qdoba" | restaurant == "Sbarro" | restaurant == "Auntie Anne's" | restaurant == "Firehouse Subs" | restaurant == "McAlister's Deli" | restaurant == "Moe's Southwest Grill" | restaurant == "Wingstop" | restaurant == "Frisch's Big Boy" | restaurant == "Potbelly Sandwich Shop" | restaurant == "Freddy's Frozen Custard & Steakburgers" | restaurant == "Raising Cane's Chicken Fingers" | restaurant == "Shake Shack" | restaurant ==  "Jimmy John's" | restaurant == "Jersey Mike's" | restaurant ==  "Noodles & Company" | restaurant == "Portillo's" | restaurant == "Marco's Pizza" ~ "fast food", restaurant == "Friendly's" | restaurant == "Romano's Macaroni Grill" | restaurant == "Applebee's" | restaurant == "Bob Evans" | restaurant == "Boston Market" | restaurant == "Chili's" | restaurant == "Denny's" | restaurant == "Golden Corral" | restaurant == "O'Charley's" | restaurant == "Olive Garden" | restaurant == "PF Chang's" | restaurant == "Red Lobster" | restaurant == "Ruby Tuesday" | restaurant == "Steak 'N Shake" | restaurant == "California Pizza Kitchen" | restaurant == "IHOP" | restaurant == "LongHorn Steakhouse" | restaurant == "Outback Steakhouse" | restaurant == "TGI Friday's" | restaurant == "Carrabba's Italian Grill" | restaurant == "Chuck E. Cheese" | restaurant == "On the Border" | restaurant == "Perkins" | restaurant == "Red Robin" | restaurant == "Bonefish Grill" | restaurant == "Yard House" | restaurant == "Joe's Crab Shack" | restaurant == "BJ's Restaurant & Brewhouse" | restaurant == "Famous Dave's" | restaurant == "Round Table Pizza" | restaurant == "Hooters" | restaurant == "The Capital Grille" | restaurant == "Dickey's Barbeque Pit" | restaurant == "Buffalo Wild Wings" |restaurant == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | restaurant == "Cracker Barrel" | restaurant == "Dave & Buster's" | restaurant == "Logans Roadhouse" | restaurant == "The Cheesecake Factory" | restaurant == "Waffle House" ~ "sit-down", restaurant == "Starbucks" | restaurant == "Baskin Robbins" | restaurant == "Dunkin' Donuts" | restaurant == "Jamba Juice" | restaurant == "Krispy Kreme" | restaurant == "Tropical Smoothie Café" ~ "beverages_dessert", restaurant == "7 Eleven" | restaurant == "Casey's General Store" | restaurant == "Sheetz" | restaurant == "Wawa" ~ "convenience")) %>% 
-    mutate(rest_type = as.factor(rest_type)) %>% 
-    select(restaurant, rest_type, year, menu_item_id, food_category, item_name, item_description, serving_size, serving_size_unit, everything()) %>% 
-    drop_na(calories, total_fat, sodium, carbohydrates, sugar) %>% 
-    mutate(food_category = 
+    ) %>% 
+  mutate(
+    rest_type = case_when(restaurant == "Culver's" | restaurant == "Subway" | restaurant == "Tim Hortons" | restaurant == "Taco Bell" | restaurant == "Arby's" | restaurant == "Whataburger" | restaurant == "White Castle" | restaurant == "Bojangles" | restaurant == "Burger King" | restaurant == "Captain D's" | restaurant == "Carl's Jr." | restaurant == "Chick-Fil-A" | restaurant == "Chipotle" | restaurant == "Church's Chicken" | restaurant == "Ci Ci's Pizza" | restaurant == "Dairy Queen" | restaurant == "Del Taco" | restaurant == "Dominos" | restaurant == "Einstein Bros" | restaurant == "El Pollo Loco" | restaurant == "Hardee's" | restaurant == "In-N-Out Burger" | restaurant == "Jack in the Box" | restaurant == "Jason's Deli" | restaurant == "KFC" | restaurant == "Krystal" | restaurant == "Little Caesars" | restaurant == "Long John Silver's" | restaurant == "McDonald's" | restaurant == "Panda Express" | restaurant == "Panera Bread" | restaurant == "Papa John's" | restaurant == "Papa Murphy's" | restaurant == "Pizza Hut" | restaurant == "Popeyes" | restaurant == "Quiznos" | restaurant == "Sonic" | restaurant == "Wendy's" | restaurant == "Zaxby's" | restaurant == "Checker's Drive-In/Rallys" | restaurant == "Five Guys" | restaurant == "Qdoba" | restaurant == "Sbarro" | restaurant == "Auntie Anne's" | restaurant == "Firehouse Subs" | restaurant == "McAlister's Deli" | restaurant == "Moe's Southwest Grill" | restaurant == "Wingstop" | restaurant == "Frisch's Big Boy" | restaurant == "Potbelly Sandwich Shop" | restaurant == "Freddy's Frozen Custard & Steakburgers" | restaurant == "Raising Cane's Chicken Fingers" | restaurant == "Shake Shack" | restaurant ==  "Jimmy John's" | restaurant == "Jersey Mike's" | restaurant ==  "Noodles & Company" | restaurant == "Portillo's" | restaurant == "Marco's Pizza" ~ "fast food", #fast food
+                          restaurant == "Friendly's" | restaurant == "Romano's Macaroni Grill" | restaurant == "Applebee's" | restaurant == "Bob Evans" | restaurant == "Boston Market" | restaurant == "Chili's" | restaurant == "Denny's" | restaurant == "Golden Corral" | restaurant == "O'Charley's" | restaurant == "Olive Garden" | restaurant == "PF Chang's" | restaurant == "Red Lobster" | restaurant == "Ruby Tuesday" | restaurant == "Steak 'N Shake" | restaurant == "California Pizza Kitchen" | restaurant == "IHOP" | restaurant == "LongHorn Steakhouse" | restaurant == "Outback Steakhouse" | restaurant == "TGI Friday's" | restaurant == "Carrabba's Italian Grill" | restaurant == "Chuck E. Cheese" | restaurant == "On the Border" | restaurant == "Perkins" | restaurant == "Red Robin" | restaurant == "Bonefish Grill" | restaurant == "Yard House" | restaurant == "Joe's Crab Shack" | restaurant == "BJ's Restaurant & Brewhouse" | restaurant == "Famous Dave's" | restaurant == "Round Table Pizza" | restaurant == "Hooters" | restaurant == "The Capital Grille" | restaurant == "Dickey's Barbeque Pit" | restaurant == "Buffalo Wild Wings" |restaurant == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | restaurant == "Cracker Barrel" | restaurant == "Dave & Buster's" | restaurant == "Logans Roadhouse" | restaurant == "The Cheesecake Factory" | restaurant == "Waffle House" ~ "sit-down", #sit down
+                          restaurant == "Starbucks" | restaurant == "Baskin Robbins" | restaurant == "Dunkin' Donuts" | restaurant == "Jamba Juice" | restaurant == "Krispy Kreme" | restaurant == "Tropical Smoothie Café" ~ "beverages_dessert", #beverages and dessert
+                          restaurant == "7 Eleven" | restaurant == "Casey's General Store" | restaurant == "Sheetz" | restaurant == "Wawa" ~ "convenience") #convenience stores
+    ) %>% 
+  mutate(
+    rest_type = as.factor(rest_type)) %>% 
+  select(
+    restaurant, rest_type, year, menu_item_id, food_category, item_name, item_description, serving_size, serving_size_unit, everything()
+    ) %>% 
+  drop_na(calories, total_fat, sodium, carbohydrates, sugar) %>% ## Dropping NAs took us from 274005 obs to 217653 obs
+  mutate(
+    food_category = 
       recode(food_category, "Sandwich" = "Sandwiches", "Desserets" = "Desserts", "Dessets" = "Desserts")
-    )
-  
-## Dropping NAs took us from 274005 obs to 217653 obs 
-  
-  summary(menustat_df)
+    ) %>%
+  write_csv("data/menustat_combined.csv")
+
+summary(menustat_df)
 ```
 
 ## Restaurant inspections data
@@ -86,10 +94,25 @@ data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
 ```{r}
 restaurant_address = read_csv('data/Restaurants__rolled_up_.csv') %>% 
   janitor::clean_names() %>% 
-  filter(dba == "Culver's" | dba == "SUBWAY" | dba == "TIM HORTONS" | dba == "TACO BELL" | dba == "ARBY'S" | dba == "Whataburger" | dba == "WHITE CASTLE" | dba == "Bojangles" | dba == "BURGER KING" | dba == "Captain D's" | dba == "Carl's Jr." | dba == "CHICK-FIL-A" | dba == "CHIPOTLE MEXICAN GRILL" | dba == "Church's Chicken" | dba == "Ci Ci's Pizza" | dba == "DAIRY QUEEN GRILL & CHILL" | dba == "DEL TACO" | dba == "DOMINOS" | dba == "Einstein Bros" | dba == "EL POLLO LOCO" | dba == "HARDEE" | dba == "IN-N-OUT" | dba == "Jack in the Box" | dba == "Jason's Deli" | dba == "KFC" | dba == "Krystal" | dba == "LITTLE CAESARS" | dba == "Long John Silver's" | dba == "MCDONALD'S" | dba == "PANDA EXPRESS" | dba == "PANERA BREAD" | dba == "PAPA JOHN'S" | dba == "Papa Murphy's" | dba == "PIZZA HUT" | dba == "Pizza Hut" | dba == "POPEYES" | dba == "POPEYE'S" | dba == "Quiznos" | dba == "SONIC" | dba == "WENDY'S" | dba == "Zaxby's" | dba == "CHECKERS" | dba == "FIVE GUYS FAMOUS BURGERS AND FRIES" | dba == "QDOBA" | dba == "SBARRO" | dba == "AUNTIE ANNE'S PRETZELS" | dba == "AUNTIE ANNES" | dba == "Firehouse Subs" | dba == "McAlister's Deli" | dba == "MOE'S SOUTHWEST GRILL" | dba == "WINGSTOP" | dba == "WingStop" |dba == "Frisch's Big Boy" | dba == "POTBELLY SANDWICH" | dba == "FREDDY'S" | dba == "Raising Cane's Chicken Fingers" | dba == "SHAKE SHACK" | dba == "JIMMY JOHNS" | dba == "JERSEY MIKE'S" | dba == "Jersey Mike's" | dba == "Noodles & Company" | dba == "Portillo's" | dba == "MARCO'S" | dba == "Friendly's" | dba == "Romano's Macaroni Grill" | dba == "APPLEBEE'S" | dba == "APPLEBEES" | dba == "Bob Evans" | dba == "BOSTON MARKET" | dba == "CHILI'S" | dba == "Denny's" | dba == "Golden Corral" | dba == "O'Charley's" | dba == "Olive Garden" | dba == "P.F.CHANG'S" | dba == "RED LOBSTER" | dba == "Ruby Tuesday" | dba == "Steak 'N Shake" | dba == "CALIFORNIA PIZZA KITCHEN" | dba == "IHOP" | dba == "LONGHORN STEAKHOUSE" | dba == "OUTBACK STEAKHOUSE" | dba == "TGI FRIDAY'S" | dba == "Carrabba's Italian Grill" | dba == "CHUCK E. CHEESE'S" | dba == "On the Border" | dba == "PERKINS RESTAURANT & BAKERY" | dba == "Red Robin" | dba == "Bonefish Grill" | dba == "YARD HOUSE" | dba == "Joe's Crab Shack" | dba == "BJ's Restaurant & Brewhouse" | dba == "Famous Dave's" | dba == "Round Table Pizza" | dba == "HOOTERS" | dba == "THE CAPITAL GRILLE" | dba == "DICKEY'S BARBEQUE PIT" | dba == "BUFFALO WILD WINGS" |dba == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | dba == "Cracker Barrel" | dba == "DAVE & BUSTER'S" | dba == "Logans Roadhouse" | dba == "THE CHEESECAKE FACTORY" | dba == "WAFFLE HOUSE" | dba == "STARBUCKS COFFEE" | dba == "BASKIN ROBBINS" | dba == "DUNKIN’" | dba == "JAMBA JUICE" | dba == "KRISPY KREME" | dba == "TROPICAL SMOOTHIE CAFE") %>%
-     mutate(rest_type = 
-             case_when(dba == "Culver's" | dba == "SUBWAY" | dba == "TIM HORTONS" | dba == "TACO BELL" | dba == "ARBY'S" | dba == "Whataburger" | dba == "WHITE CASTLE" | dba == "Bojangles" | dba == "BURGER KING" | dba == "Captain D's" | dba == "Carl's Jr." | dba == "CHICK-FIL-A" | dba == "CHIPOTLE MEXICAN GRILL" | dba == "Church's Chicken" | dba == "Ci Ci's Pizza" | dba == "DAIRY QUEEN GRILL & CHILL" | dba == "DEL TACO" | dba == "DOMINOS" | dba == "Einstein Bros" | dba == "EL POLLO LOCO" | dba == "HARDEE" | dba == "IN-N-OUT" | dba == "Jack in the Box" | dba == "Jason's Deli" | dba == "KFC" | dba == "Krystal" | dba == "LITTLE CAESARS" | dba == "Long John Silver's" | dba == "MCDONALD'S" | dba == "PANDA EXPRESS" | dba == "PANERA BREAD" | dba == "PAPA JOHN'S" | dba == "Papa Murphy's" | dba == "PIZZA HUT" | dba == "Pizza Hut" | dba == "POPEYES" | dba == "POPEYE'S" | dba == "Quiznos" | dba == "SONIC" | dba == "WENDY'S" | dba == "Zaxby's" | dba == "CHECKERS" | dba == "FIVE GUYS FAMOUS BURGERS AND FRIES" | dba == "QDOBA" | dba == "SBARRO" | dba == "AUNTIE ANNE'S PRETZELS" | dba == "AUNTIE ANNES" | dba == "Firehouse Subs" | dba == "McAlister's Deli" | dba == "MOE'S SOUTHWEST GRILL" | dba == "WINGSTOP" | dba == "WingStop" |dba == "Frisch's Big Boy" | dba == "POTBELLY SANDWICH" | dba == "FREDDY'S" | dba == "Raising Cane's Chicken Fingers" | dba == "SHAKE SHACK" | dba == "JIMMY JOHNS" | dba == "JERSEY MIKE'S" | dba == "Jersey Mike's" | dba == "Noodles & Company" | dba == "Portillo's" | dba == "MARCO'S" ~ "fast food", dba == "Friendly's" | dba == "Romano's Macaroni Grill" | dba == "APPLEBEE'S" | dba == "APPLEBEES" | dba == "Bob Evans" | dba == "BOSTON MARKET" | dba == "CHILI'S" | dba == "Denny's" | dba == "Golden Corral" | dba == "O'Charley's" | dba == "Olive Garden" | dba == "P.F.CHANG'S" | dba == "RED LOBSTER" | dba == "Ruby Tuesday" | dba == "Steak 'N Shake" | dba == "CALIFORNIA PIZZA KITCHEN" | dba == "IHOP" | dba == "LONGHORN STEAKHOUSE" | dba == "OUTBACK STEAKHOUSE" | dba == "TGI FRIDAY'S" | dba == "Carrabba's Italian Grill" | dba == "CHUCK E. CHEESE'S" | dba == "On the Border" | dba == "PERKINS RESTAURANT & BAKERY" | dba == "Red Robin" | dba == "Bonefish Grill" | dba == "YARD HOUSE" | dba == "Joe's Crab Shack" | dba == "BJ's Restaurant & Brewhouse" | dba == "Famous Dave's" | dba == "Round Table Pizza" | dba == "HOOTERS" | dba == "THE CAPITAL GRILLE" | dba == "DICKEY'S BARBEQUE PIT" | dba == "BUFFALO WILD WINGS" |dba == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | dba == "Cracker Barrel" | dba == "DAVE & BUSTER'S" | dba == "Logans Roadhouse" | dba == "THE CHEESECAKE FACTORY" | dba == "WAFFLE HOUSE" ~ "sit-down", dba == "STARBUCKS COFFEE" | dba == "BASKIN ROBBINS" | dba == "DUNKIN’" | dba == "JAMBA JUICE" | dba == "KRISPY KREME" | dba == "TROPICAL SMOOTHIE CAFE" ~ "beverages_dessert", dba == "7 Eleven" | dba == "Casey's General Store" | dba == "Sheetz" | dba == "Wawa" ~ "convenience")) %>% 
-    mutate(rest_type = as.factor(rest_type)) 
+  filter(
+    dba == "Culver's" | dba == "SUBWAY" | dba == "TIM HORTONS" | dba == "TACO BELL" | dba == "ARBY'S" | dba == "Whataburger" | dba == "WHITE CASTLE" | dba == "Bojangles" | dba == "BURGER KING" | dba == "Captain D's" | dba == "Carl's Jr." | dba == "CHICK-FIL-A" | dba == "CHIPOTLE MEXICAN GRILL" | dba == "Church's Chicken" | dba == "Ci Ci's Pizza" | dba == "DAIRY QUEEN GRILL & CHILL" | dba == "DEL TACO" | dba == "DOMINOS" | dba == "Einstein Bros" | dba == "EL POLLO LOCO" | dba == "HARDEE" | dba == "IN-N-OUT" | dba == "Jack in the Box" | dba == "Jason's Deli" | dba == "KFC" | dba == "Krystal" | dba == "LITTLE CAESARS" | dba == "Long John Silver's" | dba == "MCDONALD'S" | dba == "PANDA EXPRESS" | dba == "PANERA BREAD" | dba == "PAPA JOHN'S" | dba == "Papa Murphy's" | dba == "PIZZA HUT" | dba == "Pizza Hut" | dba == "POPEYES" | dba == "POPEYE'S" | dba == "Quiznos" | dba == "SONIC" | dba == "WENDY'S" | dba == "Zaxby's" | dba == "CHECKERS" | dba == "FIVE GUYS FAMOUS BURGERS AND FRIES" | dba == "QDOBA" | dba == "SBARRO" | dba == "AUNTIE ANNE'S PRETZELS" | dba == "AUNTIE ANNES" | dba == "Firehouse Subs" | dba == "McAlister's Deli" | dba == "MOE'S SOUTHWEST GRILL" | dba == "WINGSTOP" | dba == "WingStop" |dba == "Frisch's Big Boy" | dba == "POTBELLY SANDWICH" | dba == "FREDDY'S" | dba == "Raising Cane's Chicken Fingers" | dba == "SHAKE SHACK" | dba == "JIMMY JOHNS" | dba == "JERSEY MIKE'S" | dba == "Jersey Mike's" | dba == "Noodles & Company" | dba == "Portillo's" | dba == "MARCO'S" | dba == "Friendly's" | dba == "Romano's Macaroni Grill" | dba == "APPLEBEE'S" | dba == "APPLEBEES" | dba == "Bob Evans" | dba == "BOSTON MARKET" | dba == "CHILI'S" | dba == "Denny's" | dba == "Golden Corral" | dba == "O'Charley's" | dba == "Olive Garden" | dba == "P.F.CHANG'S" | dba == "RED LOBSTER" | dba == "Ruby Tuesday" | dba == "Steak 'N Shake" | dba == "CALIFORNIA PIZZA KITCHEN" | dba == "IHOP" | dba == "LONGHORN STEAKHOUSE" | dba == "OUTBACK STEAKHOUSE" | dba == "TGI FRIDAY'S" | dba == "Carrabba's Italian Grill" | dba == "CHUCK E. CHEESE'S" | dba == "On the Border" | dba == "PERKINS RESTAURANT & BAKERY" | dba == "Red Robin" | dba == "Bonefish Grill" | dba == "YARD HOUSE" | dba == "Joe's Crab Shack" | dba == "BJ's Restaurant & Brewhouse" | dba == "Famous Dave's" | dba == "Round Table Pizza" | dba == "HOOTERS" | dba == "THE CAPITAL GRILLE" | dba == "DICKEY'S BARBEQUE PIT" | dba == "BUFFALO WILD WINGS" |dba == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | dba == "Cracker Barrel" | dba == "DAVE & BUSTER'S" | dba == "Logans Roadhouse" | dba == "THE CHEESECAKE FACTORY" | dba == "WAFFLE HOUSE" | dba == "STARBUCKS COFFEE" | dba == "BASKIN ROBBINS" | dba == "DUNKIN’" | dba == "JAMBA JUICE" | dba == "KRISPY KREME" | dba == "TROPICAL SMOOTHIE CAFE"
+    ) %>%
+  mutate(
+    rest_type = 
+      case_when(dba == "Culver's" | dba == "SUBWAY" | dba == "TIM HORTONS" | dba == "TACO BELL" | dba == "ARBY'S" | dba == "Whataburger" | dba == "WHITE CASTLE" | dba == "Bojangles" | dba == "BURGER KING" | dba == "Captain D's" | dba == "Carl's Jr." | dba == "CHICK-FIL-A" | dba == "CHIPOTLE MEXICAN GRILL" | dba == "Church's Chicken" | dba == "Ci Ci's Pizza" | dba == "DAIRY QUEEN GRILL & CHILL" | dba == "DEL TACO" | dba == "DOMINOS" | dba == "Einstein Bros" | dba == "EL POLLO LOCO" | dba == "HARDEE" | dba == "IN-N-OUT" | dba == "Jack in the Box" | dba == "Jason's Deli" | dba == "KFC" | dba == "Krystal" | dba == "LITTLE CAESARS" | dba == "Long John Silver's" | dba == "MCDONALD'S" | dba == "PANDA EXPRESS" | dba == "PANERA BREAD" | dba == "PAPA JOHN'S" | dba == "Papa Murphy's" | dba == "PIZZA HUT" | dba == "Pizza Hut" | dba == "POPEYES" | dba == "POPEYE'S" | dba == "Quiznos" | dba == "SONIC" | dba == "WENDY'S" | dba == "Zaxby's" | dba == "CHECKERS" | dba == "FIVE GUYS FAMOUS BURGERS AND FRIES" | dba == "QDOBA" | dba == "SBARRO" | dba == "AUNTIE ANNE'S PRETZELS" | dba == "AUNTIE ANNES" | dba == "Firehouse Subs" | dba == "McAlister's Deli" | dba == "MOE'S SOUTHWEST GRILL" | dba == "WINGSTOP" | dba == "WingStop" |dba == "Frisch's Big Boy" | dba == "POTBELLY SANDWICH" | dba == "FREDDY'S" | dba == "Raising Cane's Chicken Fingers" | dba == "SHAKE SHACK" | dba == "JIMMY JOHNS" | dba == "JERSEY MIKE'S" | dba == "Jersey Mike's" | dba == "Noodles & Company" | dba == "Portillo's" | dba == "MARCO'S" ~ "fast food", 
+                dba == "Friendly's" | dba == "Romano's Macaroni Grill" | dba == "APPLEBEE'S" | dba == "APPLEBEES" | dba == "Bob Evans" | dba == "BOSTON MARKET" | dba == "CHILI'S" | dba == "Denny's" | dba == "Golden Corral" | dba == "O'Charley's" | dba == "Olive Garden" | dba == "P.F.CHANG'S" | dba == "RED LOBSTER" | dba == "Ruby Tuesday" | dba == "Steak 'N Shake" | dba == "CALIFORNIA PIZZA KITCHEN" | dba == "IHOP" | dba == "LONGHORN STEAKHOUSE" | dba == "OUTBACK STEAKHOUSE" | dba == "TGI FRIDAY'S" | dba == "Carrabba's Italian Grill" | dba == "CHUCK E. CHEESE'S" | dba == "On the Border" | dba == "PERKINS RESTAURANT & BAKERY" | dba == "Red Robin" | dba == "Bonefish Grill" | dba == "YARD HOUSE" | dba == "Joe's Crab Shack" | dba == "BJ's Restaurant & Brewhouse" | dba == "Famous Dave's" | dba == "Round Table Pizza" | dba == "HOOTERS" | dba == "THE CAPITAL GRILLE" | dba == "DICKEY'S BARBEQUE PIT" | dba == "BUFFALO WILD WINGS" |dba == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | dba == "Cracker Barrel" | dba == "DAVE & BUSTER'S" | dba == "Logans Roadhouse" | dba == "THE CHEESECAKE FACTORY" | dba == "WAFFLE HOUSE" ~ "sit-down", 
+                dba == "STARBUCKS COFFEE" | dba == "BASKIN ROBBINS" | dba == "DUNKIN’" | dba == "JAMBA JUICE" | dba == "KRISPY KREME" | dba == "TROPICAL SMOOTHIE CAFE" ~ "beverages_dessert", 
+                dba == "7 Eleven" | dba == "Casey's General Store" | dba == "Sheetz" | dba == "Wawa" ~ "convenience")
+    ) %>% 
+  mutate(
+    rest_type = as.factor(rest_type)) %>%
+  rename(
+    "restaurant" = "dba"
+  ) %>%
+  select(
+    restaurant, rest_type, boro, zipcode
+    ) %>%
+  write_csv("data/restaurant_location.csv")
 ```
 
 
@@ -137,7 +160,6 @@ nyc_acs_data <- get_acs(state = "ny",
                geometry = TRUE,
                survey = "acs5") %>% 
   filter(str_detect(NAME, c("Bronx County", "Kings County", "Richmond County", "Queens County", "New York County"))) 
-
 ```
 
 **ACS individual year pull, no function**
@@ -240,8 +262,7 @@ acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs
   janitor::clean_names() %>%
   write_csv("data/acs_ny_combined.csv")
 
- # drop_na(estimate) #if we want to drop the 254 NA's but check what the mapping looks like
-
+# drop_na(estimate) #if we want to drop the 254 NA's but check what the mapping looks like
 
 #acs_ny_comb %>%
 #  summarise(across(everything(), ~sum(is.na(.x)))) %>%
@@ -252,406 +273,38 @@ acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs
 **ACS multi year pull through `map_dfr` function**
 ```{r}
 #years interested
-years <- lst(2016, 2017, 2018, 2019, 2020) 
+##years <- lst(2016, 2017, 2018, 2019, 2020) 
 #zctas
-my_zcta <- c("^ZCTA5 36")
+##my_zcta <- c("^ZCTA5 36")
 #variables
-my_vars <- c(med_income = "B19013_001",
-             total_pop = "B01003_001", 
-             race_total = "B02001_001", 
-             white = "B02001_002", 
-             black_aa = "B02001_003", 
-             ai_an = "B02001_004", 
-             asian = "B02001_005", 
-             hawaiian_pi = "B02001_006", 
-             other = "B02001_007"
-             )
-
-ny_acs <- map_dfr(
-  years,
-  ~ get_acs(
-      geography = "zcta", #idk why there is an error here after designating state and county as NULL
-      state = NULL,
-      county = NULL,
-      variables = my_vars,
-      zcta = my_zcta,
-      year = .x,
-      survey = "acs5"
-      ),
-  .id = "year"  # when combining results, add id var (name of list item)
-  ) %>%
-  
-  #arrange(variable, NAME) %>% 
-  print()
+##my_vars <- c(med_income = "B19013_001",
+##             total_pop = "B01003_001", 
+##             race_total = "B02001_001", 
+##             white = "B02001_002", 
+##             black_aa = "B02001_003", 
+##             ai_an = "B02001_004", 
+##             asian = "B02001_005", 
+##             hawaiian_pi = "B02001_006", 
+##             other = "B02001_007"
+##             )
+##
+##ny_acs <- map_dfr(
+##  years,
+##  ~ get_acs(
+##      geography = "zcta", #idk why there is an error here after designating state and county as NULL
+##      state = NULL,
+##      county = NULL,
+##      variables = my_vars,
+##      zcta = my_zcta,
+##      year = .x,
+##      survey = "acs5"
+##      ),
+##  .id = "year"  # when combining results, add id var (name of list item)
+##  ) %>%
+##  
+##  #arrange(variable, NAME) %>% 
+##  print()
 ```
-
-# Box plot of nutritional content by restaurant type across combined years (2008-2020)
-
-```{r}
-avg_cal =
-  menustat_df %>% 
-  group_by(rest_type) ##why am i getting an NA for restaurant type?
-
-avg_cal %>% 
-  ggplot(aes(x = rest_type, y = calories)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Calories Per Food Item",
-    title = "Distribution of Calories in Food Items Served by Restaurant Type") 
-
-
-## filter by nas just to see what is coming up as that for restaurant type 
-rest_type_na =
-  menustat_df %>% 
-  filter(
-    rest_type == ""
-  ) ## nothing...confused 
-```
-## what items are over 5500 calories each?
-
-```{r}
-cal_dense = 
-  avg_cal %>% 
-  mutate(
-    as.numeric(calories)
-  ) %>% 
-  filter(
-    calories > 5500
-  )
-
-fast_cal_dense = 
-  cal_dense %>% 
-  filter(
-    rest_type == "fast food"
-  ) %>% 
-  select(rest_type, item_name, calories)
-
-fast_cal_dense_plot =
-  fast_cal_dense %>% 
-  ggplot(aes(x = item_name, y = calories)) +
-  geom_col() +
-  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
-  labs(
-    x = "Item Name",
-    y = "Calories per Item",
-    title = "Food Items > 5500 calories in Fast Food Restaurants"
-  ) 
-
-fast_cal_dense_plot
-
-sit_cal_dense = 
-  cal_dense %>% 
-  filter(
-    rest_type == "sit-down"
-  ) %>% 
-  select(rest_type, item_name, calories)
-  
-sit_cal_dense_plot =
-sit_cal_dense %>% 
-  ggplot(aes(x = item_name, y = calories)) +
-  geom_col() +
-  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
-  labs(
-    x = "Item Name",
-    y = "Calories per Item",
-    title = "Food Items > 5500 calories in Sit-Down Restaurants"
-  ) 
-
-sit_cal_dense_plot
-
-(fast_cal_dense_plot + sit_cal_dense_plot)
-  
-cal_dense %>% 
-  ggplot(aes(x = item_name, y = calories, color = rest_type)) +
-  geom_point(alpha = .5) +
-  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
-  labs(
-    x = "Item Name",
-    y = "Calories per Item",
-    title = "Scatterplot of Food Items > 5500 calories "
-  ) 
-
-## again i think these would read better if interactive 
-```
-
-## let's look at if distribution of calories changed over the years (2008, 2012, 2016, 2020)
-
-### 2008
-```{r}
-cal_2008 =
-  avg_cal %>% 
-  filter(
-    year == "2008"
-  )
-
-cal_08_plot =
-  cal_2008 %>% 
-  ggplot(aes(x = rest_type, y = calories)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Calories Per Food Item",
-    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2008") 
-
-cal_08_plot
-
-cal_2012 =
-  avg_cal %>% 
-  filter(
-    year == "2012"
-  )
-
-cal_12_plot =
-  cal_2012 %>% 
-  ggplot(aes(x = rest_type, y = calories)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Calories Per Food Item",
-    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2012") 
-
-cal_12_plot
-
-cal_2016 =
-  avg_cal %>% 
-  filter(
-    year == "2016"
-  )
-
-cal_16_plot =
-  cal_2016 %>% 
-  ggplot(aes(x = rest_type, y = calories)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Calories Per Food Item",
-    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2016") 
-
-cal_16_plot
-
-cal_2020 =
-  avg_cal %>% 
-  filter(
-    year == "2020"
-  )
-
-cal_20_plot =
-  cal_2020 %>% 
-  ggplot(aes(x = rest_type, y = calories)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Calories Per Food Item",
-    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2020") 
-
-cal_20_plot
-
-(cal_08_plot +  cal_12_plot + cal_16_plot + cal_20_plot)
-
-## use patchwork to put all the years side by side 
-## i want this to be interactive so that people can hover and see what item is that many calories 
-## add another link on your personal website to mess around with the flex dashboard 
-```
-In 2008 see that the max calorie item recorded was almost 3000 cals. 
-In 2016 see the NAs come back....huh... 
-
-## boxplot of changing distribution of fat content over the years 
-
-```{r}
-fat_2008 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(trans_fat)
-  ) %>% 
-  filter(
-    year == "2008")
-
-  
-fat_08_plot =
-  fat_2008 %>% 
-  ggplot(aes(x = rest_type, y = trans_fat)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Trans Fat Per Food Item",
-    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2008") 
-
-fat_08_plot
-
-fat_2012 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(trans_fat)
-  ) %>% 
-  filter(
-    year == "2012")
-
-  
-fat_12_plot =
-  fat_2012 %>% 
-  ggplot(aes(x = rest_type, y = trans_fat)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Trans Fat Per Food Item",
-    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2012") 
-
-fat_12_plot
-
-
-fat_2016 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(trans_fat)
-  ) %>% 
-  filter(
-    year == "2016")
-
-  
-fat_16_plot =
-  fat_2016 %>% 
-  ggplot(aes(x = rest_type, y = trans_fat)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Trans Fat Per Food Item",
-    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2016") 
-
-fat_16_plot
-
-
-fat_2020 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(trans_fat)
-  ) %>% 
-  filter(
-    year == "2020")
-
-  
-fat_20_plot =
-  fat_2020 %>% 
-  ggplot(aes(x = rest_type, y = trans_fat)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Trans Fat Per Food Item",
-    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2020") 
-
-fat_20_plot
-
-
-(fat_08_plot +  fat_12_plot + fat_16_plot + fat_20_plot)
-```
-### boxplot of protein content over the years by restaurant type 
-
-```{r}
-prot_2008 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(protein)
-  ) %>% 
-  filter(
-    year == "2008")
-
-  
-prot_08_plot =
-  prot_2008 %>% 
-  ggplot(aes(x = rest_type, y = protein)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Protein Per Food Item",
-    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2008") 
-
-prot_08_plot
-
-prot_2012 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(protein)
-  ) %>% 
-  filter(
-    year == "2012")
-
-  
-prot_12_plot =
-  prot_2012 %>% 
-  ggplot(aes(x = rest_type, y = protein)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Protein Per Food Item",
-    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2012") 
-
-prot_12_plot
-
-
-prot_2016 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(protein)
-  ) %>% 
-  filter(
-    year == "2016")
-
-  
-prot_16_plot =
-  prot_2016 %>% 
-  ggplot(aes(x = rest_type, y = protein)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Protein Per Food Item",
-    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2016") 
-
-prot_16_plot
-
-
-prot_2020 = 
-  menustat_df %>% 
-  mutate(
-    as.numeric(protein)
-  ) %>% 
-  filter(
-    year == "2020")
-
-  
-prot_20_plot =
-  prot_2020 %>% 
-  ggplot(aes(x = rest_type, y = protein)) +
-  geom_boxplot() +
-  labs(
-    x = "Restaurant Type",
-    y = "Protein Per Food Item",
-    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2020") 
-
-prot_20_plot
-
-
-(prot_08_plot +  prot_12_plot + prot_16_plot + prot_20_plot)
-```
-
-# Box plots of nutritional content by food category across combined years (2008-2020)
-
-```{r}
-distinct_food_categ =
-  menustat_df %>% 
-  distinct(food_category)
-
-menustat_df %>% 
-  ggplot(aes(x = food_category, y = calories, fill = rest_type)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
-  labs(
-    x = "Food Category",
-    y = "Calories",
-    title = "Distribution of Calories By Food Category")
-  
-# why are there NAs 
-```
-
 
 
 
