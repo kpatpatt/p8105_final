@@ -71,7 +71,11 @@ data2020 = read_excel((file = "data/annual_data2020.xlsx"), col_types = "text")
              case_when(restaurant == "Culver's" | restaurant == "Subway" | restaurant == "Tim Hortons" | restaurant == "Taco Bell" | restaurant == "Arby's" | restaurant == "Whataburger" | restaurant == "White Castle" | restaurant == "Bojangles" | restaurant == "Burger King" | restaurant == "Captain D's" | restaurant == "Carl's Jr." | restaurant == "Chick-Fil-A" | restaurant == "Chipotle" | restaurant == "Church's Chicken" | restaurant == "Ci Ci's Pizza" | restaurant == "Dairy Queen" | restaurant == "Del Taco" | restaurant == "Dominos" | restaurant == "Einstein Bros" | restaurant == "El Pollo Loco" | restaurant == "Hardee's" | restaurant == "In-N-Out Burger" | restaurant == "Jack in the Box" | restaurant == "Jason's Deli" | restaurant == "KFC" | restaurant == "Krystal" | restaurant == "Little Caesars" | restaurant == "Long John Silver's" | restaurant == "McDonald's" | restaurant == "Panda Express" | restaurant == "Panera Bread" | restaurant == "Papa John's" | restaurant == "Papa Murphy's" | restaurant == "Pizza Hut" | restaurant == "Popeyes" | restaurant == "Quiznos" | restaurant == "Sonic" | restaurant == "Wendy's" | restaurant == "Zaxby's" | restaurant == "Checker's Drive-In/Rallys" | restaurant == "Five Guys" | restaurant == "Qdoba" | restaurant == "Sbarro" | restaurant == "Auntie Anne's" | restaurant == "Firehouse Subs" | restaurant == "McAlister's Deli" | restaurant == "Moe's Southwest Grill" | restaurant == "Wingstop" | restaurant == "Frisch's Big Boy" | restaurant == "Potbelly Sandwich Shop" | restaurant == "Freddy's Frozen Custard & Steakburgers" | restaurant == "Raising Cane's Chicken Fingers" | restaurant == "Shake Shack" | restaurant ==  "Jimmy John's" | restaurant == "Jersey Mike's" | restaurant ==  "Noodles & Company" | restaurant == "Portillo's" | restaurant == "Marco's Pizza" ~ "fast food", restaurant == "Friendly's" | restaurant == "Romano's Macaroni Grill" | restaurant == "Applebee's" | restaurant == "Bob Evans" | restaurant == "Boston Market" | restaurant == "Chili's" | restaurant == "Denny's" | restaurant == "Golden Corral" | restaurant == "O'Charley's" | restaurant == "Olive Garden" | restaurant == "PF Chang's" | restaurant == "Red Lobster" | restaurant == "Ruby Tuesday" | restaurant == "Steak 'N Shake" | restaurant == "California Pizza Kitchen" | restaurant == "IHOP" | restaurant == "LongHorn Steakhouse" | restaurant == "Outback Steakhouse" | restaurant == "TGI Friday's" | restaurant == "Carrabba's Italian Grill" | restaurant == "Chuck E. Cheese" | restaurant == "On the Border" | restaurant == "Perkins" | restaurant == "Red Robin" | restaurant == "Bonefish Grill" | restaurant == "Yard House" | restaurant == "Joe's Crab Shack" | restaurant == "BJ's Restaurant & Brewhouse" | restaurant == "Famous Dave's" | restaurant == "Round Table Pizza" | restaurant == "Hooters" | restaurant == "The Capital Grille" | restaurant == "Dickey's Barbeque Pit" | restaurant == "Buffalo Wild Wings" |restaurant == "Cheddar's Casual Café/Cheddar's Scratch Kitchen" | restaurant == "Cracker Barrel" | restaurant == "Dave & Buster's" | restaurant == "Logans Roadhouse" | restaurant == "The Cheesecake Factory" | restaurant == "Waffle House" ~ "sit-down", restaurant == "Starbucks" | restaurant == "Baskin Robbins" | restaurant == "Dunkin' Donuts" | restaurant == "Jamba Juice" | restaurant == "Krispy Kreme" | restaurant == "Tropical Smoothie Café" ~ "beverages_dessert", restaurant == "7 Eleven" | restaurant == "Casey's General Store" | restaurant == "Sheetz" | restaurant == "Wawa" ~ "convenience")) %>% 
     mutate(rest_type = as.factor(rest_type)) %>% 
     select(restaurant, rest_type, year, menu_item_id, food_category, item_name, item_description, serving_size, serving_size_unit, everything()) %>% 
-    drop_na(calories, total_fat, sodium, carbohydrates, sugar)
+    drop_na(calories, total_fat, sodium, carbohydrates, sugar) %>% 
+    mutate(food_category = 
+      recode(food_category, "Sandwich" = "Sandwiches", "Desserets" = "Desserts", "Dessets" = "Desserts")
+    )
+  
 ## Dropping NAs took us from 274005 obs to 217653 obs 
   
   summary(menustat_df)
@@ -300,3 +304,374 @@ ny_acs <- map_dfr(
   #arrange(variable, NAME) %>% 
   print()
 ```
+
+# Box plot of nutritional content by restaurant type across combined years (2008-2020)
+
+```{r}
+avg_cal =
+  menustat_df %>% 
+  group_by(rest_type) ##why am i getting an NA for restaurant type?
+
+avg_cal %>% 
+  ggplot(aes(x = rest_type, y = calories)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Calories Per Food Item",
+    title = "Distribution of Calories in Food Items Served by Restaurant Type") 
+
+
+## filter by nas just to see what is coming up as that for restaurant type 
+rest_type_na =
+  menustat_df %>% 
+  filter(
+    rest_type == ""
+  ) ## nothing...confused 
+```
+## what items are over 5500 calories each?
+
+```{r}
+cal_dense = 
+  avg_cal %>% 
+  mutate(
+    as.numeric(calories)
+  ) %>% 
+  filter(
+    calories > 5500
+  )
+
+fast_cal_dense = 
+  cal_dense %>% 
+  filter(
+    rest_type == "fast food"
+  ) %>% 
+  select(rest_type, item_name, calories)
+
+fast_cal_dense_plot =
+  fast_cal_dense %>% 
+  ggplot(aes(x = item_name, y = calories)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
+  labs(
+    x = "Item Name",
+    y = "Calories per Item",
+    title = "Food Items > 5500 calories in Fast Food Restaurants"
+  ) 
+
+fast_cal_dense_plot
+
+sit_cal_dense = 
+  cal_dense %>% 
+  filter(
+    rest_type == "sit-down"
+  ) %>% 
+  select(rest_type, item_name, calories)
+  
+sit_cal_dense_plot =
+sit_cal_dense %>% 
+  ggplot(aes(x = item_name, y = calories)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
+  labs(
+    x = "Item Name",
+    y = "Calories per Item",
+    title = "Food Items > 5500 calories in Sit-Down Restaurants"
+  ) 
+
+sit_cal_dense_plot
+
+(fast_cal_dense_plot + sit_cal_dense_plot)
+  
+cal_dense %>% 
+  ggplot(aes(x = item_name, y = calories, color = rest_type)) +
+  geom_point(alpha = .5) +
+  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
+  labs(
+    x = "Item Name",
+    y = "Calories per Item",
+    title = "Scatterplot of Food Items > 5500 calories "
+  ) 
+
+## again i think these would read better if interactive 
+```
+
+## let's look at if distribution of calories changed over the years (2008, 2012, 2016, 2020)
+
+### 2008
+```{r}
+cal_2008 =
+  avg_cal %>% 
+  filter(
+    year == "2008"
+  )
+
+cal_08_plot =
+  cal_2008 %>% 
+  ggplot(aes(x = rest_type, y = calories)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Calories Per Food Item",
+    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2008") 
+
+cal_08_plot
+
+cal_2012 =
+  avg_cal %>% 
+  filter(
+    year == "2012"
+  )
+
+cal_12_plot =
+  cal_2012 %>% 
+  ggplot(aes(x = rest_type, y = calories)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Calories Per Food Item",
+    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2012") 
+
+cal_12_plot
+
+cal_2016 =
+  avg_cal %>% 
+  filter(
+    year == "2016"
+  )
+
+cal_16_plot =
+  cal_2016 %>% 
+  ggplot(aes(x = rest_type, y = calories)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Calories Per Food Item",
+    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2016") 
+
+cal_16_plot
+
+cal_2020 =
+  avg_cal %>% 
+  filter(
+    year == "2020"
+  )
+
+cal_20_plot =
+  cal_2020 %>% 
+  ggplot(aes(x = rest_type, y = calories)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Calories Per Food Item",
+    title = "Distribution of Calories in Food Items Served by Restaurant Type in 2020") 
+
+cal_20_plot
+
+(cal_08_plot +  cal_12_plot + cal_16_plot + cal_20_plot)
+
+## use patchwork to put all the years side by side 
+## i want this to be interactive so that people can hover and see what item is that many calories 
+## add another link on your personal website to mess around with the flex dashboard 
+```
+In 2008 see that the max calorie item recorded was almost 3000 cals. 
+In 2016 see the NAs come back....huh... 
+
+## boxplot of changing distribution of fat content over the years 
+
+```{r}
+fat_2008 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(trans_fat)
+  ) %>% 
+  filter(
+    year == "2008")
+
+  
+fat_08_plot =
+  fat_2008 %>% 
+  ggplot(aes(x = rest_type, y = trans_fat)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Trans Fat Per Food Item",
+    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2008") 
+
+fat_08_plot
+
+fat_2012 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(trans_fat)
+  ) %>% 
+  filter(
+    year == "2012")
+
+  
+fat_12_plot =
+  fat_2012 %>% 
+  ggplot(aes(x = rest_type, y = trans_fat)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Trans Fat Per Food Item",
+    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2012") 
+
+fat_12_plot
+
+
+fat_2016 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(trans_fat)
+  ) %>% 
+  filter(
+    year == "2016")
+
+  
+fat_16_plot =
+  fat_2016 %>% 
+  ggplot(aes(x = rest_type, y = trans_fat)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Trans Fat Per Food Item",
+    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2016") 
+
+fat_16_plot
+
+
+fat_2020 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(trans_fat)
+  ) %>% 
+  filter(
+    year == "2020")
+
+  
+fat_20_plot =
+  fat_2020 %>% 
+  ggplot(aes(x = rest_type, y = trans_fat)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Trans Fat Per Food Item",
+    title = "Distribution of Trans Fat in Food Items Served by Restaurant Type in 2020") 
+
+fat_20_plot
+
+
+(fat_08_plot +  fat_12_plot + fat_16_plot + fat_20_plot)
+```
+### boxplot of protein content over the years by restaurant type 
+
+```{r}
+prot_2008 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(protein)
+  ) %>% 
+  filter(
+    year == "2008")
+
+  
+prot_08_plot =
+  prot_2008 %>% 
+  ggplot(aes(x = rest_type, y = protein)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Protein Per Food Item",
+    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2008") 
+
+prot_08_plot
+
+prot_2012 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(protein)
+  ) %>% 
+  filter(
+    year == "2012")
+
+  
+prot_12_plot =
+  prot_2012 %>% 
+  ggplot(aes(x = rest_type, y = protein)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Protein Per Food Item",
+    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2012") 
+
+prot_12_plot
+
+
+prot_2016 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(protein)
+  ) %>% 
+  filter(
+    year == "2016")
+
+  
+prot_16_plot =
+  prot_2016 %>% 
+  ggplot(aes(x = rest_type, y = protein)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Protein Per Food Item",
+    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2016") 
+
+prot_16_plot
+
+
+prot_2020 = 
+  menustat_df %>% 
+  mutate(
+    as.numeric(protein)
+  ) %>% 
+  filter(
+    year == "2020")
+
+  
+prot_20_plot =
+  prot_2020 %>% 
+  ggplot(aes(x = rest_type, y = protein)) +
+  geom_boxplot() +
+  labs(
+    x = "Restaurant Type",
+    y = "Protein Per Food Item",
+    title = "Distribution of Protein in Food Items Served by Restaurant Type in 2020") 
+
+prot_20_plot
+
+
+(prot_08_plot +  prot_12_plot + prot_16_plot + prot_20_plot)
+```
+
+# Box plots of nutritional content by food category across combined years (2008-2020)
+
+```{r}
+distinct_food_categ =
+  menustat_df %>% 
+  distinct(food_category)
+
+menustat_df %>% 
+  ggplot(aes(x = food_category, y = calories, fill = rest_type)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
+  labs(
+    x = "Food Category",
+    y = "Calories",
+    title = "Distribution of Calories By Food Category")
+  
+# why are there NAs 
+```
+
+
+
+
