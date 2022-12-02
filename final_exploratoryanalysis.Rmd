@@ -670,7 +670,3 @@ menustat_df %>%
   
 # why are there NAs 
 ```
-
-
-
-
