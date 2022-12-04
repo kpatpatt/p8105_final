@@ -1,0 +1,19 @@
+name: "P8105 Final Project"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "Project Report"
+      href: project_report.html
+    - text: "Data Pre-Processing"
+      href: data_processing.html
+    - text: "Exploratory Analysis"
+      href: EDA.html
+    - text: "Statistical Analysis"
+      href: statistical_analysis.html
+    - icon: fa-github fa-lg
+      href: http://github.com/kpatpatt/p8105_final
+    
+output:
+  html_document:
+    theme: cosmo
