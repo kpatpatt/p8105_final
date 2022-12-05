@@ -34,7 +34,8 @@ rest_locations = read_csv("data/restaurant_location.csv")
 
 ```{r}
 menustat_df %>% 
-  group_by(rest_type) %>%  ##why am i getting an NA for restaurant type?
+  group_by(rest_type) %>% ##why am i getting an NA for restaurant type?
+  drop_na(rest_type) %>% 
   ggplot(aes(x = rest_type, y = calories)) +
   geom_boxplot() +
   labs(
@@ -42,15 +43,11 @@ menustat_df %>%
     y = "Calories Per Food Item",
     title = "Distribution of Calories in Food Items Served by Restaurant Type") 
 
+menustat_df %>% 
+  distinct(rest_type)
 
-## filter by nas just to see what is coming up as that for restaurant type 
-rest_type_na =
-  menustat_df %>% 
-  filter(
-    rest_type == ""
-  ) ## nothing...confused 
 ```
-## what items are over 5500 calories each?
+## what items are over 5000 calories each?
 
 ```{r}
 cal_dense = 
@@ -59,7 +56,7 @@ cal_dense =
     as.numeric(calories)
   ) %>% 
   filter(
-    calories > 5500
+    calories > 5000
   )
 
 fast_cal_dense = 
@@ -97,7 +94,7 @@ sit_cal_dense %>%
   labs(
     x = "Item Name",
     y = "Calories per Item",
-    title = "Food Items > 5500 calories in Sit-Down Restaurants"
+    title = "Food Items > 5000 calories in Sit-Down Restaurants"
   ) 
 
 sit_cal_dense_plot
@@ -111,17 +108,22 @@ cal_dense %>%
   labs(
     x = "Item Name",
     y = "Calories per Item",
-    title = "Scatterplot of Food Items > 5500 calories "
+    title = "Scatterplot of Food Items > 5000 calories "
   ) 
 
-## again i think these would read better if interactive 
+## again i think these would read better if interactive -> look into making a flex dashboard that has more than 3 plots...
+## dropping out the items that are over 5000 calories each because these items are all meant to share and are not individual portion sizes having this many calories 
+
+final_cal_df = 
+  menustat_df %>% 
+  filter(calories <= 5000)
 ```
 
 ## let's look at if distribution of calories changed over the years (2008, 2012, 2016, 2020)
 
 ```{r}
 cal_2008 =
-  menustat_df %>% 
+  final_cal_df %>% 
   filter(
     year == "2008"
   )
@@ -138,7 +140,7 @@ cal_08_plot =
 cal_08_plot
 
 cal_2012 =
-  menustat_df %>% 
+  final_cal_df %>% 
   filter(
     year == "2012"
   )
@@ -155,7 +157,7 @@ cal_12_plot =
 cal_12_plot
 
 cal_2016 =
-  menustat_df %>% 
+  final_cal_df %>% 
   filter(
     year == "2016"
   )
@@ -172,7 +174,7 @@ cal_16_plot =
 cal_16_plot
 
 cal_2020 =
-  menustat_df %>% 
+  final_cal_df %>% 
   filter(
     year == "2020"
   )
@@ -201,7 +203,7 @@ In 2016 see the NAs come back....huh...
 
 ```{r}
 fat_2008 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(trans_fat)
   ) %>% 
@@ -221,7 +223,7 @@ fat_08_plot =
 fat_08_plot
 
 fat_2012 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(trans_fat)
   ) %>% 
@@ -242,7 +244,7 @@ fat_12_plot
 
 
 fat_2016 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(trans_fat)
   ) %>% 
@@ -263,7 +265,7 @@ fat_16_plot
 
 
 fat_2020 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(trans_fat)
   ) %>% 
@@ -289,7 +291,7 @@ fat_20_plot
 
 ```{r}
 prot_2008 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(protein)
   ) %>% 
@@ -309,7 +311,7 @@ prot_08_plot =
 prot_08_plot
 
 prot_2012 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(protein)
   ) %>% 
@@ -330,7 +332,7 @@ prot_12_plot
 
 
 prot_2016 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(protein)
   ) %>% 
@@ -351,7 +353,7 @@ prot_16_plot
 
 
 prot_2020 = 
-  menustat_df %>% 
+  final_cal_df %>% 
   mutate(
     as.numeric(protein)
   ) %>% 
@@ -378,10 +380,11 @@ prot_20_plot
 
 ```{r}
 distinct_food_categ =
-  menustat_df %>% 
+  final_cal_df %>% 
+  drop_na(rest_type) %>% 
   distinct(food_category)
 
-menustat_df %>% 
+final_cal_df %>% 
   ggplot(aes(x = food_category, y = calories, fill = rest_type)) +
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
@@ -398,5 +401,25 @@ menustat_df %>%
 menustat_df %>%
   group_by(rest_type) %>%
   count()
+```
+# Most Common Restaurant in New York City 
+
+```{r}
+rest_freq =
+  rest_locations %>% 
+  group_by(restaurant) %>% 
+  mutate(restaurant = recode(restaurant, "APPLEBEES" = "APPLEBEE'S", "AUNTIE ANNES" = "AUNTIE ANNE'S PRETZELS", "Pizza Hut" = "PIZZA HUT", "POPEYE'S" = "POPEYES", "WingStop" = "WINGSTOP"))
+  
+
+rest_freq %>% 
+  ggplot(aes(x = restaurant)) + 
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 65, hjust = 1, size = 6)) +
+  labs(
+    x = "Restaurant",
+    y = "Frequency",
+    title = "Most Common Restaurant Across New York City")
+  
+## put this in plotly with fill as zipcode and restaurant type...?
 ```
 
