@@ -1,0 +1,11 @@
+---
+title: "Exploratory Data Analysis"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme : cosmo
+---
+
+### Exploratory Data Analysis
+
