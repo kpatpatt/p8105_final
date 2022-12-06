@@ -14,7 +14,7 @@ menustat_df = read_csv("data/menustat_combined.csv")
 rest_locations = read_csv("data/restaurant_location.csv") 
 
 ```
-## when i try to knit this document it isn't working, using the code `rmarkdown::render("Exploratory Anlalysis Flexdashboard.Rmd", output_format = "flexdashboard::flex_dashboard")` which i got from class website 
+## when i try to knit this document it isn't working, using the code `rmarkdown::render("exploratory_anlalysis_flexdashboard.Rmd", output_format = "flexdashboard::flex_dashboard")` which i got from class website 
 
 Initial Visualizations
 ======================================================================
