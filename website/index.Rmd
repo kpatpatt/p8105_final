@@ -21,3 +21,11 @@ output:
 ## Statistical Analysis
 
 
+<<<<<<< HEAD
+=======
+And I can put all kinds of stuff on it!
+
+Push test
+
+Link to [final project visualizations]()
+>>>>>>> a139a59379fd5c8f64ee85e297325a23aa7894f6

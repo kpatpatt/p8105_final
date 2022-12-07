@@ -1,0 +1,332 @@
+---
+title: "Exploratory Analysis Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: scroll
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(plotly)
+library(tidyverse)
+
+menustat_df = read_csv("data/menustat_combined.csv")
+rest_locations = read_csv("data/restaurant_location.csv") 
+
+final_cal_df = 
+  menustat_df %>% 
+  group_by(rest_type) %>% 
+  filter(quantile(calories, 0.95) > calories)
+
+distinct_food_categ =
+  final_cal_df %>% 
+  drop_na(rest_type) %>% 
+   mutate(
+    food_category = 
+      recode(food_category, "Appetizers & sides" = "Appetizers & Sides")
+    ) %>% 
+  distinct(food_category)
+
+rest_freq =
+  rest_locations %>% 
+  group_by(restaurant) %>% 
+  mutate(restaurant = recode(restaurant, "APPLEBEES" = "APPLEBEE'S", "AUNTIE ANNES" = "AUNTIE ANNE'S PRETZELS", "Pizza Hut" = "PIZZA HUT", "POPEYE'S" = "POPEYES", "WingStop" = "WINGSTOP"))
+```
+
+Sidebar {.sidebar}
+======================================================================
+
+Initial Visualizations
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Distribution of Total Calories By Restaurant Type
+
+```{r}
+menustat_df %>% 
+  group_by(rest_type) %>% 
+  plot_ly(x = ~rest_type, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Items With Calorie Counts in Top 5% of Restaurants 
+
+```{r}
+menustat_df %>% 
+  group_by(rest_type) %>% 
+  filter(quantile(calories, 0.95) < calories) %>% 
+  plot_ly(x = ~rest_type, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Frequency of Restaurants Across NYC
+
+```{r}
+rest_freq %>% 
+  count(restaurant) %>% 
+  mutate(neighbourhood = fct_reorder(restaurant, n)) %>% 
+  plot_ly(x = ~restaurant, y = ~n, color = ~restaurant, type = "bar", colors = "viridis")
+```
+
+
+Calorie Distribution By Restaurant Type
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+
+### Calorie Distribution in 2008
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2008") %>% 
+  plot_ly(x = ~rest_type, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calorie Distribution in 2012
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2012") %>% 
+  plot_ly(x = ~rest_type, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calorie Distribution in 2016
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2016") %>% 
+  plot_ly(x = ~rest_type, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calorie Distribution in 2020
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2020") %>% 
+  plot_ly(x = ~rest_type, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+
+Fat Distribution By Restaurant Type
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+
+### Fat Distribution in 2008
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2008") %>% 
+  plot_ly(x = ~rest_type, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in 2012
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2012") %>% 
+  plot_ly(x = ~rest_type, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in 2016
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2016") %>% 
+  plot_ly(x = ~rest_type, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in 2020
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2020") %>% 
+  plot_ly(x = ~rest_type, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+
+Protein Distribution By Restaurant Type
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+
+### Protein Distribution in 2008
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2008") %>% 
+  plot_ly(x = ~rest_type, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in 2012
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2012") %>% 
+  plot_ly(x = ~rest_type, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in 2016
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2016") %>% 
+  plot_ly(x = ~rest_type, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in 2020
+
+```{r}
+final_cal_df %>% 
+  group_by(rest_type) %>% 
+  filter(year == "2020") %>% 
+  plot_ly(x = ~rest_type, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+
+Nutritional Content by Food Category
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Calories Distribution by Food Category Overlayed
+
+```{r}
+final_cal_df %>% 
+  drop_na(rest_type) %>% 
+  plot_ly(x = ~food_category, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calories Distribution in Beverages and Desserts Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "beverages_dessert") %>% 
+  plot_ly(x = ~food_category, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calories Distribution in Convenience Stores
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "convenience") %>% 
+  plot_ly(x = ~food_category, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calories Distribution in Fast Food Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "fast food") %>% 
+  plot_ly(x = ~food_category, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Calories Distribution in Sit-down Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "sit-down") %>% 
+  plot_ly(x = ~food_category, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution by Food Category Overlayed
+
+```{r}
+final_cal_df %>% 
+  drop_na(rest_type) %>% 
+  plot_ly(x = ~food_category, y = ~calories, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in Beverages and Desserts Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "beverages_dessert") %>% 
+  plot_ly(x = ~food_category, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in Convenience Stores
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "convenience") %>% 
+  plot_ly(x = ~food_category, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in Fast Food Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "fast food") %>% 
+  plot_ly(x = ~food_category, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Fat Distribution in Sit-down Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "sit-down") %>% 
+  plot_ly(x = ~food_category, y = ~trans_fat, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution by Food Category Overlayed
+
+```{r}
+final_cal_df %>% 
+  drop_na(rest_type) %>% 
+  plot_ly(x = ~food_category, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in Beverages and Desserts Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "beverages_dessert") %>% 
+  plot_ly(x = ~food_category, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in Convenience Stores
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "convenience") %>% 
+  plot_ly(x = ~food_category, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in Fast Food Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "fast food") %>% 
+  plot_ly(x = ~food_category, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```
+
+### Protein Distribution in Sit-down Restaurants
+
+```{r}
+final_cal_df %>% 
+  filter(rest_type == "sit-down") %>% 
+  plot_ly(x = ~food_category, y = ~protein, color = ~rest_type, text = ~item_name, type = "box", colors = "viridis")
+```

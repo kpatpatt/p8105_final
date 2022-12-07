@@ -1,0 +1,1145 @@
+restaurant,rest_type,boro,zipcode
+MCDONALD'S,fast food,Queens,11368
+POPEYES,fast food,Brooklyn,11208
+MCDONALD'S,fast food,Brooklyn,11204
+KFC,fast food,Brooklyn,11218
+MCDONALD'S,fast food,Manhattan,10028
+MCDONALD'S,fast food,Bronx,10469
+BOSTON MARKET,sit-down,Queens,11377
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11201
+POPEYES,fast food,Brooklyn,11229
+WHITE CASTLE,fast food,Queens,11104
+TIM HORTONS,fast food,Staten Island,10305
+LITTLE CAESARS,fast food,Queens,11435
+MCDONALD'S,fast food,Manhattan,10036
+POPEYES,fast food,Brooklyn,11211
+WINGSTOP,fast food,Manhattan,10032
+TACO BELL,fast food,Manhattan,10028
+SUBWAY,fast food,Bronx,10457
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10003
+LITTLE CAESARS,fast food,Queens,11372
+SUBWAY,fast food,Queens,11435
+TACO BELL,fast food,Bronx,10453
+LITTLE CAESARS,fast food,Bronx,10452
+WENDY'S,fast food,Brooklyn,11236
+POPEYES,fast food,Queens,11421
+SHAKE SHACK,fast food,Brooklyn,11201
+MCDONALD'S,fast food,Queens,11373
+PAPA JOHN'S,fast food,Brooklyn,11220
+IHOP,sit-down,Bronx,10475
+MCDONALD'S,fast food,Brooklyn,11234
+PIZZA HUT,fast food,Bronx,10462
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10038
+MCDONALD'S,fast food,Queens,11385
+MCDONALD'S,fast food,Brooklyn,11217
+SUBWAY,fast food,Manhattan,10036
+APPLEBEE'S,sit-down,Brooklyn,11216
+MCDONALD'S,fast food,Manhattan,10002
+PANDA EXPRESS,fast food,Queens,11374
+SUBWAY,fast food,Manhattan,10019
+SUBWAY,fast food,Queens,11421
+MCDONALD'S,fast food,Manhattan,10023
+KFC,fast food,Queens,11434
+PAPA JOHN'S,fast food,Brooklyn,11211
+CHECKERS,fast food,Brooklyn,11206
+CHECKERS,fast food,Brooklyn,11207
+ARBY'S,fast food,Manhattan,10018
+BURGER KING,fast food,Staten Island,10302
+BURGER KING,fast food,Queens,11418
+MCDONALD'S,fast food,Queens,11354
+SUBWAY,fast food,Brooklyn,11214
+POPEYES,fast food,Bronx,10461
+BURGER KING,fast food,Queens,11374
+IHOP,sit-down,Bronx,10460
+SUBWAY,fast food,Brooklyn,11208
+BURGER KING,fast food,Queens,11368
+STARBUCKS COFFEE,beverages_dessert,Brooklyn,11232
+CHECKERS,fast food,Queens,11432
+TIM HORTONS,fast food,Queens,11435
+BURGER KING,fast food,Brooklyn,11208
+LITTLE CAESARS,fast food,Bronx,10452
+SUBWAY,fast food,Queens,11004
+SUBWAY,fast food,Bronx,10462
+POPEYES,fast food,Manhattan,10027
+SUBWAY,fast food,Queens,11418
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10016
+WENDY'S,fast food,Manhattan,10038
+SUBWAY,fast food,Brooklyn,11201
+WENDY'S,fast food,Bronx,10463
+BOSTON MARKET,sit-down,Queens,11360
+MCDONALD'S,fast food,Manhattan,10016
+KFC,fast food,Queens,11354
+PAPA JOHN'S,fast food,Queens,11104
+TACO BELL,fast food,Brooklyn,11214
+LITTLE CAESARS,fast food,Queens,11429
+SUBWAY,fast food,Manhattan,10028
+STARBUCKS COFFEE,beverages_dessert,Brooklyn,11234
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10017
+SUBWAY,fast food,Brooklyn,11215
+SUBWAY,fast food,Queens,11426
+BOSTON MARKET,sit-down,Queens,11385
+MCDONALD'S,fast food,Manhattan,10019
+BURGER KING,fast food,Bronx,10469
+MCDONALD'S,fast food,Queens,11373
+PANERA BREAD,fast food,Bronx,10475
+TROPICAL SMOOTHIE CAFE,beverages_dessert,Staten Island,10307
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10003
+KFC,fast food,Brooklyn,11226
+SUBWAY,fast food,Brooklyn,11226
+MCDONALD'S,fast food,Bronx,10453
+WHITE CASTLE,fast food,Manhattan,10029
+WENDY'S,fast food,Manhattan,10029
+PANDA EXPRESS,fast food,Manhattan,10065
+POPEYES,fast food,Bronx,10473
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10001
+SUBWAY,fast food,Bronx,10468
+MCDONALD'S,fast food,Brooklyn,11236
+KRISPY KREME,beverages_dessert,Manhattan,10121
+MCDONALD'S,fast food,Queens,11411
+KFC,fast food,Queens,11411
+APPLEBEE'S,sit-down,Queens,11101
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10018
+SHAKE SHACK,fast food,Staten Island,10301
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Brooklyn,11201
+MCDONALD'S,fast food,Queens,11372
+SUBWAY,fast food,Brooklyn,11205
+APPLEBEE'S,sit-down,Manhattan,10036
+MCDONALD'S,fast food,Manhattan,10017
+MCDONALD'S,fast food,Brooklyn,11209
+POPEYES,fast food,Brooklyn,11224
+CHECKERS,fast food,Bronx,10467
+WHITE CASTLE,fast food,Manhattan,NA
+WENDY'S,fast food,Queens,11427
+LITTLE CAESARS,fast food,Bronx,10455
+SUBWAY,fast food,Staten Island,10312
+BUFFALO WILD WINGS,sit-down,Queens,11356
+WENDY'S,fast food,Staten Island,10305
+MCDONALD'S,fast food,Queens,11430
+IHOP,sit-down,Queens,11417
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10023
+POPEYES,fast food,Brooklyn,11206
+IHOP,sit-down,Queens,11432
+SUBWAY,fast food,Queens,11691
+KFC,fast food,Queens,11103
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10038
+TACO BELL,fast food,Queens,11385
+PAPA JOHN'S,fast food,Bronx,10463
+WHITE CASTLE,fast food,Bronx,10457
+DOMINOS,fast food,Brooklyn,11206
+STARBUCKS COFFEE,beverages_dessert,Bronx,10465
+TACO BELL,fast food,Bronx,10459
+MCDONALD'S,fast food,Bronx,10473
+ARBY'S,fast food,Queens,11379
+MCDONALD'S,fast food,Queens,11101
+POPEYES,fast food,Queens,11433
+POPEYES,fast food,Bronx,10465
+TACO BELL,fast food,Manhattan,10003
+SUBWAY,fast food,Brooklyn,11203
+PAPA JOHN'S,fast food,Queens,11358
+WENDY'S,fast food,Manhattan,10012
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10065
+POPEYES,fast food,Brooklyn,11207
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10010
+MCDONALD'S,fast food,Manhattan,10032
+WINGSTOP,fast food,Queens,11379
+SHAKE SHACK,fast food,Manhattan,10018
+SUBWAY,fast food,Queens,11101
+TACO BELL,fast food,Manhattan,10003
+OUTBACK STEAKHOUSE,sit-down,Staten Island,10314
+WINGSTOP,fast food,Brooklyn,11226
+POPEYES,fast food,Queens,11365
+SUBWAY,fast food,Bronx,10451
+WINGSTOP,fast food,Manhattan,10009
+MOE'S SOUTHWEST GRILL,fast food,Staten Island,10306
+SUBWAY,fast food,Manhattan,10004
+AUNTIE ANNE'S PRETZELS,fast food,Brooklyn,11234
+CHICK-FIL-A,fast food,Manhattan,10038
+SBARRO,fast food,Brooklyn,11234
+APPLEBEE'S,sit-down,Brooklyn,11210
+SUBWAY,fast food,Manhattan,10022
+MCDONALD'S,fast food,Queens,11004
+TACO BELL,fast food,Queens,11354
+POPEYES,fast food,Brooklyn,11207
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10007
+LITTLE CAESARS,fast food,Queens,11434
+TACO BELL,fast food,Manhattan,10036
+WHITE CASTLE,fast food,Bronx,10472
+MCDONALD'S,fast food,Bronx,10461
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10004
+MCDONALD'S,fast food,Queens,11432
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10028
+KFC,fast food,Queens,11414
+POPEYES,fast food,Brooklyn,11210
+IHOP,sit-down,Staten Island,10314
+BURGER KING,fast food,Brooklyn,11236
+SUBWAY,fast food,Manhattan,10019
+SUBWAY,fast food,Manhattan,10001
+CHECKERS,fast food,Bronx,10455
+KFC,fast food,Brooklyn,11216
+AUNTIE ANNE'S PRETZELS,fast food,Brooklyn,11217
+SUBWAY,fast food,Brooklyn,11206
+MCDONALD'S,fast food,Manhattan,10003
+SUBWAY,fast food,Brooklyn,11226
+KRISPY KREME,beverages_dessert,Manhattan,10010
+MCDONALD'S,fast food,Staten Island,10312
+SUBWAY,fast food,Staten Island,10304
+TACO BELL,fast food,Queens,11379
+SUBWAY,fast food,Manhattan,10007
+BURGER KING,fast food,Queens,11106
+POPEYE'S,fast food,Queens,11426
+BURGER KING,fast food,Brooklyn,11218
+MCDONALD'S,fast food,Queens,11362
+MCDONALD'S,fast food,Brooklyn,11214
+WENDY'S,fast food,Manhattan,10017
+BURGER KING,fast food,Queens,11368
+MCDONALD'S,fast food,Bronx,NA
+MCDONALD'S,fast food,Brooklyn,11203
+PIZZA HUT,fast food,Bronx,10455
+SUBWAY,fast food,Brooklyn,11207
+SUBWAY,fast food,Bronx,10461
+MCDONALD'S,fast food,Brooklyn,11237
+DOMINOS,fast food,Queens,11375
+PANERA BREAD,fast food,Staten Island,10314
+PAPA JOHN'S,fast food,Brooklyn,11226
+POPEYES,fast food,Queens,11373
+MCDONALD'S,fast food,Brooklyn,11236
+PANDA EXPRESS,fast food,Manhattan,10022
+SUBWAY,fast food,Brooklyn,11237
+SUBWAY,fast food,Staten Island,10307
+MCDONALD'S,fast food,Manhattan,10031
+SUBWAY,fast food,Queens,11105
+KRISPY KREME,beverages_dessert,Manhattan,10028
+KRISPY KREME,beverages_dessert,Bronx,10455
+MCDONALD'S,fast food,Bronx,10455
+POPEYES,fast food,Queens,11433
+TACO BELL,fast food,Bronx,10451
+BURGER KING,fast food,Queens,11369
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10025
+BURGER KING,fast food,Staten Island,10305
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Brooklyn,11215
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10012
+IHOP,sit-down,Brooklyn,11224
+SUBWAY,fast food,Staten Island,10312
+MCDONALD'S,fast food,Queens,11106
+POPEYES,fast food,Bronx,10469
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10022
+SUBWAY,fast food,Brooklyn,11217
+DOMINOS,fast food,Brooklyn,11232
+POPEYES,fast food,Queens,11422
+PANERA BREAD,fast food,Queens,11101
+SUBWAY,fast food,Queens,11432
+POPEYES,fast food,Queens,11101
+TACO BELL,fast food,Manhattan,10014
+AUNTIE ANNE'S PRETZELS,fast food,Brooklyn,11217
+MCDONALD'S,fast food,Manhattan,10013
+SUBWAY,fast food,Manhattan,10013
+TACO BELL,fast food,Bronx,10472
+POPEYES,fast food,Queens,11435
+POPEYES,fast food,Brooklyn,11225
+CHICK-FIL-A,fast food,Manhattan,10022
+SUBWAY,fast food,Queens,11434
+SUBWAY,fast food,Queens,11418
+CHICK-FIL-A,fast food,Manhattan,10036
+SUBWAY,fast food,Manhattan,10027
+SUBWAY,fast food,Staten Island,10310
+WENDY'S,fast food,Bronx,10469
+LITTLE CAESARS,fast food,Brooklyn,11221
+DUNKIN’,beverages_dessert,Manhattan,10018
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10001
+WENDY'S,fast food,Manhattan,10003
+SUBWAY,fast food,Brooklyn,11211
+MCDONALD'S,fast food,Bronx,10467
+SUBWAY,fast food,Manhattan,10001
+BURGER KING,fast food,Brooklyn,11220
+POPEYES,fast food,Manhattan,NA
+SUBWAY,fast food,Manhattan,NA
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10018
+WINGSTOP,fast food,Bronx,10467
+POPEYES,fast food,Bronx,10473
+MCDONALD'S,fast food,Queens,11423
+PAPA JOHN'S,fast food,Bronx,10462
+SHAKE SHACK,fast food,Queens,11430
+HARDEE,fast food,Brooklyn,11213
+MCDONALD'S,fast food,Manhattan,NA
+TACO BELL,fast food,Manhattan,10028
+OUTBACK STEAKHOUSE,sit-down,Queens,11360
+SUBWAY,fast food,Bronx,10460
+SUBWAY,fast food,Bronx,10473
+OUTBACK STEAKHOUSE,sit-down,Brooklyn,11228
+APPLEBEES,sit-down,Manhattan,10035
+BOSTON MARKET,sit-down,Staten Island,10302
+BURGER KING,fast food,Brooklyn,11226
+MCDONALD'S,fast food,Brooklyn,11226
+IHOP,sit-down,Brooklyn,11226
+MCDONALD'S,fast food,Bronx,10463
+SUBWAY,fast food,Manhattan,10031
+STARBUCKS COFFEE,beverages_dessert,Brooklyn,11217
+SUBWAY,fast food,Manhattan,10026
+BURGER KING,fast food,Brooklyn,11201
+CHECKERS,fast food,Brooklyn,11225
+MCDONALD'S,fast food,Bronx,10457
+SUBWAY,fast food,Bronx,10467
+CHECKERS,fast food,Queens,11101
+POPEYES,fast food,Bronx,10467
+HOOTERS,sit-down,Queens,11365
+TACO BELL,fast food,Bronx,10460
+SUBWAY,fast food,Manhattan,10014
+SUBWAY,fast food,Manhattan,10044
+DOMINOS,fast food,Brooklyn,11209
+SUBWAY,fast food,Staten Island,10314
+OUTBACK STEAKHOUSE,sit-down,Bronx,10475
+TGI FRIDAY'S,sit-down,Manhattan,10001
+CHECKERS,fast food,Queens,11434
+APPLEBEE'S,sit-down,Staten Island,10314
+TACO BELL,fast food,Bronx,10475
+POPEYES,fast food,Brooklyn,11206
+JAMBA JUICE,beverages_dessert,Manhattan,10001
+PAPA JOHN'S,fast food,Queens,11436
+SUBWAY,fast food,Brooklyn,11213
+SUBWAY,fast food,Manhattan,10018
+OUTBACK STEAKHOUSE,sit-down,Brooklyn,11239
+SUBWAY,fast food,Brooklyn,11234
+SBARRO,fast food,Manhattan,10001
+DOMINOS,fast food,Brooklyn,11215
+SUBWAY,fast food,Bronx,10463
+WHITE CASTLE,fast food,Bronx,10467
+LITTLE CAESARS,fast food,Bronx,10473
+POPEYES,fast food,Queens,11374
+DOMINOS,fast food,Staten Island,10306
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Queens,11360
+MCDONALD'S,fast food,Queens,11369
+POPEYES,fast food,Bronx,10455
+POPEYES,fast food,Brooklyn,11225
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10032
+IHOP,sit-down,Queens,11354
+WENDY'S,fast food,Queens,11377
+MARCO'S,fast food,Brooklyn,11221
+WINGSTOP,fast food,Staten Island,10303
+WENDY'S,fast food,Manhattan,10019
+POPEYES,fast food,Bronx,10466
+APPLEBEE'S,sit-down,Brooklyn,11217
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11234
+SHAKE SHACK,fast food,Manhattan,10019
+TACO BELL,fast food,Manhattan,10033
+WHITE CASTLE,fast food,Brooklyn,11207
+MCDONALD'S,fast food,Staten Island,10314
+MCDONALD'S,fast food,Manhattan,10022
+BURGER KING,fast food,Brooklyn,11237
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10001
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11210
+PAPA JOHN'S,fast food,Queens,11416
+WINGSTOP,fast food,Bronx,10455
+WENDY'S,fast food,Staten Island,10309
+POPEYES,fast food,Bronx,10463
+BURGER KING,fast food,Staten Island,10312
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10128
+PAPA JOHN'S,fast food,Brooklyn,11236
+SHAKE SHACK,fast food,Manhattan,10014
+PANERA BREAD,fast food,Brooklyn,11201
+TROPICAL SMOOTHIE CAFE,beverages_dessert,Staten Island,10302
+MCDONALD'S,fast food,Brooklyn,11229
+RED LOBSTER,sit-down,Bronx,10475
+IHOP,sit-down,Brooklyn,11201
+SUBWAY,fast food,Queens,11379
+AUNTIE ANNES,fast food,Bronx,10463
+APPLEBEE'S,sit-down,Brooklyn,11235
+WENDY'S,fast food,Manhattan,10032
+WENDY'S,fast food,Queens,11432
+BURGER KING,fast food,Brooklyn,11236
+WINGSTOP,fast food,Brooklyn,11203
+WHITE CASTLE,fast food,Queens,11417
+THE CAPITAL GRILLE,sit-down,Manhattan,10017
+BOSTON MARKET,sit-down,Bronx,10463
+TACO BELL,fast food,Manhattan,10029
+POPEYES,fast food,Manhattan,10014
+SUBWAY,fast food,Queens,11374
+BURGER KING,fast food,Queens,11423
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11201
+SUBWAY,fast food,Queens,11417
+SUBWAY,fast food,Manhattan,10002
+STARBUCKS COFFEE,beverages_dessert,Queens,11373
+CHICK-FIL-A,fast food,Manhattan,10017
+MCDONALD'S,fast food,Bronx,10472
+WENDY'S,fast food,Brooklyn,11207
+SHAKE SHACK,fast food,Manhattan,10016
+TACO BELL,fast food,Staten Island,10302
+SHAKE SHACK,fast food,Manhattan,10010
+PIZZA HUT,fast food,Brooklyn,11210
+MCDONALD'S,fast food,Staten Island,10310
+SUBWAY,fast food,Queens,11423
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10025
+TACO BELL,fast food,Queens,11377
+MCDONALD'S,fast food,Brooklyn,11216
+BURGER KING,fast food,Manhattan,10004
+WINGSTOP,fast food,Manhattan,10025
+PAPA JOHN'S,fast food,Brooklyn,11225
+SUBWAY,fast food,Bronx,10466
+APPLEBEE'S,sit-down,Manhattan,10019
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10014
+POPEYES,fast food,Brooklyn,11203
+POPEYES,fast food,Manhattan,10002
+POPEYES,fast food,Brooklyn,11215
+MCDONALD'S,fast food,Manhattan,10038
+POPEYES,fast food,Manhattan,10035
+POPEYES,fast food,Brooklyn,11236
+DAVE & BUSTER'S,sit-down,Brooklyn,11239
+BURGER KING,fast food,Bronx,NA
+SUBWAY,fast food,Staten Island,10305
+PANERA BREAD,fast food,Manhattan,10003
+STARBUCKS COFFEE,beverages_dessert,Queens,11435
+SHAKE SHACK,fast food,Manhattan,10282
+IHOP,sit-down,Bronx,10463
+MCDONALD'S,fast food,Queens,11105
+POPEYE'S,fast food,Brooklyn,11219
+MCDONALD'S,fast food,Bronx,10462
+WENDY'S,fast food,Queens,11374
+SUBWAY,fast food,Queens,11106
+IHOP,sit-down,Queens,11422
+MCDONALD'S,fast food,Brooklyn,11212
+MCDONALD'S,fast food,Manhattan,10007
+POPEYES,fast food,Bronx,10451
+SUBWAY,fast food,Bronx,10463
+SUBWAY,fast food,Queens,11413
+WHITE CASTLE,fast food,Brooklyn,11237
+SHAKE SHACK,fast food,Manhattan,10038
+POPEYES,fast food,Bronx,10457
+CHUCK E. CHEESE'S,sit-down,Bronx,10469
+MOE'S SOUTHWEST GRILL,fast food,Staten Island,10312
+KFC,fast food,Manhattan,10013
+SUBWAY,fast food,Queens,11375
+SUBWAY,fast food,Manhattan,10010
+SUBWAY,fast food,Manhattan,10029
+WHITE CASTLE,fast food,Staten Island,10303
+APPLEBEE'S,sit-down,Bronx,10465
+WingStop,fast food,Bronx,10462
+BURGER KING,fast food,Brooklyn,11201
+MCDONALD'S,fast food,Bronx,10451
+MCDONALD'S,fast food,Staten Island,10304
+SHAKE SHACK,fast food,Manhattan,10017
+LITTLE CAESARS,fast food,Brooklyn,11207
+SUBWAY,fast food,Manhattan,10039
+KRISPY KREME,beverages_dessert,Manhattan,10018
+BURGER KING,fast food,Brooklyn,11219
+WENDY'S,fast food,Queens,11430
+CHECKERS,fast food,Queens,11434
+SUBWAY,fast food,Staten Island,10306
+WENDY'S,fast food,Bronx,10461
+MCDONALD'S,fast food,Queens,11416
+MCDONALD'S,fast food,Manhattan,10025
+LITTLE CAESARS,fast food,Manhattan,10033
+POPEYES,fast food,Brooklyn,11236
+HARDEE,fast food,Brooklyn,11212
+SUBWAY,fast food,Manhattan,10003
+MCDONALD'S,fast food,Brooklyn,11234
+TACO BELL,fast food,Bronx,10455
+MCDONALD'S,fast food,Brooklyn,11223
+WINGSTOP,fast food,Brooklyn,11207
+WENDY'S,fast food,Manhattan,10010
+SUBWAY,fast food,Manhattan,10128
+MCDONALD'S,fast food,Queens,11436
+MCDONALD'S,fast food,Staten Island,10306
+TACO BELL,fast food,Queens,11358
+SUBWAY,fast food,Manhattan,10036
+POPEYES,fast food,Queens,11354
+WENDY'S,fast food,Queens,11379
+BOSTON MARKET,sit-down,Queens,11375
+PANDA EXPRESS,fast food,Brooklyn,11201
+SUBWAY,fast food,Bronx,10459
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Queens,11365
+APPLEBEE'S,sit-down,Bronx,10451
+MCDONALD'S,fast food,Brooklyn,11207
+MCDONALD'S,fast food,Queens,11357
+MCDONALD'S,fast food,Queens,11434
+SHAKE SHACK,fast food,Manhattan,10024
+CHUCK E. CHEESE'S,sit-down,Bronx,10451
+SUBWAY,fast food,Brooklyn,11236
+SUBWAY,fast food,Manhattan,10032
+SUBWAY,fast food,Staten Island,10314
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10016
+POPEYES,fast food,Brooklyn,11223
+MCDONALD'S,fast food,Bronx,10465
+WENDY'S,fast food,Queens,NA
+POPEYES,fast food,Queens,11106
+PANERA BREAD,fast food,Queens,11360
+SUBWAY,fast food,Queens,11040
+WENDY'S,fast food,Manhattan,10036
+POPEYES,fast food,Manhattan,10039
+MCDONALD'S,fast food,Brooklyn,11224
+POPEYES,fast food,Queens,11423
+DAVE & BUSTER'S,sit-down,Brooklyn,11217
+KFC,fast food,Bronx,10469
+POPEYES,fast food,Bronx,10469
+SUBWAY,fast food,Bronx,10465
+PIZZA HUT,fast food,Brooklyn,11206
+APPLEBEE'S,sit-down,Staten Island,10309
+MCDONALD'S,fast food,Queens,11691
+BOSTON MARKET,sit-down,Brooklyn,11236
+WENDY'S,fast food,Queens,11361
+WHITE CASTLE,fast food,Queens,11361
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10027
+MCDONALD'S,fast food,Manhattan,10019
+PIZZA HUT,fast food,Queens,11427
+DOMINOS,fast food,Brooklyn,11221
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11201
+LITTLE CAESARS,fast food,Queens,11421
+MCDONALD'S,fast food,Queens,11385
+MCDONALD'S,fast food,Manhattan,10009
+PERKINS RESTAURANT & BAKERY,sit-down,Staten Island,10305
+SUBWAY,fast food,Queens,11373
+SUBWAY,fast food,Manhattan,10027
+DOMINOS,fast food,Staten Island,10314
+MCDONALD'S,fast food,Manhattan,10033
+BURGER KING,fast food,Queens,11377
+WHITE CASTLE,fast food,Bronx,10466
+THE CAPITAL GRILLE,sit-down,Manhattan,10019
+KFC,fast food,Queens,11377
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11205
+MCDONALD'S,fast food,Queens,11421
+MCDONALD'S,fast food,Brooklyn,11225
+WENDY'S,fast food,Bronx,10475
+MCDONALD'S,fast food,Manhattan,10018
+SUBWAY,fast food,Manhattan,10035
+SUBWAY,fast food,Bronx,10462
+MCDONALD'S,fast food,Manhattan,10029
+SUBWAY,fast food,Queens,NA
+APPLEBEE'S,sit-down,Queens,11373
+CHIPOTLE MEXICAN GRILL,fast food,Bronx,10458
+MCDONALD'S,fast food,Brooklyn,11220
+SUBWAY,fast food,Staten Island,10302
+CHUCK E. CHEESE'S,sit-down,Queens,11101
+MCDONALD'S,fast food,Brooklyn,11215
+SUBWAY,fast food,Queens,11377
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Staten Island,10314
+SUBWAY,fast food,Manhattan,10028
+SUBWAY,fast food,Brooklyn,11209
+PAPA JOHN'S,fast food,Queens,11368
+MCDONALD'S,fast food,Queens,11375
+BURGER KING,fast food,Manhattan,10006
+IHOP,sit-down,Brooklyn,11234
+CHECKERS,fast food,Bronx,10451
+SUBWAY,fast food,Bronx,10467
+POPEYES,fast food,Queens,11432
+PANERA BREAD,fast food,Staten Island,10306
+KFC,fast food,Bronx,10469
+TACO BELL,fast food,Manhattan,10019
+LITTLE CAESARS,fast food,Brooklyn,11236
+BURGER KING,fast food,Bronx,10466
+SUBWAY,fast food,Manhattan,10001
+POPEYES,fast food,Manhattan,10010
+PAPA JOHN'S,fast food,Queens,11427
+SUBWAY,fast food,Manhattan,10025
+POPEYES,fast food,Brooklyn,11233
+SUBWAY,fast food,Bronx,10461
+SUBWAY,fast food,Queens,11370
+CHICK-FIL-A,fast food,Manhattan,10019
+MCDONALD'S,fast food,Manhattan,10003
+POPEYES,fast food,Brooklyn,11234
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,NA
+WENDY'S,fast food,Queens,11372
+MCDONALD'S,fast food,Brooklyn,11224
+SUBWAY,fast food,Manhattan,10003
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Bronx,10465
+BUFFALO WILD WINGS,sit-down,Brooklyn,11217
+SUBWAY,fast food,Bronx,10459
+SUBWAY,fast food,Manhattan,10003
+TROPICAL SMOOTHIE CAFE,beverages_dessert,Queens,11103
+PANERA BREAD,fast food,Queens,11374
+BURGER KING,fast food,Bronx,10451
+CHECKERS,fast food,Brooklyn,11208
+TACO BELL,fast food,Brooklyn,11211
+SUBWAY,fast food,Brooklyn,11207
+WENDY'S,fast food,Queens,11104
+KFC,fast food,Brooklyn,11234
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10036
+BURGER KING,fast food,Queens,11354
+PANDA EXPRESS,fast food,Queens,11373
+WENDY'S,fast food,Brooklyn,11203
+Pizza Hut,fast food,Queens,11416
+MCDONALD'S,fast food,Bronx,10458
+RED LOBSTER,sit-down,Queens,11373
+SUBWAY,fast food,Manhattan,10001
+MCDONALD'S,fast food,Brooklyn,11232
+BURGER KING,fast food,Bronx,10467
+CHECKERS,fast food,Queens,11432
+JIMMY JOHNS,fast food,Brooklyn,11205
+POPEYES,fast food,Queens,11412
+MCDONALD'S,fast food,Brooklyn,11208
+PAPA JOHN'S,fast food,Queens,11412
+STARBUCKS COFFEE,beverages_dessert,Queens,11374
+BASKIN ROBBINS,beverages_dessert,Brooklyn,11207
+POPEYES,fast food,Manhattan,10010
+SHAKE SHACK,fast food,Manhattan,10028
+SUBWAY,fast food,Manhattan,10002
+PAPA JOHN'S,fast food,Brooklyn,11224
+BURGER KING,fast food,Bronx,10455
+POPEYES,fast food,Bronx,10459
+MCDONALD'S,fast food,Brooklyn,11203
+BURGER KING,fast food,Brooklyn,11214
+BURGER KING,fast food,Staten Island,10314
+BOSTON MARKET,sit-down,Bronx,10455
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10004
+WINGSTOP,fast food,Brooklyn,11206
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Brooklyn,11214
+BURGER KING,fast food,Bronx,10461
+MCDONALD'S,fast food,Manhattan,10010
+POPEYES,fast food,Manhattan,10002
+SUBWAY,fast food,Brooklyn,11224
+PAPA JOHN'S,fast food,Queens,11377
+BURGER KING,fast food,Queens,11419
+SUBWAY,fast food,Bronx,10465
+BURGER KING,fast food,Manhattan,10036
+SUBWAY,fast food,Bronx,10455
+MCDONALD'S,fast food,Brooklyn,11206
+MCDONALD'S,fast food,Staten Island,10303
+SBARRO,fast food,Queens,11373
+WENDY'S,fast food,Queens,11354
+SUBWAY,fast food,Bronx,10466
+WENDY'S,fast food,Bronx,10457
+BURGER KING,fast food,Brooklyn,11226
+BOSTON MARKET,sit-down,Bronx,10462
+MCDONALD'S,fast food,Manhattan,10022
+TACO BELL,fast food,Brooklyn,11220
+SUBWAY,fast food,Brooklyn,11220
+BURGER KING,fast food,Queens,11413
+BURGER KING,fast food,Queens,11361
+CHECKERS,fast food,Brooklyn,11226
+DOMINOS,fast food,Brooklyn,11236
+BURGER KING,fast food,Queens,11416
+BUFFALO WILD WINGS,sit-down,Bronx,10463
+SUBWAY,fast food,Queens,11432
+BURGER KING,fast food,Staten Island,10314
+KFC,fast food,Queens,11421
+SUBWAY,fast food,Manhattan,10038
+SUBWAY,fast food,Manhattan,10004
+POPEYES,fast food,Bronx,NA
+SUBWAY,fast food,Manhattan,10017
+AUNTIE ANNE'S PRETZELS,fast food,Queens,11354
+POPEYES,fast food,Staten Island,10314
+MCDONALD'S,fast food,Bronx,10452
+SUBWAY,fast food,Queens,11358
+CHIPOTLE MEXICAN GRILL,fast food,Queens,11372
+POPEYES,fast food,Manhattan,10033
+DAVE & BUSTER'S,sit-down,Manhattan,10036
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Queens,11362
+BURGER KING,fast food,Bronx,10460
+SUBWAY,fast food,Manhattan,10040
+POPEYES,fast food,Bronx,10453
+PAPA JOHN'S,fast food,Manhattan,10033
+SUBWAY,fast food,Brooklyn,11204
+PAPA JOHN'S,fast food,Queens,11106
+MCDONALD'S,fast food,Queens,11103
+SUBWAY,fast food,Brooklyn,11210
+POPEYES,fast food,Brooklyn,11214
+BURGER KING,fast food,Brooklyn,11212
+SUBWAY,fast food,Brooklyn,11220
+PAPA JOHN'S,fast food,Queens,11355
+WENDY'S,fast food,Staten Island,10303
+PANERA BREAD,fast food,Staten Island,10309
+MCDONALD'S,fast food,Brooklyn,11226
+KFC,fast food,Queens,11366
+POPEYES,fast food,Brooklyn,11204
+SUBWAY,fast food,Queens,11415
+POPEYES,fast food,Queens,11354
+KFC,fast food,Manhattan,10039
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10019
+POPEYES,fast food,Staten Island,10302
+MCDONALD'S,fast food,Bronx,10462
+MCDONALD'S,fast food,Queens,11367
+AUNTIE ANNE'S PRETZELS,fast food,Manhattan,10036
+LITTLE CAESARS,fast food,Bronx,10470
+THE CAPITAL GRILLE,sit-down,Manhattan,10271
+MCDONALD'S,fast food,Brooklyn,11233
+CHIPOTLE MEXICAN GRILL,fast food,Queens,11373
+PANDA EXPRESS,fast food,Bronx,10468
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10014
+POPEYES,fast food,Brooklyn,11235
+SUBWAY,fast food,Manhattan,10022
+CHECKERS,fast food,Bronx,10458
+MCDONALD'S,fast food,Brooklyn,11214
+PAPA JOHN'S,fast food,Queens,11366
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10019
+TACO BELL,fast food,Manhattan,10029
+MCDONALD'S,fast food,Bronx,10468
+STARBUCKS COFFEE,beverages_dessert,Staten Island,10309
+SUBWAY,fast food,Staten Island,10303
+SUBWAY,fast food,Manhattan,10017
+SUBWAY,fast food,Queens,11368
+WINGSTOP,fast food,Queens,11103
+BURGER KING,fast food,Queens,11427
+WENDY'S,fast food,Brooklyn,11225
+POPEYES,fast food,Brooklyn,11237
+SUBWAY,fast food,Manhattan,10019
+MCDONALD'S,fast food,Bronx,10467
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10065
+MCDONALD'S,fast food,Brooklyn,11216
+BURGER KING,fast food,Brooklyn,11206
+SUBWAY,fast food,Brooklyn,11212
+CHIPOTLE MEXICAN GRILL,fast food,Queens,11375
+WHITE CASTLE,fast food,Queens,11429
+BURGER KING,fast food,Queens,11354
+CHECKERS,fast food,Bronx,10452
+SUBWAY,fast food,Queens,11434
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10026
+MCDONALD'S,fast food,Queens,11361
+CHECKERS,fast food,Queens,11422
+SBARRO,fast food,Bronx,10475
+MCDONALD'S,fast food,Queens,11427
+IHOP,sit-down,Manhattan,NA
+SUBWAY,fast food,Queens,11356
+BOSTON MARKET,sit-down,Bronx,10473
+STARBUCKS COFFEE,beverages_dessert,Queens,11373
+SUBWAY,fast food,Brooklyn,11223
+KFC,fast food,Manhattan,10027
+POPEYES,fast food,Bronx,10451
+TIM HORTONS,fast food,Staten Island,10314
+TACO BELL,fast food,Brooklyn,11209
+BURGER KING,fast food,Bronx,10457
+WHITE CASTLE,fast food,Bronx,10459
+P.F.CHANG'S,sit-down,Manhattan,10038
+POPEYES,fast food,Queens,11434
+SUBWAY,fast food,Manhattan,10017
+DOMINOS,fast food,Brooklyn,11226
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10011
+SUBWAY,fast food,Manhattan,10037
+SUBWAY,fast food,Brooklyn,11225
+RED LOBSTER,sit-down,Brooklyn,11239
+MCDONALD'S,fast food,Bronx,10454
+MCDONALD'S,fast food,Bronx,10467
+IHOP,sit-down,Brooklyn,11207
+TACO BELL,fast food,Manhattan,10035
+BURGER KING,fast food,Manhattan,10029
+PIZZA HUT,fast food,Queens,11374
+POPEYES,fast food,Queens,11413
+SUBWAY,fast food,Manhattan,10011
+MCDONALD'S,fast food,Queens,11385
+DOMINOS,fast food,Brooklyn,11221
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10022
+WENDY'S,fast food,Staten Island,10314
+SHAKE SHACK,fast food,Staten Island,10314
+CHECKERS,fast food,Manhattan,10038
+APPLEBEE'S,sit-down,Bronx,NA
+SUBWAY,fast food,Brooklyn,11209
+MCDONALD'S,fast food,Brooklyn,11209
+MCDONALD'S,fast food,Bronx,10475
+SUBWAY,fast food,Queens,11101
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10018
+SUBWAY,fast food,Manhattan,10033
+POPEYES,fast food,Bronx,10462
+SUBWAY,fast food,Queens,11354
+DICKEY'S BARBEQUE PIT,sit-down,Brooklyn,11217
+SUBWAY,fast food,Brooklyn,11209
+KRISPY KREME,beverages_dessert,Manhattan,10029
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10017
+KFC,fast food,Brooklyn,11205
+WENDY'S,fast food,Bronx,10455
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10011
+KFC,fast food,Brooklyn,11234
+MCDONALD'S,fast food,Manhattan,10037
+PAPA JOHN'S,fast food,Brooklyn,11221
+CHICK-FIL-A,fast food,Queens,11373
+MCDONALD'S,fast food,Bronx,10474
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11249
+THE CHEESECAKE FACTORY,sit-down,Queens,11373
+SUBWAY,fast food,Manhattan,10004
+SUBWAY,fast food,Brooklyn,11228
+MCDONALD'S,fast food,Manhattan,10016
+SUBWAY,fast food,Bronx,10467
+SUBWAY,fast food,Manhattan,10025
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10021
+PANERA BREAD,fast food,Queens,11385
+KFC,fast food,Brooklyn,11212
+POPEYES,fast food,Manhattan,10025
+MCDONALD'S,fast food,Brooklyn,11211
+WENDY'S,fast food,Queens,NA
+MCDONALD'S,fast food,Queens,11377
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10065
+BURGER KING,fast food,Staten Island,10306
+BURGER KING,fast food,Bronx,10471
+SUBWAY,fast food,Bronx,10463
+TACO BELL,fast food,Brooklyn,11226
+AUNTIE ANNE'S PRETZELS,fast food,Staten Island,10314
+PANERA BREAD,fast food,Manhattan,10001
+SUBWAY,fast food,Queens,11366
+WENDY'S,fast food,Staten Island,10301
+TACO BELL,fast food,Queens,11368
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10036
+MCDONALD'S,fast food,Manhattan,10040
+KFC,fast food,Manhattan,10001
+KFC,fast food,Brooklyn,11232
+BURGER KING,fast food,Bronx,10475
+CHIPOTLE MEXICAN GRILL,fast food,Brooklyn,11209
+MCDONALD'S,fast food,Queens,11432
+POPEYES,fast food,Brooklyn,11220
+MOE'S SOUTHWEST GRILL,fast food,Bronx,10475
+TACO BELL,fast food,Brooklyn,11211
+CHICK-FIL-A,fast food,Manhattan,10018
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10007
+MCDONALD'S,fast food,Brooklyn,11210
+MCDONALD'S,fast food,Bronx,10458
+WHITE CASTLE,fast food,Bronx,10458
+SUBWAY,fast food,Queens,11355
+SUBWAY,fast food,Queens,11421
+POPEYES,fast food,Brooklyn,11207
+BURGER KING,fast food,Bronx,10452
+BURGER KING,fast food,Bronx,10472
+MCDONALD'S,fast food,Manhattan,10001
+SUBWAY,fast food,Bronx,10458
+PAPA JOHN'S,fast food,Brooklyn,11214
+KFC,fast food,Bronx,10458
+LITTLE CAESARS,fast food,Bronx,10459
+TACO BELL,fast food,Staten Island,10305
+MCDONALD'S,fast food,Manhattan,10036
+MCDONALD'S,fast food,Bronx,10451
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10017
+MCDONALD'S,fast food,Brooklyn,11222
+SUBWAY,fast food,Queens,11372
+BURGER KING,fast food,Manhattan,10035
+BURGER KING,fast food,Manhattan,10029
+SUBWAY,fast food,Manhattan,10019
+SHAKE SHACK,fast food,Manhattan,10001
+MCDONALD'S,fast food,Manhattan,10034
+WHITE CASTLE,fast food,Staten Island,10306
+BOSTON MARKET,sit-down,Queens,11377
+POPEYES,fast food,Queens,11419
+SUBWAY,fast food,Queens,11414
+TROPICAL SMOOTHIE CAFE,beverages_dessert,Staten Island,10314
+MCDONALD'S,fast food,Bronx,10472
+BURGER KING,fast food,Manhattan,10007
+POPEYES,fast food,Queens,11423
+PAPA JOHN'S,fast food,Brooklyn,11216
+BURGER KING,fast food,Brooklyn,11225
+CALIFORNIA PIZZA KITCHEN,sit-down,Queens,11385
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10001
+MCDONALD'S,fast food,Queens,11354
+KFC,fast food,Queens,11372
+WENDY'S,fast food,Queens,11385
+MCDONALD'S,fast food,Queens,11435
+PIZZA HUT,fast food,Queens,11435
+CHECKERS,fast food,Manhattan,10027
+SUBWAY,fast food,Staten Island,10305
+WENDY'S,fast food,Brooklyn,11236
+SUBWAY,fast food,Queens,11373
+WingStop,fast food,Bronx,10461
+PIZZA HUT,fast food,Brooklyn,11212
+POPEYES,fast food,Manhattan,10032
+CHICK-FIL-A,fast food,Manhattan,10033
+AUNTIE ANNE'S PRETZELS,fast food,Queens,11374
+POPEYES,fast food,Brooklyn,11222
+MCDONALD'S,fast food,Queens,11419
+TACO BELL,fast food,Manhattan,10022
+WHITE CASTLE,fast food,Brooklyn,11213
+BURGER KING,fast food,Brooklyn,11216
+WENDY'S,fast food,Queens,11435
+RED LOBSTER,sit-down,Manhattan,10036
+CHIPOTLE MEXICAN GRILL,fast food,Queens,11362
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10016
+APPLEBEES,sit-down,Staten Island,10306
+SHAKE SHACK,fast food,Brooklyn,11249
+BURGER KING,fast food,Queens,11104
+MCDONALD'S,fast food,Brooklyn,11236
+CHUCK E. CHEESE'S,sit-down,Staten Island,10314
+TACO BELL,fast food,Manhattan,10065
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10003
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10001
+WHITE CASTLE,fast food,Manhattan,10018
+POPEYES,fast food,Bronx,10455
+TACO BELL,fast food,Manhattan,10011
+PANDA EXPRESS,fast food,Manhattan,10001
+PANERA BREAD,fast food,Manhattan,10018
+POPEYES,fast food,Staten Island,10306
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10028
+SHAKE SHACK,fast food,Manhattan,10025
+AUNTIE ANNE'S PRETZELS,fast food,Queens,11385
+IHOP,sit-down,Bronx,10472
+POPEYES,fast food,Queens,11691
+MCDONALD'S,fast food,Queens,11368
+BURGER KING,fast food,Bronx,10461
+PANERA BREAD,fast food,Queens,11362
+P.F.CHANG'S,sit-down,Manhattan,10022
+BURGER KING,fast food,Manhattan,10038
+SUBWAY,fast food,Brooklyn,11235
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10032
+MCDONALD'S,fast food,Bronx,10475
+DOMINOS,fast food,Brooklyn,11225
+POPEYES,fast food,Bronx,NA
+BOSTON MARKET,sit-down,Brooklyn,11239
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10027
+WHITE CASTLE,fast food,Brooklyn,11208
+KFC,fast food,Bronx,10463
+BOSTON MARKET,sit-down,Bronx,NA
+POPEYES,fast food,Manhattan,10026
+TACO BELL,fast food,Manhattan,10032
+BURGER KING,fast food,Manhattan,10002
+POPEYES,fast food,Brooklyn,11236
+MCDONALD'S,fast food,Manhattan,10001
+POPEYES,fast food,Manhattan,10040
+IHOP,sit-down,Queens,11360
+WENDY'S,fast food,Queens,NA
+SUBWAY,fast food,Queens,11364
+DAIRY QUEEN GRILL & CHILL,fast food,Staten Island,NA
+TACO BELL,fast food,Staten Island,10306
+BOSTON MARKET,sit-down,Staten Island,10312
+QDOBA,fast food,Staten Island,10307
+SHAKE SHACK,fast food,Brooklyn,11201
+KFC,fast food,Queens,11432
+WINGSTOP,fast food,Manhattan,10010
+APPLEBEE'S,sit-down,Staten Island,10314
+AUNTIE ANNES,fast food,Bronx,10475
+MCDONALD'S,fast food,Queens,11414
+SHAKE SHACK,fast food,Bronx,10475
+TACO BELL,fast food,Staten Island,10314
+POPEYES,fast food,Bronx,10475
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10022
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10011
+MCDONALD'S,fast food,Bronx,10456
+MCDONALD'S,fast food,Queens,11375
+SUBWAY,fast food,Queens,11104
+KFC,fast food,Manhattan,10033
+MCDONALD'S,fast food,Brooklyn,11203
+SUBWAY,fast food,Bronx,10451
+POPEYES,fast food,Manhattan,10038
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10025
+MCDONALD'S,fast food,Manhattan,10027
+BURGER KING,fast food,Queens,11434
+SUBWAY,fast food,Staten Island,10314
+POPEYES,fast food,Bronx,10460
+APPLEBEE'S,sit-down,Bronx,10463
+KFC,fast food,Queens,11354
+SUBWAY,fast food,Manhattan,10023
+POPEYES,fast food,Queens,11105
+WINGSTOP,fast food,Manhattan,10002
+SUBWAY,fast food,Manhattan,10019
+POPEYES,fast food,Brooklyn,11226
+POPEYES,fast food,Queens,11420
+MCDONALD'S,fast food,Manhattan,10029
+BURGER KING,fast food,Manhattan,10040
+SONIC,fast food,Queens,11101
+CHICK-FIL-A,fast food,Manhattan,10028
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10036
+SUBWAY,fast food,Queens,11004
+SUBWAY,fast food,Manhattan,10032
+SHAKE SHACK,fast food,Queens,11373
+CHUCK E. CHEESE'S,sit-down,Queens,11354
+POPEYES,fast food,Queens,11693
+TACO BELL,fast food,Queens,11372
+CHECKERS,fast food,Brooklyn,11207
+SUBWAY,fast food,Manhattan,10011
+CHECKERS,fast food,Manhattan,10007
+JAMBA JUICE,beverages_dessert,Queens,11430
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10019
+WHITE CASTLE,fast food,Bronx,10461
+TACO BELL,fast food,Queens,11370
+PAPA JOHN'S,fast food,Bronx,10467
+CHECKERS,fast food,Queens,11368
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10036
+SUBWAY,fast food,Bronx,10452
+SUBWAY,fast food,Queens,11377
+WENDY'S,fast food,Manhattan,10004
+SUBWAY,fast food,Bronx,10468
+MCDONALD'S,fast food,Bronx,10457
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10011
+CHIPOTLE MEXICAN GRILL,fast food,Bronx,10465
+TACO BELL,fast food,Manhattan,10040
+POPEYES,fast food,Manhattan,10029
+IHOP,sit-down,Bronx,10451
+TACO BELL,fast food,Bronx,10462
+DOMINOS,fast food,Queens,11103
+WINGSTOP,fast food,Queens,11434
+SUBWAY,fast food,Manhattan,10018
+SUBWAY,fast food,Manhattan,10032
+APPLEBEE'S,sit-down,Queens,11365
+SUBWAY,fast food,Queens,11691
+MCDONALD'S,fast food,Manhattan,10035
+WINGSTOP,fast food,Bronx,10473
+MCDONALD'S,fast food,Brooklyn,11201
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10036
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10007
+SUBWAY,fast food,Queens,11104
+CHECKERS,fast food,Queens,11419
+PAPA JOHN'S,fast food,Brooklyn,11207
+WHITE CASTLE,fast food,Brooklyn,11224
+SUBWAY,fast food,Brooklyn,11234
+TACO BELL,fast food,Queens,11105
+POPEYES,fast food,Queens,11427
+SUBWAY,fast food,Queens,11369
+WingStop,fast food,Bronx,10463
+BURGER KING,fast food,Brooklyn,11210
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Brooklyn,11234
+PAPA JOHN'S,fast food,Brooklyn,11217
+MCDONALD'S,fast food,Brooklyn,11221
+SUBWAY,fast food,Brooklyn,11237
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10009
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10016
+SUBWAY,fast food,Bronx,10451
+MCDONALD'S,fast food,Queens,11413
+SUBWAY,fast food,Queens,11377
+POPEYES,fast food,Brooklyn,11203
+KFC,fast food,Queens,11373
+PAPA JOHN'S,fast food,Brooklyn,11208
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10036
+POPEYES,fast food,Brooklyn,11216
+LITTLE CAESARS,fast food,Manhattan,10029
+LITTLE CAESARS,fast food,Bronx,10468
+MCDONALD'S,fast food,Manhattan,10036
+SUBWAY,fast food,Queens,11419
+BUFFALO WILD WINGS,sit-down,Brooklyn,11239
+BOSTON MARKET,sit-down,Queens,11365
+SUBWAY,fast food,Staten Island,10308
+JAMBA JUICE,beverages_dessert,Manhattan,10018
+CHUCK E. CHEESE'S,sit-down,Brooklyn,11217
+SUBWAY,fast food,Queens,11106
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10010
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10024
+MCDONALD'S,fast food,Brooklyn,11201
+KFC,fast food,Bronx,10455
+AUNTIE ANNE'S PRETZELS,fast food,Staten Island,10314
+DOMINOS,fast food,Staten Island,10314
+ARBY'S,fast food,Queens,11365
+HARDEE,fast food,Brooklyn,11205
+CHICK-FIL-A,fast food,Manhattan,10036
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10016
+PANERA BREAD,fast food,Brooklyn,11239
+MCDONALD'S,fast food,Bronx,10466
+POPEYES,fast food,Manhattan,10040
+SUBWAY,fast food,Bronx,10462
+CHICK-FIL-A,fast food,Brooklyn,11217
+POPEYES,fast food,Queens,11436
+POPEYES,fast food,Brooklyn,11212
+IHOP,sit-down,Bronx,10467
+PAPA JOHN'S,fast food,Bronx,10455
+LONGHORN STEAKHOUSE,sit-down,Queens,11373
+SUBWAY,fast food,Queens,11354
+SUBWAY,fast food,Queens,11361
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10012
+BOSTON MARKET,sit-down,Queens,11432
+AUNTIE ANNE'S PRETZELS,fast food,Queens,11373
+CHIPOTLE MEXICAN GRILL,fast food,Queens,11373
+CHICK-FIL-A,fast food,Manhattan,10016
+WENDY'S,fast food,Brooklyn,11208
+WENDY'S,fast food,Queens,NA
+POPEYES,fast food,Queens,11428
+MCDONALD'S,fast food,Manhattan,10001
+SUBWAY,fast food,Bronx,10459
+CHECKERS,fast food,Staten Island,10303
+TACO BELL,fast food,Manhattan,10010
+MCDONALD'S,fast food,Brooklyn,11213
+WINGSTOP,fast food,Manhattan,10014
+PIZZA HUT,fast food,Bronx,10469
+BOSTON MARKET,sit-down,Queens,11416
+MCDONALD'S,fast food,Brooklyn,11211
+PAPA JOHN'S,fast food,Brooklyn,11229
+SUBWAY,fast food,Brooklyn,11226
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10014
+MCDONALD'S,fast food,Queens,11430
+SHAKE SHACK,fast food,Queens,11430
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Queens,11385
+BURGER KING,fast food,Queens,11412
+POPEYES,fast food,Manhattan,10013
+SHAKE SHACK,fast food,Manhattan,10027
+TACO BELL,fast food,Queens,11419
+JAMBA JUICE,beverages_dessert,Manhattan,10112
+SUBWAY,fast food,Bronx,10455
+BURGER KING,fast food,Queens,11103
+BURGER KING,fast food,Queens,11379
+SUBWAY,fast food,Staten Island,10302
+SHAKE SHACK,fast food,Queens,11432
+WHITE CASTLE,fast food,Queens,11373
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10019
+SUBWAY,fast food,Brooklyn,11212
+CHIPOTLE MEXICAN GRILL,fast food,Bronx,10463
+MCDONALD'S,fast food,Manhattan,10010
+POPEYES,fast food,Bronx,10467
+SUBWAY,fast food,Manhattan,10016
+POPEYES,fast food,Brooklyn,11220
+AUNTIE ANNE'S PRETZELS,fast food,Manhattan,10038
+MCDONALD'S,fast food,Bronx,10459
+POPEYES,fast food,Bronx,10452
+SUBWAY,fast food,Manhattan,10036
+DAIRY QUEEN GRILL & CHILL,fast food,Staten Island,10303
+WENDY'S,fast food,Brooklyn,11234
+MCDONALD'S,fast food,Bronx,10455
+KFC,fast food,Brooklyn,11237
+TACO BELL,fast food,Queens,11421
+MCDONALD'S,fast food,Queens,11106
+POPEYES,fast food,Queens,11358
+WINGSTOP,fast food,Manhattan,10027
+POPEYES,fast food,Brooklyn,11216
+DOMINOS,fast food,Queens,11377
+WHITE CASTLE,fast food,Queens,11432
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10018
+KFC,fast food,Staten Island,10302
+MCDONALD'S,fast food,Queens,11356
+RED LOBSTER,sit-down,Manhattan,10027
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10023
+KFC,fast food,Brooklyn,11203
+IHOP,sit-down,Brooklyn,11206
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10036
+POPEYES,fast food,Brooklyn,11224
+TACO BELL,fast food,Brooklyn,11236
+MCDONALD'S,fast food,Staten Island,10307
+WENDY'S,fast food,Manhattan,10018
+FIVE GUYS FAMOUS BURGERS AND FRIES,fast food,Manhattan,10001
+POPEYES,fast food,Queens,11373
+SUBWAY,fast food,Queens,11416
+POPEYES,fast food,Bronx,10466
+SUBWAY,fast food,Manhattan,10021
+POPEYES,fast food,Brooklyn,11234
+SHAKE SHACK,fast food,Manhattan,10036
+PAPA JOHN'S,fast food,Queens,11413
+SUBWAY,fast food,Manhattan,10031
+IHOP,sit-down,Manhattan,10033
+BURGER KING,fast food,Bronx,10459
+MCDONALD'S,fast food,Brooklyn,11231
+BURGER KING,fast food,Bronx,10472
+TACO BELL,fast food,Manhattan,10010
+SUBWAY,fast food,Manhattan,10029
+MCDONALD'S,fast food,Manhattan,10018
+BUFFALO WILD WINGS,sit-down,Staten Island,10314
+CHECKERS,fast food,Manhattan,10027
+WINGSTOP,fast food,Bronx,10453
+MCDONALD'S,fast food,Queens,11422
+SUBWAY,fast food,Queens,11692
+SUBWAY,fast food,Brooklyn,11229
+BURGER KING,fast food,Queens,11373
+BURGER KING,fast food,Staten Island,10307
+MCDONALD'S,fast food,Queens,11378
+POPEYES,fast food,Bronx,10468
+KFC,fast food,Manhattan,10003
+MCDONALD'S,fast food,Manhattan,10011
+POPEYES,fast food,Bronx,10467
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10013
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10280
+MCDONALD'S,fast food,Bronx,10461
+MCDONALD'S,fast food,Brooklyn,11222
+SUBWAY,fast food,Queens,11377
+PAPA JOHN'S,fast food,Brooklyn,11230
+SHAKE SHACK,fast food,Queens,11375
+CHICK-FIL-A,fast food,Manhattan,10010
+MCDONALD'S,fast food,Manhattan,10009
+KFC,fast food,Queens,11435
+CHICK-FIL-A,fast food,Staten Island,10314
+DOMINOS,fast food,Brooklyn,11224
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10036
+TACO BELL,fast food,Brooklyn,11212
+CHICK-FIL-A,fast food,Queens,11373
+MCDONALD'S,fast food,Manhattan,10017
+LITTLE CAESARS,fast food,Brooklyn,11206
+SUBWAY,fast food,Queens,11375
+KRISPY KREME,beverages_dessert,Bronx,10458
+SUBWAY,fast food,Bronx,10453
+OUTBACK STEAKHOUSE,sit-down,Manhattan,10010
+STARBUCKS COFFEE,beverages_dessert,Manhattan,10038
+MCDONALD'S,fast food,Bronx,10461
+APPLEBEE'S,sit-down,Brooklyn,11239
+CHIPOTLE MEXICAN GRILL,fast food,Manhattan,10016
+APPLEBEE'S,sit-down,Queens,11360
+MCDONALD'S,fast food,Bronx,10460
+SHAKE SHACK,fast food,Manhattan,10003
+IHOP,sit-down,Queens,11413
+SUBWAY,fast food,Queens,11377
+SUBWAY,fast food,Brooklyn,11204
+LITTLE CAESARS,fast food,Bronx,10458
+SHAKE SHACK,fast food,Brooklyn,11217
+MCDONALD'S,fast food,Manhattan,10025
+SUBWAY,fast food,Manhattan,10018
+SUBWAY,fast food,Queens,11435
