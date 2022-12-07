@@ -9,6 +9,8 @@ navbar:
       href: data_processing.html
     - text: "Exploratory Analysis"
       href: EDA.html
+    - text: "Exploratory Analysis Dashboard"
+      href: exploratory_analysis_dashboard.html
     - text: "Statistical Analysis"
       href: statistical_analysis.html
     - icon: fa-github fa-lg
