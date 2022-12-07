@@ -33,7 +33,6 @@ rest_freq =
   group_by(restaurant) %>% 
   mutate(restaurant = recode(restaurant, "APPLEBEES" = "APPLEBEE'S", "AUNTIE ANNES" = "AUNTIE ANNE'S PRETZELS", "Pizza Hut" = "PIZZA HUT", "POPEYE'S" = "POPEYES", "WingStop" = "WINGSTOP"))
 ```
-## when i try to knit this document it isn't working, using the code `rmarkdown::render("exploratory_anlalysis_dashboard.Rmd", output_format = "flexdashboard::flex_dashboard")` which i got from class website 
 
 Sidebar {.sidebar}
 ======================================================================
