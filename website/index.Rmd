@@ -1,11 +1,31 @@
 ---
-title: "Holy cow!"
+title: "P8105 Final Project- Nutrtritional Data in NYC"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
-### I have a webpage!
+## Project Report
 
+---
+
+## Data Pre-Processing
+
+---
+
+## Exploratory Analysis
+
+---
+
+## Statistical Analysis
+
+
+<<<<<<< HEAD
+=======
 And I can put all kinds of stuff on it!
 
 Push test
 
 Link to [final project visualizations]()
+>>>>>>> a139a59379fd5c8f64ee85e297325a23aa7894f6

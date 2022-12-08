@@ -10,11 +10,32 @@ output:
 library(flexdashboard)
 library(plotly)
 library(tidyverse)
+
 menustat_df = read_csv("data/menustat_combined.csv")
 rest_locations = read_csv("data/restaurant_location.csv") 
 
+final_cal_df = 
+  menustat_df %>% 
+  group_by(rest_type) %>% 
+  filter(quantile(calories, 0.95) > calories)
+
+distinct_food_categ =
+  final_cal_df %>% 
+  drop_na(rest_type) %>% 
+   mutate(
+    food_category = 
+      recode(food_category, "Appetizers & sides" = "Appetizers & Sides")
+    ) %>% 
+  distinct(food_category)
+
+rest_freq =
+  rest_locations %>% 
+  group_by(restaurant) %>% 
+  mutate(restaurant = recode(restaurant, "APPLEBEES" = "APPLEBEE'S", "AUNTIE ANNES" = "AUNTIE ANNE'S PRETZELS", "Pizza Hut" = "PIZZA HUT", "POPEYE'S" = "POPEYES", "WingStop" = "WINGSTOP"))
 ```
-## when i try to knit this document it isn't working, using the code `rmarkdown::render("exploratory_anlalysis_flexdashboard.Rmd", output_format = "flexdashboard::flex_dashboard")` which i got from class website 
+
+Sidebar {.sidebar}
+======================================================================
 
 Initial Visualizations
 ======================================================================
