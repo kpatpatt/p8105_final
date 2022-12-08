@@ -92,48 +92,47 @@ ff_cal + sd_cal + bevdes_cal + conv_cal
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(calories), list(name = mean))
-
 #median calories
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(calories), list(name = median))
 
 ##total fat
-#mean
+#mean fat
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(total_fat), list(name = mean))
-#median
+#median fat
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(total_fat), list(name = median))
 
 ##sodium
-#mean
+#mean sodium
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(sodium), list(name = mean))
-#median
+#median sodium
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(sodium), list(name = median))
 
 ##carbs
-#mean
+#mean carbs
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(carbohydrates), list(name = mean))
-#median
+#median carbs
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(carbohydrates), list(name = median))
 
 ##sugar
-#mean
+#mean sugar
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(sugar), list(name = mean))
-#median
+#median sugar
 menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(sugar), list(name = median))
@@ -152,6 +151,6 @@ rest_locations %>%
 ```
 
 ```{r test stage}
-fake
+
 ```
 
