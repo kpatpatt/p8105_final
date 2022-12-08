@@ -150,3 +150,8 @@ rest_locations %>%
   
 #food environment quality ~ predictors, zipcode level mean sugar, fat etc. , median house hold income, %race, etc. 
 ```
+
+```{r test stage}
+fake
+```
+
