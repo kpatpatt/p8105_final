@@ -1,13 +1,12 @@
 ---
 title: "Regressions"
-author: "Rae Spriggs"
+author: "Kevin and Lindsey"
 date: "2022-12-08"
 output: html_document
 ---
 
 ```{r}
 library(tidyverse)
-library(p8105.datasets)
 library(viridis)
 library(ggplot2)
 library(patchwork)
@@ -18,8 +17,8 @@ library(rvest)
 ```
 
 ```{r}
-menustat = read_csv("data/menustat_combined.csv")
-rest_location = read_csv("data/restaurant_location.csv")
+menustat_df = read_csv("data/menustat_combined.csv")
+rest_locations = read_csv("data/restaurant_location.csv")
 ```
 
 
@@ -47,6 +46,7 @@ menustat_df %>%
   summarise(across(everything(), ~sum(is.na(.x)))) %>%
   knitr::kable() #no more NA's for variables we are using
 
+###frequency visualizations stratified by restaurant type
 #fast food calorie distribution
 ff_cal = menustat_df %>%
   select(rest_type, calories) %>%
