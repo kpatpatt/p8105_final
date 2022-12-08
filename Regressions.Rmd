@@ -1,0 +1,152 @@
+---
+title: "Regressions"
+author: "Rae Spriggs"
+date: "2022-12-08"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(viridis)
+library(ggplot2)
+library(patchwork)
+library(dplyr)
+library(readxl)
+library(tidycensus)
+library(rvest)
+```
+
+```{r}
+menustat = read_csv("data/menustat_combined.csv")
+rest_location = read_csv("data/restaurant_location.csv")
+```
+
+
+```{r frequency}
+rest_locations %>%
+  select(restaurant, rest_type) %>%
+  arrange(rest_type) %>%
+  distinct #59 restaurants
+
+menustat_df %>%
+  select(restaurant, rest_type) %>%
+  arrange(rest_type) %>%
+  distinct #106 restaurants
+
+#understanding the dataframes comparison
+#install.packages("arsenal")
+#summary(arsenal::comparedf(rest_locations, menustat_df))
+
+#we are seeing NA's because "Jersey Mike's Subs" wasn't coded as anything as shown in the code chunk:
+#rest_locations %>%
+#  group_by(restaurant) %>%
+#  filter(is.na(rest_type))
+
+menustat_df %>%
+  summarise(across(everything(), ~sum(is.na(.x)))) %>%
+  knitr::kable() #no more NA's for variables we are using
+
+#fast food calorie distribution
+ff_cal = menustat_df %>%
+  select(rest_type, calories) %>%
+  filter(rest_type == "fast food") %>%
+  ggplot(aes(x = calories)) +
+  geom_histogram(fill = "light blue", color = "black")
+
+#sit-down calorie distribution
+sd_cal = menustat_df %>%
+  select(rest_type, calories) %>%
+  filter(rest_type == "sit-down") %>%
+  ggplot(aes(x = calories)) +
+  geom_histogram(fill = "red", color = "black")
+
+#bev_des calorie distribution
+bevdes_cal = menustat_df %>%
+  select(rest_type, calories) %>%
+  filter(rest_type == "beverages_dessert") %>%
+  ggplot(aes(x = calories)) +
+  geom_histogram(fill = "yellow", color = "black") #has more spread in its mean
+
+#convenience calorie distribution
+conv_cal = menustat_df %>%
+  select(rest_type, calories) %>%
+  filter(rest_type == "convenience") %>%
+  ggplot(aes(x = calories)) +
+  geom_histogram(fill = "green", color = "black")
+
+#geom_vline(aes(xintercept = mean(created_df$calories)),col='red',size=2)
+
+menustat_df %>%
+  select(rest_type, calories) %>%
+  ggplot(aes(x = calories, color = rest_type)) +
+  geom_histogram(binwidth=30)
+
+ff_cal + sd_cal + bevdes_cal + conv_cal
+```
+
+```{r summarise}
+####calculations for calories, total_fat, sodium, carbohydrates, sugar
+##calories 
+#mean calories
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(calories), list(name = mean))
+
+#median calories
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(calories), list(name = median))
+
+##total fat
+#mean
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(total_fat), list(name = mean))
+#median
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(total_fat), list(name = median))
+
+##sodium
+#mean
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(sodium), list(name = mean))
+#median
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(sodium), list(name = median))
+
+##carbs
+#mean
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(carbohydrates), list(name = mean))
+#median
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(carbohydrates), list(name = median))
+
+##sugar
+#mean
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(sugar), list(name = mean))
+#median
+menustat_df %>%
+  group_by(rest_type) %>%
+  summarise_at(vars(sugar), list(name = median))
+
+#to look specifically at ny truncate the dataframe for relevant restaurant in the city
+#combined dataframe for summaries
+#tidied(1st) -> summary metrics(relevant nutritional variables) -> creating combined df_metrics(zipcode) ->  joining on zipcode with tidy census -> regression OLS at the zipcode level
+
+
+#create a count for rest_type for every distinct zip then multiply the #of rest_type by associated metric
+rest_locations %>%
+  select(restaurant, rest_type, zipcode) %>%
+  group_by(rest_type) %>%
+  
+#food environment quality ~ predictors, zipcode level mean sugar, fat etc. , median house hold income, %race, etc. 
+```

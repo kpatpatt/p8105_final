@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r load and tidy data}
+```{r load and tidy data, echo = FALSE}
 #loading in 11 files
 data2008 = read_excel((file = "data/annual_data2008.xlsx"), col_types = "text")
 data2010 = read_excel((file = "data/annual_data2010.xlsx"), col_types = "text") 
