@@ -31,6 +31,12 @@ rest_locations %>%
 menustat_df %>%
   select(restaurant, rest_type) %>%
   arrange(rest_type) %>%
+  distinct #59 restaurants
+
+
+menustat_df %>%
+  select(restaurant, rest_type) %>%
+  arrange(rest_type) %>%
   distinct #106 restaurants
 
 #understanding the dataframes comparison
@@ -137,6 +143,17 @@ menustat_df %>%
   group_by(rest_type) %>%
   summarise_at(vars(sugar), list(name = median))
 
+###creating new columns
+
+menustat_df_test = menustat_df %>% 
+  group_by(rest_type, restaurant)  %>%  # group by one or more variables
+  summarise(mean_calories = mean(calories),
+            median_calories = median(calories))  # calculate mean and median of column
+
+rest_locations %>%
+  group_by(zipcode, rest_type, restaurant) %>%
+  count()
+
 #to look specifically at ny truncate the dataframe for relevant restaurant in the city
 #combined dataframe for summaries
 #tidied(1st) -> summary metrics(relevant nutritional variables) -> creating combined df_metrics(zipcode) ->  joining on zipcode with tidy census -> regression OLS at the zipcode level
@@ -148,9 +165,5 @@ rest_locations %>%
   group_by(rest_type) %>%
   
 #food environment quality ~ predictors, zipcode level mean sugar, fat etc. , median house hold income, %race, etc. 
-```
-
-```{r test stage}
-
 ```
 
