@@ -443,85 +443,9 @@ rest_freq %>%
 # 54 restaurants in nyc from rest_inspec dataframe --> are they all in menustat?
 ```{r}
 final_cal_df %>% 
-  filter(restaurant == "MCDONALD'S" | "POPEYES" | "KFC" | "BOSTON MARKET" | "CHIPOTLE MEXICAN GRILL" | "WHITE CASTLE" | "TIM HORTONS" | "LITTLE CAESARS" | "WINGSTOP" | "TACO BELL" | "SUBWAY" | "WENDY'S" | "SHAKE SHACK" | "PAPA JOHN'S" 
-IHOP
-16
-PIZZA HUT
-17
-APPLEBEE'S
-18
-PANDA EXPRESS
-19
-CHECKERS
-20
-ARBY'S
-21
-BURGER KING
-22
-STARBUCKS COFFEE
-23
-PANERA BREAD
-24
-TROPICAL SMOOTHIE CAFE
-25
-KRISPY KREME
-26
-FIVE GUYS FAMOUS BURGERS AND FRIES
-27
-BUFFALO WILD WINGS
-28
-DOMINOS
-29
-OUTBACK STEAKHOUSE
-30
-MOE'S SOUTHWEST GRILL
-31
-AUNTIE ANNE'S PRETZELS
-32
-CHICK-FIL-A
-33
-SBARRO
-34
-DUNKIN’
-35
-HARDEE
-36
-HOOTERS
-37
-TGI FRIDAY'S
-38
-JAMBA JUICE
-39
-MARCO'S
-40
-RED LOBSTER
-41
-THE CAPITAL GRILLE
-42
-DAVE & BUSTER'S
-43
-CHUCK E. CHEESE'S
-44
-PERKINS RESTAURANT & BAKERY
-45
-JIMMY JOHNS
-46
-BASKIN ROBBINS
-47
-P.F.CHANG'S
-48
-DICKEY'S BARBEQUE PIT
-49
-THE CHEESECAKE FACTORY
-50
-CALIFORNIA PIZZA KITCHEN
-51
-DAIRY QUEEN GRILL & CHILL
-52
-QDOBA
-53
-SONIC
-54
-LONGHORN STEAKHOUSE)
+  filter(str_detect(restaurant, "[Mm][Cc][Dd][Oo][Nn][Aa][Ll][Dd]'[Ss]"))
+
+final_cal_df %>% 
+  filter(restaurant == "McDonald's" | restaurant == "Popeyes" | restaurant == "KFC" | restaurant == "Boston Market" | restaurant == "Chipotle" | restaurant == "White Castle" | restaurant == "Tim Hortons" | restaurant == "Little Caesers" | restaurant == "Wingstop" | restaurant == "Taco Bell" | restaurant == "Subway" | restaurant == "Wendy's" | restaurant == "Shake Shack" | restaurant == "Papa John's" | restaurant == "IHOP" | restaurant == "Pizza Hut" | restaurant == "Applebee's" | restaurant == "Panda Express" | restaurant == "Checkers" | restaurant == "Arby's" | restaurant == "Burger King" | restaurant == "Starbucks" | restaurant == "Panera Bread" | restaurant == "Tropical Smoothie Café" | restaurant == "Kriskpy Kreme" | restaurant == "Five Guys" | restaurant == "Buffalo Wild Wings" | restaurant == "Dominos" | restaurant == "Outback Steakhouse" | restaurant == "Moe's Southwest Grill" | restaurant == "Auntie Anne's" | restaurant == "Chick-FIL-A" | restaurant == "Sbarro" | restaurant == "Dunkin’ Donuts" | restaurant == "Hardee" | restaurant == "HOOTERS" | restaurant == "TGI FRIDAY'S"| restaurant == "JAMBA JUICE" | restaurant == "MARCO'S" | restaurant == "Red Lobster" | restaurant == "The Capital Grille" | restaurant == "Dave & Buster's" | restaurant == "Chuck E. Cheese's" | restaurant == "Perkins" | restaurant == "Jimmy Johns" | restaurant == "Baskin Robbins" | restaurant == "PF Chang's" | restaurant == "Dickey's Barbeque Pit" | restaurant == "The Cheesecake Factor" | restaurant == "California Pizza Kitchen" | restaurant == "Dairy Queen" | restaurant == "Qdoba" | restaurant == "Sonic"| restaurant == "Longhorn Steakhouse")
 ```
 
