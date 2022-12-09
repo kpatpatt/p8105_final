@@ -15,6 +15,7 @@ library(dplyr)
 library(readxl)
 library(tidycensus)
 library(rvest)
+library(labelled)
 
 knitr::opts_chunk$set(
 	echo = TRUE,
@@ -128,9 +129,11 @@ readRenviron("~/.Renviron")
 Sys.getenv("CENSUS_API_KEY")
 
 # Call ist of all variables for ACS
-vars_list = load_variables(year = 2020, 
+vars_list = load_variables( 
+                          year = 2016, 
                            dataset = "acs5", 
                            cache = TRUE) %>% 
+
             view()
 
 # B19013_001 median household income
@@ -142,11 +145,14 @@ vars_list = load_variables(year = 2020,
 # B02001_005 asian alone
 # B02001_006 native hawaiian and other pacific islander 
 # B02001_007 Some other race alone
+# B01001_026 female sex 
+# B01001_002 male sex 
+# PWGTP weight variable 
 
-# Get data 2016-2020 for NYC by census tract 
+# Get data 2015-2019 for NYC by census tract 
 nyc_acs_data <- get_acs(state = "ny",
-               geography = "tract",
-               year = 2020,
+               geography = "zcta",
+               year = 2019,
                variables = c(med_income = "B19013_001",
                              total_pop = "B01003_001", 
                              race_total = "B02001_001", 
@@ -155,11 +161,32 @@ nyc_acs_data <- get_acs(state = "ny",
                              ai_an = "B02001_004", 
                              asain = "B02001_005", 
                              hawaiian_pi = "B02001_006", 
-                             other = "B02001_007" 
+                             other = "B02001_007", 
+                              female = "B01001_026", 
+                               male = "B01001_002"
                              ),
-               geometry = TRUE,
                survey = "acs5") %>% 
-  filter(str_detect(NAME, c("Bronx County", "Kings County", "Richmond County", "Queens County", "New York County"))) 
+      filter(str_detect(GEOID, "^10|^11")) 
+
+
+nyc_acs_data_wide = nyc_acs_data %>% 
+  select(-moe) %>% 
+    pivot_wider(
+      names_from = "variable", 
+      values_from = "estimate"
+    )
+
+nyc_acs_data_prop = nyc_acs_data_wide %>% 
+  mutate(prop_bipoc = (black_aa + ai_an + asain + hawaiian_pi)/total_pop, 
+         prop_white = white/total_pop, 
+         prop_other = other/total_pop, 
+         prop_female = female/total_pop, 
+         prop_male = male/total_pop
+) %>% 
+  select(- c(black_aa, ai_an, asain, hawaiian_pi, total_pop, race_total, white, other, female, male, NAME)) %>% 
+  rename(zipcode = GEOID) %>% 
+  write_csv("data/nyc_acs_reg")
+        
 ```
 
 **ACS individual year pull, no function**
@@ -179,7 +206,9 @@ acs_ny_2016 <- get_acs( state = "ny",
                 ai_an = "B02001_004", 
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
-                other = "B02001_007"
+                other = "B02001_007", 
+                female = "B01001_026", 
+                male = "B01001_002"
                 ),               
   survey = "acs5", 
   year = 2016) %>% 
@@ -197,8 +226,9 @@ acs_ny_2017 <- get_acs( state = "ny",
                 ai_an = "B02001_004", 
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
-                other = "B02001_007"
-                ),               
+                other = "B02001_007",
+                female = "B01001_026", 
+                male = "B01001_002"),               
   survey = "acs5", 
   year = 2017) %>% 
 filter(str_detect(GEOID, "^10|^11")) %>%
@@ -215,7 +245,9 @@ acs_ny_2018 <- get_acs( state = "ny",
                 ai_an = "B02001_004", 
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
-                other = "B02001_007"
+                other = "B02001_007",
+                female = "B01001_026", 
+                male = "B01001_002"
                 ),               
   survey = "acs5", 
   year = 2018) %>% 
@@ -233,7 +265,9 @@ acs_ny_2019 <- get_acs( state = "ny",
                 ai_an = "B02001_004", 
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
-                other = "B02001_007"
+                other = "B02001_007",
+                female = "B01001_026", 
+                male = "B01001_002"
                 ),               
   survey = "acs5", 
   year = 2019) %>% 
@@ -251,7 +285,9 @@ acs_ny_2020 <- get_acs(
                 ai_an = "B02001_004", 
                 asian = "B02001_005", 
                 hawaiian_pi = "B02001_006", 
-                other = "B02001_007"
+                other = "B02001_007",
+                female = "B01001_026", 
+                male = "B01001_002"
                 ),               
   survey = "acs5", 
   year = 2020) %>% 
