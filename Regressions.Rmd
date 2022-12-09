@@ -14,6 +14,7 @@ library(dplyr)
 library(readxl)
 library(tidycensus)
 library(rvest)
+library(labelled)
 ```
 
 ```{r}
@@ -158,6 +159,9 @@ rest_locations %>%
 #combined dataframe for summaries
 #tidied(1st) -> summary metrics(relevant nutritional variables) -> creating combined df_metrics(zipcode) ->  joining on zipcode with tidy census -> regression OLS at the zipcode level
 
+rest_locations %>%
+  group_by(zipcode, rest_type) %>%
+summarise (count_rest = n())
 
 #create a count for rest_type for every distinct zip then multiply the #of rest_type by associated metric
 rest_locations %>%
@@ -165,5 +169,79 @@ rest_locations %>%
   group_by(rest_type) %>%
   
 #food environment quality ~ predictors, zipcode level mean sugar, fat etc. , median house hold income, %race, etc. 
+```
+
+## NEW Model data/ building 
+
+```{r}
+## creates the total_rest_acs dataframe 
+
+#DATAFRAME 1:REST 
+rest_locations_new = rest_locations %>%
+  group_by(zipcode, rest_type) %>%
+  summarise(num_rest_type = n()) %>% 
+  pivot_wider(
+    names_from = "rest_type", 
+    values_from = "num_rest_type"
+  ) %>% 
+  drop_na(zipcode) %>% 
+  replace(is.na(.), 0) %>% 
+  mutate(total = beverages_dessert + `fast food` + `sit-down`, 
+         prop_bev = beverages_dessert/total, 
+         prop_fast = `fast food`/total, 
+         prop_sit = `sit-down`/total, 
+         logit_sit = ifelse(`sit-down` > 0, 1, 0)) %>% 
+  select(-c(total)) 
+
+#DATAFRAME 2: ACS
+nyc_acs = read_csv("data/nyc_acs_reg")
+
+## JOIN ##
+
+total_rest_acs = left_join(rest_locations_new, nyc_acs, by = "zipcode") %>% 
+  drop_na()
+
+## with drop_na (taking away NAs in nyc_acs proportions) we went from 172 to 167 zipcodes 
+```
+
+```{r}
+##model lm 
+
+fit <- lm(prop_fast ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs)
+
+summary(fit)
+fit_table = fit %>% 
+  broom::tidy() %>% 
+    knitr::kable(digits = 3)
+
+#model glm 
+
+fit.logit <- glm(logit_sit ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs, family = "binomial")
+
+summary(fit.logit)
+
+logit_table = fit.logit %>% 
+  broom::tidy() %>% 
+    knitr::kable(digits = 3)
+```
+
+# plots 
+
+```{r}
+#female 
+ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(
+    title = "Median income by total population",
+    x = "Total population",
+    y = "Median income"
+  )
+
+#bipoc 
+
+#medincome
+
+#
 ```
 
