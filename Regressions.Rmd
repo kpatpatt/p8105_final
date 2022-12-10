@@ -146,28 +146,28 @@ menustat_df %>%
 
 ###creating new columns
 
-menustat_df_test = menustat_df %>% 
-  group_by(rest_type, restaurant)  %>%  # group by one or more variables
-  summarise(mean_calories = mean(calories),
-            median_calories = median(calories))  # calculate mean and median of column
-
-rest_locations %>%
-  group_by(zipcode, rest_type, restaurant) %>%
-  count()
-
+#menustat_df_test = menustat_df %>% 
+#  group_by(rest_type, restaurant)  %>%  # group by one or more variables
+#  summarise(mean_calories = mean(calories),
+#            median_calories = median(calories))  # calculate mean and median of column
+#
+#rest_locations %>%
+#  group_by(zipcode, rest_type, restaurant) %>%
+#  count()
+#
 #to look specifically at ny truncate the dataframe for relevant restaurant in the city
 #combined dataframe for summaries
-#tidied(1st) -> summary metrics(relevant nutritional variables) -> creating combined df_metrics(zipcode) ->  joining on zipcode with tidy census -> regression OLS at the zipcode level
-
-rest_locations %>%
-  group_by(zipcode, rest_type) %>%
-summarise (count_rest = n())
-
-#create a count for rest_type for every distinct zip then multiply the #of rest_type by associated metric
-rest_locations %>%
-  select(restaurant, rest_type, zipcode) %>%
-  group_by(rest_type) %>%
-  
+#tidied(1st) -> summary metrics(relevant nutritional variables) -> creating combined df_metrics(zipcode) ->  joining on zipcode with #tidy census -> regression OLS at the zipcode level
+#
+#rest_locations %>%
+#  group_by(zipcode, rest_type) %>%
+#summarise (count_rest = n())
+#
+##create a count for rest_type for every distinct zip then multiply the #of rest_type by associated metric
+#rest_locations %>%
+#  select(restaurant, rest_type, zipcode) %>%
+#  group_by(rest_type) %>%
+#  
 #food environment quality ~ predictors, zipcode level mean sugar, fat etc. , median house hold income, %race, etc. 
 ```
 
@@ -186,12 +186,21 @@ rest_locations_new = rest_locations %>%
   ) %>% 
   drop_na(zipcode) %>% 
   replace(is.na(.), 0) %>% 
-  mutate(total = beverages_dessert + `fast food` + `sit-down`, 
+  rename(fast_food = `fast food`,
+         sit_down = `sit-down`) %>%
+  mutate(total = beverages_dessert + fast_food + sit_down, 
          prop_bev = beverages_dessert/total, 
-         prop_fast = `fast food`/total, 
-         prop_sit = `sit-down`/total, 
-         logit_sit = ifelse(`sit-down` > 0, 1, 0)) %>% 
+         prop_fast = fast_food/total, 
+         prop_sit = sit_down/total, 
+         logit_sit = ifelse(sit_down > 0, 1, 0),
+         logit_fast = ifelse(fast_food > 10, 1, 0)) %>% 
   select(-c(total)) 
+
+#frequency of fast food outlets within a zipcode > median
+#rest_locations_new %>%
+#  mutate(fast_food = as.numeric(fast_food)) %>%
+#  summarise(median = median(fast_food))
+  
 
 #DATAFRAME 2: ACS
 nyc_acs = read_csv("data/nyc_acs_reg")
@@ -206,21 +215,39 @@ total_rest_acs = left_join(rest_locations_new, nyc_acs, by = "zipcode") %>%
 
 ```{r}
 ##model lm 
+#proportion of fast food prediction
+fit.fast <- lm(prop_fast ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs)
 
-fit <- lm(prop_fast ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs)
-
-summary(fit)
-fit_table = fit %>% 
+#summary(fit.fast)
+fit_table_fast = fit.fast %>% 
   broom::tidy() %>% 
     knitr::kable(digits = 3)
 
+#proportion of sit down prediction
+fit.sit <- lm(prop_sit ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs)
+
+#summary(fit.sit)
+fit_table_sit = fit.sit %>% 
+  broom::tidy() %>% 
+    knitr::kable(digits = 3)
+
+
 #model glm 
+#sit down
+fit.logit.sit <- glm(logit_sit ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs, family = "binomial")
 
-fit.logit <- glm(logit_sit ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs, family = "binomial")
+summary(fit.logit.sit)
 
-summary(fit.logit)
+logit_table_sit = fit.logit.sit %>% 
+  broom::tidy() %>% 
+    knitr::kable(digits = 3)
 
-logit_table = fit.logit %>% 
+#fast food
+fit.logit.fast <- glm(logit_fast ~ prop_white + prop_bipoc + prop_female + prop_other + med_income, data = total_rest_acs, family = "binomial")
+
+summary(fit.logit.fast)
+
+logit_table_fast = fit.logit.fast %>% 
   broom::tidy() %>% 
     knitr::kable(digits = 3)
 ```
@@ -228,6 +255,7 @@ logit_table = fit.logit %>%
 # plots 
 
 ```{r}
+##Linear regression plots
 #female 
 ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
   geom_point() +
@@ -239,9 +267,33 @@ ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
   )
 
 #bipoc 
-
+ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_fast)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(
+    title = "Median income by total population",
+    x = "Total population",
+    y = "Median income"
+  )
 #medincome
+ggplot(total_rest_acs, aes(x = med_income, y = prop_fast)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(
+    title = "Median income by total population",
+    x = "Total population",
+    y = "Median income"
+  )
 
-#
+
+##Logistic regression plots
+#logit sit down
+ggplot(total_rest_acs, aes(x= prop_female, y= logit_sit)) + 
+  geom_point() +
+  stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial))
+#logit fast food
+ggplot(total_rest_acs, aes(x= prop_female, y= logit_fast)) + 
+  geom_point() +
+  stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial))
 ```
 
