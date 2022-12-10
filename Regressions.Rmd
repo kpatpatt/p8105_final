@@ -59,28 +59,48 @@ ff_cal = menustat_df %>%
   select(rest_type, calories) %>%
   filter(rest_type == "fast food") %>%
   ggplot(aes(x = calories)) +
-  geom_histogram(fill = "light blue", color = "black")
+  geom_histogram(fill = "light blue", color = "black") + 
+labs(
+    x = "Calories per Item",
+    y = "Frequency", 
+    title = "Fast food restaurants"
+  ) 
 
 #sit-down calorie distribution
 sd_cal = menustat_df %>%
   select(rest_type, calories) %>%
   filter(rest_type == "sit-down") %>%
   ggplot(aes(x = calories)) +
-  geom_histogram(fill = "red", color = "black")
+  geom_histogram(fill = "red", color = "black")+ 
+labs(
+    x = "Calories per Item",
+    y = "Frequency",
+    title = "Sit-down restaurants"
+  ) 
 
 #bev_des calorie distribution
 bevdes_cal = menustat_df %>%
   select(rest_type, calories) %>%
   filter(rest_type == "beverages_dessert") %>%
   ggplot(aes(x = calories)) +
-  geom_histogram(fill = "yellow", color = "black") #has more spread in its mean
+  geom_histogram(fill = "yellow", color = "black") + 
+labs(
+    x = "Calories per Item",
+    y = "Frequency", 
+    title = "Beverages and dessert shops"
+  ) #has more spread in its mean
 
 #convenience calorie distribution
 conv_cal = menustat_df %>%
   select(rest_type, calories) %>%
   filter(rest_type == "convenience") %>%
   ggplot(aes(x = calories)) +
-  geom_histogram(fill = "green", color = "black")
+  geom_histogram(fill = "green", color = "black")+ 
+labs(
+    x = "Calories per Item",
+    y = "Frequency",
+    title = "Convenience stores"
+  ) 
 
 #geom_vline(aes(xintercept = mean(created_df$calories)),col='red',size=2)
 
@@ -261,39 +281,57 @@ ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
-    title = "Median income by total population",
-    x = "Total population",
-    y = "Median income"
+    title = "Proportion of Fast Food Restaurants by Proportion of Female in Population",
+    x = "Proportion of Female Residents",
+    y = "Proportion of Fast Food Restaurants"
   )
+## question: x is proportion female but X lab was total population? And y lab was income? we assumed the labels were wrong and changed  
+## interpretation: as female proportion increases fast food prop decreases
 
 #bipoc 
 ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_fast)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
-    title = "Median income by total population",
-    x = "Total population",
-    y = "Median income"
+    title = "Proportion of Fast Food Restaurants by Proportion of BIPOC in Population",
+    x = "Proportion of BIPOC Residents",
+    y = "Proportion of Fast Food Restaurants"
   )
+## interpretation: as BIPOC proportion increases fast food prop increases
+
 #medincome
 ggplot(total_rest_acs, aes(x = med_income, y = prop_fast)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
-    title = "Median income by total population",
-    x = "Total population",
-    y = "Median income"
+    title = "Proportion Fast Food Restaurants by Median income",
+    x = "Median Income",
+    y = "Proportion of Fast Food Restaurants"
   )
-
+## interpretation: as median income increases fast food prop SLIGHTLY decreases
+## check coefficients 
 
 ##Logistic regression plots
 #logit sit down
 ggplot(total_rest_acs, aes(x= prop_female, y= logit_sit)) + 
   geom_point() +
-  stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial))
+  stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial)) +
+labs(
+    title = "Presence of Sit-down Restaurants by Proportion of Female Residents",
+    x = "Proportion of Female",
+    y = "Presence of Sit-Down Restaurants"
+  )
+## as proportion of female residents increases the presence of sit down restaurants increases
+
 #logit fast food
 ggplot(total_rest_acs, aes(x= prop_female, y= logit_fast)) + 
   geom_point() +
-  stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial))
+  stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial)) +
+labs(
+    title = "Presence of Fast Food Restaurants by Proportion of Female Residents",
+    x = "Proportion of Female",
+    y = "Presence of Fast Food Restaurants"
+  )
+## as proportion of female residents increases the presence of fast food restaurants decreases
 ```
 
