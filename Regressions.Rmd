@@ -275,7 +275,7 @@ logit_table_fast = fit.logit.fast %>%
 # plots 
 
 ```{r}
-##Linear regression plots
+##Linear regression plots: fast food 
 #female 
 ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
   geom_point() +
@@ -310,6 +310,39 @@ ggplot(total_rest_acs, aes(x = med_income, y = prop_fast)) +
   )
 ## interpretation: as median income increases fast food prop SLIGHTLY decreases
 ## check coefficients 
+
+##Linear regression plots: sit down
+
+#female 
+ggplot(total_rest_acs, aes(x = prop_female, y = prop_sit)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(
+    title = "Proportion of Sit-down Restaurants by Proportion of Female in Population",
+    x = "Proportion of Female Residents",
+    y = "Proportion of Sit-down Restaurants")
+
+
+#bipoc 
+ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_sit)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(
+    title = "Proportion of Sit-down Restaurants by Proportion of BIPOC in Population",
+    x = "Proportion of BIPOC Residents",
+    y = "Proportion of Sit-down Restaurants"
+  )
+
+
+#medincome
+ggplot(total_rest_acs, aes(x = med_income, y = prop_sit)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(
+    title = "Proportion Sit-down Restaurants by Median income",
+    x = "Median Income",
+    y = "Proportion of Sit-down Restaurants"
+  )
 
 ##Logistic regression plots
 #logit sit down
