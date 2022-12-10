@@ -277,7 +277,7 @@ logit_table_fast = fit.logit.fast %>%
 ```{r}
 ##Linear regression plots: fast food 
 #female 
-ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
+fem_ff = ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
@@ -289,7 +289,7 @@ ggplot(total_rest_acs, aes(x = prop_female, y = prop_fast)) +
 ## interpretation: as female proportion increases fast food prop decreases
 
 #bipoc 
-ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_fast)) +
+bipoc_ff = ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_fast)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
@@ -300,7 +300,7 @@ ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_fast)) +
 ## interpretation: as BIPOC proportion increases fast food prop increases
 
 #medincome
-ggplot(total_rest_acs, aes(x = med_income, y = prop_fast)) +
+med_in_ff = ggplot(total_rest_acs, aes(x = med_income, y = prop_fast)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
@@ -314,7 +314,7 @@ ggplot(total_rest_acs, aes(x = med_income, y = prop_fast)) +
 ##Linear regression plots: sit down
 
 #female 
-ggplot(total_rest_acs, aes(x = prop_female, y = prop_sit)) +
+fem_sit = ggplot(total_rest_acs, aes(x = prop_female, y = prop_sit)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
@@ -324,7 +324,7 @@ ggplot(total_rest_acs, aes(x = prop_female, y = prop_sit)) +
 
 
 #bipoc 
-ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_sit)) +
+bipoc_sit = ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_sit)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
@@ -335,7 +335,7 @@ ggplot(total_rest_acs, aes(x = prop_bipoc, y = prop_sit)) +
 
 
 #medincome
-ggplot(total_rest_acs, aes(x = med_income, y = prop_sit)) +
+med_in_sit = ggplot(total_rest_acs, aes(x = med_income, y = prop_sit)) +
   geom_point() +
   geom_smooth(method = "lm", col = "red") +
   labs(
@@ -346,7 +346,7 @@ ggplot(total_rest_acs, aes(x = med_income, y = prop_sit)) +
 
 ##Logistic regression plots
 #logit sit down
-ggplot(total_rest_acs, aes(x= prop_female, y= logit_sit)) + 
+log_SIT = ggplot(total_rest_acs, aes(x= prop_female, y= logit_sit)) + 
   geom_point() +
   stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial)) +
 labs(
@@ -357,7 +357,7 @@ labs(
 ## as proportion of female residents increases the presence of sit down restaurants increases
 
 #logit fast food
-ggplot(total_rest_acs, aes(x= prop_female, y= logit_fast)) + 
+log_FF = ggplot(total_rest_acs, aes(x= prop_female, y= logit_fast)) + 
   geom_point() +
   stat_smooth(method="glm", color="green", se=TRUE, method.args = list(family=binomial)) +
 labs(
@@ -366,5 +366,14 @@ labs(
     y = "Presence of Fast Food Restaurants"
   )
 ## as proportion of female residents increases the presence of fast food restaurants decreases
+
+##formating linear graph 
+
+med_in_ff + bipoc_ff + fem_ff + med_in_sit + bipoc_sit + fem_sit
+
+## formatting log graphs 
+
+log_FF + log_SIT
+
 ```
 
