@@ -149,7 +149,7 @@ vars_list = load_variables(
 # B01001_002 male sex 
 # PWGTP weight variable 
 
-# Get data 2015-2019 for NYC by census tract 
+# Get data 2015-2019 for NYC by ACS & output in wide format 
 nyc_acs_data <- get_acs(state = "ny",
                geography = "zcta",
                year = 2019,
@@ -166,30 +166,29 @@ nyc_acs_data <- get_acs(state = "ny",
                                male = "B01001_002"
                              ),
                survey = "acs5") %>% 
-      filter(str_detect(GEOID, "^10|^11")) 
-
-
-nyc_acs_data_wide = nyc_acs_data %>% 
+      filter(str_detect(GEOID, "^10|^11"))  %>% 
   select(-moe) %>% 
     pivot_wider(
       names_from = "variable", 
       values_from = "estimate"
     )
 
-nyc_acs_data_prop = nyc_acs_data_wide %>% 
+#data manipulation to make proportions & data export 
+nyc_acs_data_prop = nyc_acs_data %>% 
   mutate(prop_bipoc = (black_aa + ai_an + asain + hawaiian_pi)/total_pop, 
          prop_white = white/total_pop, 
          prop_other = other/total_pop, 
          prop_female = female/total_pop, 
          prop_male = male/total_pop
 ) %>% 
-  select(- c(black_aa, ai_an, asain, hawaiian_pi, total_pop, race_total, white, other, female, male, NAME)) %>% 
+  select(-c(black_aa, ai_an, asain, hawaiian_pi, total_pop, race_total, white, other, female, male, NAME)) %>% 
   rename(zipcode = GEOID) %>% 
   write_csv("data/nyc_acs_reg")
         
 ```
 
 **ACS individual year pull, no function**
+### DO NOT NEED THIS CODE CHUNK ###
 ```{r ACS for one year pull}
 library(tidyverse)
 library(tidycensus)
@@ -294,9 +293,9 @@ acs_ny_2020 <- get_acs(
 filter(str_detect(GEOID, "^10|^11")) %>%
   tibble::add_column(year = 2020)
 
-acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs_ny_2020) %>% #there are 254 zctas with estimate NA's
-  janitor::clean_names() %>%
-  write_csv("data/acs_ny_combined.csv")
+#acs_ny_comb <- bind_rows(acs_ny_2016, acs_ny_2017, acs_ny_2018, acs_ny_2019, acs_ny_2020) %>% #there are 254 zctas with estimate NA's
+  #janitor::clean_names() %>%
+  #write_csv("data/acs_ny_combined.csv")
 
 # drop_na(estimate) #if we want to drop the 254 NA's but check what the mapping looks like
 
